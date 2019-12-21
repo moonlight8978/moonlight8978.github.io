@@ -1,9 +1,9 @@
 import React from 'react'
 
-import './app.scss'
+import styles from './app.module.scss'
 
 function App() {
-  return <div>adfdafds</div>
+  return <div className={styles.app}>Test CICD</div>
 }
 
 export default App

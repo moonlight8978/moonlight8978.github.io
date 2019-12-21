@@ -47,7 +47,7 @@ module.exports = webpackEnv => {
       new MiniCssExtractPlugin(),
     ],
     output: {
-      path: path.resolve(__dirname, 'dist'),
+      path: path.resolve(__dirname, 'build'),
       filename: outputName(isEnvProduction, 'js'),
     },
     module: {
@@ -114,7 +114,7 @@ module.exports = webpackEnv => {
     },
     devtool: isEnvDevelopment && 'inline-source-map',
     devServer: {
-      contentBase: './dist',
+      contentBase: './build',
       hot: true,
     },
   }
