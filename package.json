@@ -103,6 +103,10 @@
     }
   },
   "lint-staged": {
+    "*.{json,yml,yaml}": [
+      "yarn prettier",
+      "git add"
+    ],
     "*.{js,jsx}": [
       "yarn eslint --fix",
       "yarn prettier",
