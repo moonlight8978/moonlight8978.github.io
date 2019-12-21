@@ -42,10 +42,10 @@ jobs:
       - prepare
 
       - run:
-        name: Check code convention
-        command: |
-          yarn eslint
-          yarn stylelint
+          name: Check code convention
+          command: |
+            yarn eslint
+            yarn stylelint
 
   test:
     executor: react_app
