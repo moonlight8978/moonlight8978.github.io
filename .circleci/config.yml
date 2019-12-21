@@ -38,7 +38,9 @@ jobs:
 
       - run:
           name: Linting
-          command: yarn eslint
+          command: |
+            yarn eslint
+            yarn stylelint
 
   test:
     executor: react_app

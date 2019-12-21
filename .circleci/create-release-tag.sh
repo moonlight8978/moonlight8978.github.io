@@ -6,10 +6,10 @@ echo "$TIMESTAMP $VERSION $BRANCH $COMMIT_ID"
 
 http_code=$(curl --silent --output release.json --write-out '%{http_code}' \
   --data '{
-    "tag_name": "release-$TIMESTAMP",
-    "target_commitish": "$BRANCH",
-    "name": "Version $VERSION",
-    "body": "- Commit ID: $COMMIT_ID\r\n- Released time: $TIMESTAMP",
+    "tag_name": "release-$(TIMESTAMP)",
+    "target_commitish": "$(BRANCH)",
+    "name": "Version $(VERSION)",
+    "body": "- Commit ID: $(COMMIT_ID)\r\n- Released time: $(TIMESTAMP)",
     "draft": false,
     "prerelease": false
   }' \
