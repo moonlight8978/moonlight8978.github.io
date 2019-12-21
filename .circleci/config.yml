@@ -36,11 +36,16 @@ jobs:
           name: Check npm packages
           command: yarn run check
 
+  lint:
+    executor: react_app
+    steps:
+      - prepare
+
       - run:
-          name: Linting
-          command: |
-            yarn eslint
-            yarn stylelint
+        name: Check code convention
+        command: |
+          yarn eslint
+          yarn stylelint
 
   test:
     executor: react_app
@@ -111,12 +116,15 @@ aliases:
 workflows:
   workflow:
     jobs:
+      - lint:
+          <<: *ignore_gh_pages
       - check:
           <<: *ignore_gh_pages
       - test:
           <<: *ignore_gh_pages
           requires:
             - check
+            - lint
       - collect_coverage:
           <<: *ignore_gh_pages
           requires:
