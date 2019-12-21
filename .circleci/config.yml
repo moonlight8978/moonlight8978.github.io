@@ -76,6 +76,12 @@ jobs:
 
       - prepare
 
+      - run:
+          name: Config git info
+          command: |
+            git config --global user.email 'deploy@circleci'
+            git config --global user.name 'CircleCI'
+
       - deploy:
           name: Build and deploy to github.io
           command: yarn deploy
@@ -83,8 +89,6 @@ jobs:
       - run:
           name: Create release tag
           command: |
-            git config --global user.email 'deploy@circleci'
-            git config --global user.name 'CircleCI'
             TIMESTAMP=$(date '+%Y%m%d%H%M%S')
             VERSION=$(cat package.json |
               grep version |
