@@ -33,6 +33,14 @@ jobs:
       - prepare
 
       - run:
+          name: NodeJS version
+          command: node -v
+
+      - run:
+          name: Yarn version
+          command: yarn -v
+
+      - run:
           name: Check npm packages
           command: yarn run check
 
