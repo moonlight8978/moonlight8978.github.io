@@ -1,7 +1,8 @@
 {
   "name": "homepage",
   "version": "0.0.1",
-  "description": "https://moonlight8978.github.io",
+  "description": "_MoonLight_'s blog",
+  "homepage": "https://moonlight8978.github.io/homepage",
   "main": "index.js",
   "repository": "git@github.com:moonlight8978/homepage.git",
   "author": "_MoonLight_",
