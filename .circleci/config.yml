@@ -76,8 +76,8 @@ jobs:
       - run:
           name: Debug
           command: |
-            ls -al .
             ls -al ./coverage
+            ls -al ./coverage/lcov-report
 
       - run:
           name: Push coverage to codecov
