@@ -75,7 +75,9 @@ jobs:
 
       - run:
           name: Debug
-          command: cd coverage && ls -al
+          command: |
+            ls -al .
+            ls -al ./coverage
 
       - run:
           name: Push coverage to codecov
