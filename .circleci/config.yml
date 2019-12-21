@@ -30,7 +30,7 @@ jobs:
   check:
     executor: react_app
     steps:
-      - prepare
+      - prepare:
 
       - run:
           name: Check npm packages
@@ -59,7 +59,7 @@ jobs:
   collect_coverage:
     executor: react_app
     steps:
-      - prepare
+      - prepare:
 
       - run:
           name: Push coverage to codecov
@@ -72,7 +72,7 @@ jobs:
           fingerprints:
             - b5:fc:a6:cb:f2:3e:71:02:47:97:71:3a:75:00:4c:4c
 
-      - prepare
+      - prepare:
 
       - deploy:
           name: Build and deploy to github.io
