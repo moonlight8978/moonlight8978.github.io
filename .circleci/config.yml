@@ -97,6 +97,7 @@ jobs:
               sed 's/[", ]//g')
             BRANCH=$(git rev-parse --abbrev-ref HEAD)
             COMMIT_ID=$(git rev-parse HEAD)
+            echo "$TIMESTAMP $VERSION $BRANCH $COMMIT_ID"
             curl --fail --data '{
                 "tag_name": "release-$TIMESTAMP",
                 "target_commitish": "develop",
