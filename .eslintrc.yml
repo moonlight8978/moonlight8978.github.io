@@ -41,7 +41,7 @@ rules:
     - error
     - devDependencies:
         - '**/*.test.js'
-        - '**/*.stories.js'
+        - '**/*.stories.jsx'
         - '**/*.config.js'
   react/destructuring-assignment: 'off'
   react/jsx-filename-extension:

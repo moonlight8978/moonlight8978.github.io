@@ -43,7 +43,7 @@ module.exports = webpackEnv => {
           title: 'Home',
         })
       ),
-      new CopyPlugin([{ from: 'assets', to: 'assets' }]),
+      new CopyPlugin(['public']),
       new MiniCssExtractPlugin(),
     ],
     output: {
