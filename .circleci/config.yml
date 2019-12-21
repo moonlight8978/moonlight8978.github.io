@@ -132,7 +132,7 @@ workflows:
       - release:
           requires:
             - test
-          # filters:
-          #   branches:
-          # only:
-          #   - develop
+          filters:
+            branches:
+              only:
+                - develop
