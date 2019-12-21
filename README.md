@@ -1,15 +1,21 @@
 # moonlight8978.github.io
 
-## Development
+## Homepage
+
+https://moonlight8978.github.io/
+
+## Setup
+
+### Development
 
 ```bash
 npm install
-npm start
+npm run start
 ```
 
-## Production
+### Production
 
 ```bash
 npm install
-npm build
+npm run deploy
 ```
