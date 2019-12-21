@@ -62,7 +62,7 @@
     "build": "webpack --env production",
     "storybook": "start-storybook",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist -b master"
   },
   "browserslist": [
     "last 2 Chrome versions",
