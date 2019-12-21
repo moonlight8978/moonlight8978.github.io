@@ -70,6 +70,9 @@ jobs:
     steps:
       - prepare
 
+      - attach_workspace:
+          at: coverage
+
       - run:
           name: Push coverage to codecov
           command: yarn codecov
