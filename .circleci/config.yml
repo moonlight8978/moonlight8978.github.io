@@ -71,7 +71,7 @@ jobs:
       - prepare
 
       - attach_workspace:
-          at: coverage
+          at: .
 
       - run:
           name: Debug
