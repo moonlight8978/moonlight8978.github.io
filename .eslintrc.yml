@@ -1,7 +1,7 @@
 env:
   browser: true
   es6: true
-  webextensions: true
+  jest: true
 extends:
   - airbnb
   - plugin:prettier/recommended
@@ -40,8 +40,10 @@ rules:
   import/no-extraneous-dependencies:
     - error
     - devDependencies:
-        - '**/*.test.js'
-        - '**/*.stories.js'
+        - '**/__tests__/*'
+        - '**/__mocks__/*'
+        - '**/*.spec.*'
+        - '**/*.stories.*'
         - '**/*.config.js'
   react/destructuring-assignment: 'off'
   react/jsx-filename-extension:
