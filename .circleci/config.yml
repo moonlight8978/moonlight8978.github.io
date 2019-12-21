@@ -63,7 +63,7 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
-            - coverage
+            - coverage/*
 
   collect_coverage:
     executor: react_app
