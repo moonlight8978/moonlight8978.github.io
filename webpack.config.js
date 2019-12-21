@@ -64,18 +64,20 @@ module.exports = webpackEnv => {
           test: /(?<!\.module)\.s?css$/,
           use: [
             'style-loader',
+            isEnvProduction && MiniCssExtractPlugin.loader,
             { loader: 'css-loader', options: { sourceMap: isEnvDevelopment } },
             {
               loader: 'sass-loader',
               options: { sourceMap: isEnvDevelopment },
             },
             'postcss-loader',
-          ],
+          ].filter(Boolean),
         },
         {
           test: /\.module.(scss|css)$/,
           use: [
             'style-loader',
+            isEnvProduction && MiniCssExtractPlugin.loader,
             {
               loader: 'css-loader',
               options: {
@@ -107,7 +109,7 @@ module.exports = webpackEnv => {
     resolve: {
       extensions: ['.js', '.jsx'],
     },
-    devtool: 'inline-source-map',
+    devtool: isEnvDevelopment && 'inline-source-map',
     devServer: {
       contentBase: './dist',
       hot: true,
