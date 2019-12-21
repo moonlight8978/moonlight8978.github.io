@@ -7,9 +7,9 @@ commands:
       - checkout
 
       - restore_cache:
-        keys:
-          - node-modules-v1-{{ checksum "yarn.lock" }}
-          - node-modules-v1-
+          keys:
+            - node-modules-v1-{{ checksum "yarn.lock" }}
+            - node-modules-v1-
 
       - run:
           name: Install npm packages
