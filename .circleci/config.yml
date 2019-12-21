@@ -74,6 +74,10 @@ jobs:
           at: coverage
 
       - run:
+          name: Debug
+          command: ls coverage
+
+      - run:
           name: Push coverage to codecov
           command: yarn codecov
 
