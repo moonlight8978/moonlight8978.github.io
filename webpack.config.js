@@ -44,10 +44,7 @@ module.exports = webpackEnv => {
         })
       ),
       new CopyPlugin([{ from: 'assets', to: 'assets' }]),
-      new MiniCssExtractPlugin({
-        filename: outputName(isEnvProduction, 'css'),
-        ignoreOrder: false,
-      }),
+      new MiniCssExtractPlugin(),
     ],
     output: {
       path: path.resolve(__dirname, 'dist'),
@@ -63,19 +60,27 @@ module.exports = webpackEnv => {
         {
           test: /(?<!\.module)\.s?css$/,
           use: [
-            'style-loader',
+            isEnvDevelopment && 'style-loader',
+            isEnvProduction && {
+              loader: MiniCssExtractPlugin.loader,
+              options: { publicPath: '/assets' },
+            },
             { loader: 'css-loader', options: { sourceMap: isEnvDevelopment } },
+            'postcss-loader',
             {
               loader: 'sass-loader',
               options: { sourceMap: isEnvDevelopment },
             },
-            'postcss-loader',
-          ],
+          ].filter(Boolean),
         },
         {
           test: /\.module.(scss|css)$/,
           use: [
-            'style-loader',
+            isEnvDevelopment && 'style-loader',
+            isEnvProduction && {
+              loader: MiniCssExtractPlugin.loader,
+              options: { publicPath: '/assets' },
+            },
             {
               loader: 'css-loader',
               options: {
@@ -87,12 +92,12 @@ module.exports = webpackEnv => {
                 sourceMap: isEnvDevelopment,
               },
             },
+            'postcss-loader',
             {
               loader: 'sass-loader',
               options: { sourceMap: isEnvDevelopment },
             },
-            'postcss-loader',
-          ],
+          ].filter(Boolean),
         },
         {
           test: /\.(png|svg|jpg|gif)$/,
@@ -107,7 +112,7 @@ module.exports = webpackEnv => {
     resolve: {
       extensions: ['.js', '.jsx'],
     },
-    devtool: 'inline-source-map',
+    devtool: isEnvDevelopment && 'inline-source-map',
     devServer: {
       contentBase: './dist',
       hot: true,
