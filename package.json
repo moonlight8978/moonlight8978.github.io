@@ -72,10 +72,12 @@
     "html-minifier-terser": "^5.0.2",
     "html-webpack-plugin": "^3.2.0",
     "html-webpack-template": "^6.2.0",
+    "husky": ">=1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.9.0",
     "jest-environment-jsdom-fourteen": "^1.0.1",
     "json-loader": "^0.5.7",
+    "lint-staged": ">=8",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.13.0",
     "postcss-flexbugs-fixes": "^4.1.0",
@@ -94,5 +96,25 @@
     "webpack": "^4.41.4",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{json,yml,yaml,xml,html,svg}": [
+      "yarn prettier",
+      "git add"
+    ],
+    "*.{js,jsx}": [
+      "yarn prettier",
+      "yarn eslint --fix",
+      "git add"
+    ],
+    "*.{css,scss}": [
+      "yarn stylelint --fix",
+      "git add"
+    ]
   }
 }

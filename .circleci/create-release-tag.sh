@@ -12,7 +12,7 @@ curl_command="curl --silent --output release.json --write-out '%{http_code}' \
     \"body\": \"- Commit ID: $COMMIT_ID\r\n- Released time: $TIMESTAMP\",
     \"draft\": false,
     \"prerelease\": false
-    }' \
+  }' \
   --header \"Authorization: token $GITHUB_ACCESS_TOKEN\" \
   --header \"Content-Type: application/json\" \
   https://api.github.com/repos/moonlight8978/moonlight8978.github.io/releases"

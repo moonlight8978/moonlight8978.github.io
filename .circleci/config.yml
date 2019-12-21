@@ -4,6 +4,12 @@ commands:
   prepare:
     description: Prepare environment
     steps:
+      - run:
+          name: Config git info
+          command: |
+            git config --global user.email 'moonlight8978@gmail.com'
+            git config --global user.name 'CircleCI'
+
       - checkout
 
       - restore_cache:
@@ -31,6 +37,14 @@ jobs:
     executor: react_app
     steps:
       - prepare
+
+      - run:
+          name: NodeJS version
+          command: node -v
+
+      - run:
+          name: Yarn version
+          command: yarn -v
 
       - run:
           name: Check npm packages
@@ -85,12 +99,6 @@ jobs:
             - b5:fc:a6:cb:f2:3e:71:02:47:97:71:3a:75:00:4c:4c
 
       - prepare
-
-      - run:
-          name: Config git info
-          command: |
-            git config --global user.email 'deploy@circleci'
-            git config --global user.name 'CircleCI'
 
       - deploy:
           name: Build and deploy to github.io
