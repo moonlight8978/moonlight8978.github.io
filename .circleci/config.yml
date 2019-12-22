@@ -61,6 +61,10 @@ jobs:
             yarn eslint
             yarn stylelint
 
+      - run:
+          name: Check static type
+          command: yarn flow
+
   test:
     executor: react_app
     steps:

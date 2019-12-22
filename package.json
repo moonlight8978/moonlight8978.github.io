@@ -31,7 +31,8 @@
     "codecov": "codecov",
     "prettier": "prettier --write ./**/*.{js,jsx,scss,json}",
     "eslint": "eslint . --ext .jsx,.js",
-    "stylelint": "stylelint ./src/**/*.scss"
+    "stylelint": "stylelint ./src/**/*.scss",
+    "flow": "flow"
   },
   "browserslist": [
     "last 2 Chrome versions",
@@ -41,6 +42,7 @@
   "devDependencies": {
     "@babel/core": "^7.7.7",
     "@babel/preset-env": "^7.7.7",
+    "@babel/preset-flow": "^7.7.4",
     "@babel/preset-react": "^7.7.4",
     "@storybook/addon-actions": "^5.2.8",
     "@storybook/addon-links": "^5.2.8",
@@ -59,6 +61,7 @@
     "codecov": "^3.6.1",
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.4.0",
+    "empty": "^0.10.1",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.7.0",
@@ -68,6 +71,7 @@
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-react-hooks": "^1.7.0",
     "file-loader": "^5.0.2",
+    "flow-bin": "^0.114.0",
     "gh-pages": "^2.1.1",
     "html-minifier-terser": "^5.0.2",
     "html-webpack-plugin": "^3.2.0",
