@@ -7,7 +7,7 @@ services:
       - -c
       - 'yarn install && yarn start'
     ports:
-      - 9000:8080
+      - 9000:9000
       - 9229:9229
     volumes:
       - .:/app

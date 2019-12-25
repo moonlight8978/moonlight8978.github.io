@@ -6,6 +6,8 @@ const CopyPlugin = require('copy-webpack-plugin')
 const htmlWebpackTemplate = require('html-webpack-template')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
+const SOURCE_DIR = 'src/'
+
 const makeHtmlOptions = options => {
   const { identity, ...overrides } = options
 
@@ -21,6 +23,12 @@ const makeHtmlOptions = options => {
     appMountId: 'app',
     ...overrides,
   }
+}
+
+const mdPathTransformer = filePath => {
+  const parts = filePath.replace(SOURCE_DIR, '').split('/')
+  const newPath = parts.slice(0, parts.length - 1).join('/')
+  return `${newPath}.md`
 }
 
 const outputName = (isEnvProduction, ext) =>
@@ -43,7 +51,14 @@ module.exports = webpackEnv => {
           title: 'Home',
         })
       ),
-      new CopyPlugin(['public']),
+      new CopyPlugin([
+        'public',
+        {
+          from: './src/**/*.md',
+          to: 'contents',
+          transformPath: mdPathTransformer,
+        },
+      ]),
       new MiniCssExtractPlugin(),
     ],
     output: {
@@ -104,8 +119,8 @@ module.exports = webpackEnv => {
           loader: 'file-loader',
         },
         {
-          test: /\.json$/,
-          loader: 'json-loader',
+          test: /\.(md|txt|ya?ml)$/,
+          loader: 'raw-loader',
         },
       ],
     },
@@ -117,6 +132,7 @@ module.exports = webpackEnv => {
       contentBase: './build',
       hot: true,
       host: '0.0.0.0',
+      port: 9000,
     },
   }
 }
