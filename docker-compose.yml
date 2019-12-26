@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+  web:
+    build: .
+    command:
+      - bash
+      - -c
+      - 'yarn install && yarn start'
+    ports:
+      - 9000:8080
+      - 9229:9229
+    volumes:
+      - .:/app
+
+  flow:
+    build: .
+    command: yarn flow server
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      - web

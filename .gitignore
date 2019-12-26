@@ -25,3 +25,6 @@ yarn-error.log*
 
 # IDE, editors
 # /.vscode
+
+# Temp
+/tmp

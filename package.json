@@ -26,7 +26,7 @@
     "build-storybook": "build-storybook",
     "check": "yarn check --verify-tree --integrity",
     "test:unit": "jest",
-    "test:unit:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
+    "test:unit:debug": "node --inspect='0.0.0.0:9229' --inspect-brk node_modules/.bin/jest --runInBand",
     "test:unit:coverage": "jest --coverage",
     "codecov": "codecov",
     "prettier": "prettier --write ./**/*.{js,jsx,scss,json}",

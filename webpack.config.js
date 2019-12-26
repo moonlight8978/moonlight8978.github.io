@@ -116,6 +116,7 @@ module.exports = webpackEnv => {
     devServer: {
       contentBase: './build',
       hot: true,
+      host: '0.0.0.0',
     },
   }
 }
