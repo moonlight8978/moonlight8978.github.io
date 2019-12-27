@@ -2,10 +2,13 @@
 
 import React from 'react'
 
-import styles from './app.module.scss'
+import makePost from './components/make-post'
+import mysqlOptimizeWhere from './blog/mysql-optimize-where'
+
+const MySqlOptimizeWhere = makePost(mysqlOptimizeWhere)
 
 function App() {
-  return <div className={styles.app}>Test CICD</div>
+  return <MySqlOptimizeWhere />
 }
 
 export default App

@@ -1,4 +1,5 @@
 {
   "files.autoSave": "off",
-  "flow.runOnEdit": false
+  "flow.runOnEdit": false,
+  "editor.rulers": [80]
 }
