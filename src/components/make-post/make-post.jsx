@@ -1,11 +1,9 @@
 import yaml from 'js-yaml'
 import React, { useState, useEffect } from 'react'
 import ReactMarkdown from 'react-markdown'
-import MarkdownIt from 'markdown-it'
 
 import client from '../../api/client'
-
-const md = new MarkdownIt()
+import getMdTableOfContents from '../../utils/get-md-table-of-contents'
 
 function parseYaml(text) {
   return yaml.safeLoad(text)
@@ -17,18 +15,36 @@ function makePost(metadata, Component) {
 
   function MarkdownPage() {
     const [content, setContent] = useState()
+    const [toc, setToc] = useState()
 
     useEffect(() => {
       client
         .get(resourcePath)
         .then(response => {
           setContent(response.data)
-          const tokens = md.parse(response.data)
+          setToc(getMdTableOfContents(response.data))
         })
         .catch(error => console.log(error))
     }, [])
 
-    return content ? <ReactMarkdown source={content} /> : <div>Loading</div>
+    return (
+      <div>
+        {toc && (
+          <div>
+            <h3>Table of contents</h3>
+            {toc.map(([h1, h2s]) => (
+              <ul key={h1[0]}>
+                <b>{h1[0]}</b>
+                {h2s.map(h2 => (
+                  <li key={h2[0]}>{h2[0]}</li>
+                ))}
+              </ul>
+            ))}
+          </div>
+        )}
+        {content ? <ReactMarkdown source={content} /> : <div>Loading</div>}
+      </div>
+    )
   }
 
   return MarkdownPage

@@ -13,6 +13,7 @@
     "classnames": "^2.2.6",
     "core-js": "^3.6.0",
     "js-yaml": "^3.13.1",
+    "lodash": "^4.17.15",
     "markdown-it": "^10.0.0",
     "purecss": "^1.0.1",
     "react": "^16.12.0",
@@ -105,5 +106,25 @@
     "webpack": "^4.41.4",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{json,yml,yaml,xml,html,svg}": [
+      "yarn prettier",
+      "git add"
+    ],
+    "*.{js,jsx}": [
+      "yarn prettier",
+      "yarn eslint --fix",
+      "git add"
+    ],
+    "*.{css,scss}": [
+      "yarn stylelint --fix",
+      "git add"
+    ]
   }
 }

@@ -2,16 +2,20 @@ export default function getElementsBetween(
   base,
   beginningFn,
   endingFn,
-  tagElement = () => {}
+  tagElement = () => null
 ) {
+  if (base.length === 0) {
+    return []
+  }
+
   const elements = []
-  let target = []
+  let target
   let skip = true
 
   base.forEach(element => {
     if (beginningFn(element)) {
       skip = false
-      target = []
+      target = { data: [], tag: tagElement(element) }
       return
     }
 
@@ -23,7 +27,7 @@ export default function getElementsBetween(
       skip = true
       elements.push(target)
     } else {
-      target.push(element)
+      target.data.push(element)
     }
   })
 
