@@ -5,7 +5,7 @@ services:
     command:
       - bash
       - -c
-      - 'yarn install && yarn start'
+      - 'if [ ! -d "/app/node_modules" ]; then yarn install; fi && yarn start'
     ports:
       - 9000:9000
       - 9229:9229
