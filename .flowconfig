@@ -9,7 +9,7 @@
 [libs]
 
 [declarations]
-.*/node_modules/.*
+; .*/node_modules/.*
 
 [lints]
 ; sketchy-null-number=warn
