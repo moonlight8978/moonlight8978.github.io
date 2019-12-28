@@ -90,6 +90,23 @@ jobs:
           name: Push coverage to codecov
           command: yarn codecov
 
+  calculate_loc:
+    executor: react_app
+    steps:
+      - prepare
+
+      - run:
+          name: Calculate Line of codes
+          command: |
+            node .cloc/list-files.js . > tmp/clocfiles
+            yarn loc
+
+      - run:
+          name: Debug
+          command: |
+            cat tmp/clocfiles
+            cat clocignore
+
   release:
     executor: react_app
     steps:
@@ -135,10 +152,12 @@ workflows:
           requires:
             - check
             - lint
-      - collect_coverage:
+      - collect_coverage: &post_test
           <<: *ignore_gh_pages
           requires:
             - test
+      - calculate_loc:
+          <<: *post_test
       - release:
           requires:
             - test
