@@ -1,9 +1,20 @@
-export default function getElementsBetween(
-  base,
-  beginningFn,
-  endingFn,
-  tagElement = () => null
-) {
+// @flow
+
+import type { CheckElementFn } from './types'
+
+type TagFn<T> = (element: T) => string | null
+
+export type TaggedElements<T> = {
+  data: Array<T>,
+  tag: string | null,
+}
+
+export default function getElementsBetween<T>(
+  base: Array<T>,
+  beginningFn: CheckElementFn<T>,
+  endingFn: CheckElementFn<T>,
+  tagElement: TagFn<T> = () => null
+): Array<TaggedElements<T>> {
   if (base.length === 0) {
     return []
   }

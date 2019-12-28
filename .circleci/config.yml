@@ -56,14 +56,9 @@ jobs:
       - prepare
 
       - run:
-          name: Check code convention
+          name: Linting and types checking
           command: |
-            yarn eslint
-            yarn stylelint
-
-      - run:
-          name: Check static type
-          command: yarn flow
+            yarn lint
 
   test:
     executor: react_app

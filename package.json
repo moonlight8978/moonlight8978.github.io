@@ -12,6 +12,7 @@
     "axios": "^0.19.0",
     "classnames": "^2.2.6",
     "core-js": "^3.6.0",
+    "eslint-plugin-flowtype": "^4.5.2",
     "js-yaml": "^3.13.1",
     "lodash": "^4.17.15",
     "markdown-it": "^10.0.0",
@@ -34,10 +35,14 @@
     "test:unit:debug": "node --inspect='0.0.0.0:9229' --inspect-brk node_modules/.bin/jest --runInBand",
     "test:unit:coverage": "jest --coverage",
     "codecov": "codecov",
-    "prettier": "prettier --write ./**/*.{js,jsx,scss,json}",
+    "prettier:diff": "prettier --list-different './**/*.{js,jsx,scss,json}'",
+    "prettier:write": "prettier --write './**/*.{js,jsx,scss,json}'",
     "eslint": "eslint . --ext .jsx,.js",
+    "eslint:fix": "yarn eslint --fix",
     "stylelint": "stylelint ./src/**/*.scss",
-    "flow": "flow"
+    "stylelint:fix": "yarn stylelint --fix",
+    "lint:fix": "npm-run-all prettier:write eslint:fix stylelint:fix",
+    "lint": "npm-run-all prettier:diff stylelint --parallel eslint flow"
   },
   "browserslist": [
     "last 2 Chrome versions",
@@ -58,6 +63,7 @@
     "@testing-library/user-event": "^8.0.2",
     "acorn": "6.4.0",
     "autoprefixer": "^9.7.3",
+    "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
     "browserslist": "^4.8.2",
@@ -88,6 +94,7 @@
     "lint-staged": ">=8",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.13.0",
+    "npm-run-all": "^4.1.5",
     "postcss-flexbugs-fixes": "^4.1.0",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.7.0",
@@ -105,25 +112,5 @@
     "webpack": "^4.41.4",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.1"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{json,yml,yaml,xml,html,svg}": [
-      "yarn prettier",
-      "git add"
-    ],
-    "*.{js,jsx}": [
-      "yarn prettier",
-      "yarn eslint --fix",
-      "git add"
-    ],
-    "*.{css,scss}": [
-      "yarn stylelint --fix",
-      "git add"
-    ]
   }
 }

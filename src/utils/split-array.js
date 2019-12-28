@@ -1,4 +1,11 @@
-export default function splitArray(array, splittingFn) {
+// @flow
+
+import type { CheckElementFn } from './types'
+
+export default function splitArray<T>(
+  array: Array<T>,
+  splittingFn: CheckElementFn<T>
+): Array<Array<T>> {
   if (array.length === 0) {
     return []
   }
