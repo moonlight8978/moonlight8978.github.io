@@ -106,7 +106,8 @@ jobs:
           command: |
             echo "Processed files"
             cat tmp/clocfiles
-            echo "\n\nIgnored files"
+            echo -e "\n\n"
+            echo "Ignored files"
             if [ -f tmp/clocignore ]; then cat tmp/clocignore; fi
 
   release:
