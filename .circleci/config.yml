@@ -105,7 +105,7 @@ jobs:
           name: Debug
           command: |
             cat tmp/clocfiles
-            cat clocignore
+            if [ -f tmp/clocignore ]; then cat tmp/clocignore; fi
 
   release:
     executor: react_app
