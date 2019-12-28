@@ -188,7 +188,7 @@ Range condition sẽ sử dụng **key tuple intervals** để tìm kiếm. Key 
 
 Lấy ví dụ về 1 multiple-part index `key1(key_part1, key_part2, key_part3)`, và những tuples ứng với key tuple (key_part1, key_part2, key_part3) sau:
 
-```txt
+```plaintext
 key_part1  key_part2  key_part3
   NULL       1          'abc'
   NULL       1          'xyz'
@@ -201,7 +201,7 @@ key_part1  key_part2  key_part3
 
 `key_part1 = 1` define interval sau:
 
-```txt
+```plaintext
 (1,-inf,-inf) <= (key_part1,key_part2,key_part3) < (1,+inf,+inf)
 ```
 
