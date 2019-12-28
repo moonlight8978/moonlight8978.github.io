@@ -104,7 +104,9 @@ jobs:
       - run:
           name: Debug
           command: |
+            echo "Processed files"
             cat tmp/clocfiles
+            echo "\n\nIgnored files"
             if [ -f tmp/clocignore ]; then cat tmp/clocignore; fi
 
   release:
