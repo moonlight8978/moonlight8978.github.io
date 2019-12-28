@@ -56,14 +56,9 @@ jobs:
       - prepare
 
       - run:
-          name: Check code convention
+          name: Linting and types checking
           command: |
-            yarn eslint
-            yarn stylelint
-
-      - run:
-          name: Check static type
-          command: yarn flow
+            yarn lint
 
   test:
     executor: react_app
@@ -94,6 +89,26 @@ jobs:
       - run:
           name: Push coverage to codecov
           command: yarn codecov
+
+  calculate_loc:
+    executor: react_app
+    steps:
+      - prepare
+
+      - run:
+          name: Calculate Line of codes
+          command: |
+            node .cloc/list-files.js . > tmp/clocfiles
+            yarn loc
+
+      - run:
+          name: Debug
+          command: |
+            echo "Processed files"
+            cat tmp/clocfiles
+            echo -e "\n\n"
+            echo "Ignored files"
+            if [ -f tmp/clocignore ]; then cat tmp/clocignore; fi
 
   release:
     executor: react_app
@@ -140,10 +155,12 @@ workflows:
           requires:
             - check
             - lint
-      - collect_coverage:
+      - collect_coverage: &post_test
           <<: *ignore_gh_pages
           requires:
             - test
+      - calculate_loc:
+          <<: *post_test
       - release:
           requires:
             - test

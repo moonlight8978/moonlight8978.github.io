@@ -5,6 +5,7 @@ env:
 extends:
   - airbnb
   - plugin:prettier/recommended
+  - plugin:flowtype/recommended
 globals:
   Atomics: readonly
   SharedArrayBuffer: readonly
@@ -16,6 +17,7 @@ parserOptions:
 plugins:
   - react
   - react-hooks
+  - flowtype
 rules:
   arrow-body-style: 'off'
   consistent-return: 'off'

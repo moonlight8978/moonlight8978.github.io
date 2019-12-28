@@ -5,9 +5,7 @@ import ReactMarkdown from 'react-markdown'
 import client from '../../api/client'
 import getMdTableOfContents from '../../utils/get-md-table-of-contents'
 
-function parseYaml(text) {
-  return yaml.safeLoad(text)
-}
+const parseYaml = yaml.safeLoad
 
 function makePost(metadata, Component) {
   const { path } = parseYaml(metadata)

@@ -1,0 +1,21 @@
+# Git folder
+**/.git
+**/.github
+**/.gitkeep
+
+# 3rd party libs
+**/node_modules
+package.json
+yarn*
+
+# Build, public
+**/build
+**/coverage
+**/public
+
+# Config files
+**/.vscode
+
+# Temp
+**/tmp
+**/.DS_Store

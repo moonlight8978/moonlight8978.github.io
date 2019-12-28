@@ -3,6 +3,7 @@
 .*/__mocks__/.*
 .*/build/.*
 .*/coverage/.*
+.*/.cloc/.*
 
 [include]
 
