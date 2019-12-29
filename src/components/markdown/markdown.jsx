@@ -7,19 +7,15 @@ import Paragraph from './paragraph'
 import Heading from './heading'
 
 type Props = {
-  renderers?: any,
   content: string,
 }
 
-export default function Markdown({ renderers, content }: Props) {
-  return (
-    <ReactMarkdown
-      renderers={{ paragraph: Paragraph, heading: Heading }}
-      source={content}
-    />
-  )
-}
+const renderers = { paragraph: Paragraph, heading: Heading }
 
-Markdown.defaultProps = {
-  renderers: undefined,
+export default function Markdown({ content }: Props) {
+  return (
+    <div className="markdown-body">
+      <ReactMarkdown renderers={renderers} source={content} />
+    </div>
+  )
 }

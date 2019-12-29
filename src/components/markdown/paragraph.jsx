@@ -2,8 +2,12 @@
 
 import React from 'react'
 
+import type { ChildrenNode } from '../types'
+
 import styles from './paragraph.module.scss'
 
-export default function Paragraph(props) {
-  return <p className={styles.paragraph}>{props.children}</p>
+type Props = { children: ChildrenNode }
+
+export default function Paragraph({ children }: Props) {
+  return <p className={styles.paragraph}>{children}</p>
 }

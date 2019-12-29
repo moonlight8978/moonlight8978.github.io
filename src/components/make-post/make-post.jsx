@@ -10,7 +10,7 @@ const parseYaml = yaml.safeLoad
 
 function makePost(metadata, Component) {
   const { path } = parseYaml(metadata)
-  const resourcePath = `/contents${path}.md`
+  const resourcePath = `/contents/${path}.md`.replace('//', '/')
 
   function MarkdownPage() {
     const [content, setContent] = useState()
