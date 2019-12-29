@@ -45,7 +45,8 @@
     "flow": "flow",
     "lint:fix": "npm-run-all prettier:write eslint:fix stylelint:fix",
     "lint": "npm-run-all prettier:diff stylelint --parallel eslint flow",
-    "loc": "cloc --config .cloc/options.txt ."
+    "preloc": "node .cloc/list-files.js . > tmp/clocfiles",
+    "loc": "cloc --list-file=tmp/clocfiles --ignored=tmp/clocignore ."
   },
   "browserslist": [
     "last 2 Chrome versions",
