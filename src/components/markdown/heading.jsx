@@ -3,6 +3,8 @@
 import React, { useMemo } from 'react'
 import type { Node, ComponentType } from 'react'
 
+import type { ChildrenNode } from '../types'
+
 import styles from './heading.module.scss'
 
 type HeadingHtmlProps = {| children: string | Node |}
@@ -44,7 +46,7 @@ function getHeadingComponent(level: HeadingLevel): HeadingElement {
 
 type Props = {
   level: HeadingLevel,
-  children: string,
+  children: ChildrenNode,
 }
 
 export default function Heading({ level, children }: Props) {
