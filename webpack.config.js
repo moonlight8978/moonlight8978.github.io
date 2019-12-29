@@ -19,7 +19,7 @@ const makeHtmlOptions = options => {
       viewport: 'width=device-width, initial-scale=1.0, shrink-to-fit=no',
     },
     links: [
-      'https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap&subset=vietnamese',
+      'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap&subset=vietnamese',
     ],
     lang: 'vi-VN',
     appMountId: 'app',

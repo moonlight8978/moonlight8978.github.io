@@ -1,18 +1,34 @@
-// you can use this file to add your custom webpack plugins, loaders and anything you like.
-// This is just the basic way to add additional webpack configurations.
-// For more information refer the docs: https://storybook.js.org/configurations/custom-webpack-config
+const path = require('path')
 
-// IMPORTANT
-// When you add this file, we won't add the default configurations which is similar
-// to "React Create App". This only has babel loader to load JavaScript.
-
+// https://storybook.js.org/configurations/custom-webpack-config
 module.exports = {
   plugins: [
     // your custom plugins
   ],
   module: {
     rules: [
-      // add your custom rules.
+      {
+        test: /(?<!\.module)\.s?css$/,
+        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+      },
+      {
+        test: /\.module.(scss|css)$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                mode: 'local',
+                localIdentName: '[name]_[local]--[hash:base64:5]',
+                context: path.resolve(__dirname, 'src'),
+              },
+            },
+          },
+          'postcss-loader',
+          'sass-loader',
+        ],
+      },
     ],
   },
 }

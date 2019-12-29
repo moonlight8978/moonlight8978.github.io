@@ -1,15 +1,16 @@
 import yaml from 'js-yaml'
 import React, { useState, useEffect } from 'react'
-import ReactMarkdown from 'react-markdown'
+import hljs from 'highlight.js'
 
 import client from '../../api/client'
 import getMdTableOfContents from '../../utils/get-md-table-of-contents'
+import Markdown from '../markdown'
 
 const parseYaml = yaml.safeLoad
 
 function makePost(metadata, Component) {
   const { path } = parseYaml(metadata)
-  const resourcePath = `/contents${path}.md`
+  const resourcePath = `/contents/${path}.md`.replace('//', '/')
 
   function MarkdownPage() {
     const [content, setContent] = useState()
@@ -24,6 +25,12 @@ function makePost(metadata, Component) {
         })
         .catch(error => console.log(error))
     }, [])
+
+    useEffect(() => {
+      if (content) {
+        hljs.initHighlighting()
+      }
+    }, [content])
 
     return (
       <div>
@@ -40,7 +47,7 @@ function makePost(metadata, Component) {
             ))}
           </div>
         )}
-        {content ? <ReactMarkdown source={content} /> : <div>Loading</div>}
+        {content ? <Markdown content={content} /> : <div>Loading</div>}
       </div>
     )
   }

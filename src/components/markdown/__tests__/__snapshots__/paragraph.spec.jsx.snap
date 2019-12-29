@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders react node 1`] = `
+<p
+  class="paragraph"
+>
+  <span>
+    Hello
+  </span>
+</p>
+`;
+
+exports[`renders string 1`] = `
+<p
+  class="paragraph"
+>
+  Hello
+</p>
+`;

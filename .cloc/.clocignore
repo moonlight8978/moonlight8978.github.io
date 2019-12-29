@@ -8,10 +8,11 @@
 package.json
 yarn*
 
-# Build, public
+# Build, public, auto-generated
 **/build
 **/coverage
 **/public
+**/*.snap
 
 # Config files
 **/.vscode

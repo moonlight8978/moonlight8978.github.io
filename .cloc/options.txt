@@ -1,2 +1,0 @@
---list-file=tmp/clocfiles
---ignored=tmp/clocignore
