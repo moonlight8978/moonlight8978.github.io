@@ -1,4 +1,4 @@
-.PHONY: flow up down build install test test-debug lint loc
+.PHONY: flow up down build install test test-debug lint loc log
 
 flow:
 	docker-compose exec web yarn flow
@@ -26,3 +26,6 @@ lint:
 
 loc:
 	docker-compose exec web yarn loc
+
+log:
+	docker-compose logs -f web

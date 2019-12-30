@@ -42,6 +42,8 @@ Docker
 make build
 make install
 make up
+# Access app log
+make log
 ```
 
 Local npm
