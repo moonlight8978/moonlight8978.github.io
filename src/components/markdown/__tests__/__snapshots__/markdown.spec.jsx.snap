@@ -2,7 +2,7 @@
 
 exports[`render correctly 1`] = `
 <div
-  class="markdown-body"
+  class="markdownBody"
 >
   <h1
     class="h1"
