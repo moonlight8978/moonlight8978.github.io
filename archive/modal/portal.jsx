@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom'
 
 type Props = { children: Node }
 
-function Modal({ children }: Props) {
+function Portal({ children }: Props) {
   const node = useMemo(() => document.createElement('div'), [])
   useEffect(() => {
     if (document.body) {
@@ -23,4 +23,4 @@ function Modal({ children }: Props) {
   return ReactDOM.createPortal(children, node)
 }
 
-export default Modal
+export default Portal

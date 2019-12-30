@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`it render the image correctly 1`] = `
-<figure
+<div
   class="container"
 >
   <img
@@ -10,10 +10,10 @@ exports[`it render the image correctly 1`] = `
     data-testid="markdown-image"
     src="/sample.jpg"
   />
-  <figcaption
+  <div
     class="caption"
   >
     Sample image
-  </figcaption>
-</figure>
+  </div>
+</div>
 `;

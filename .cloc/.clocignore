@@ -20,3 +20,4 @@ yarn*
 # Temp
 **/tmp
 **/.DS_Store
+**/archive
