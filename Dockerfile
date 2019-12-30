@@ -17,5 +17,9 @@ RUN git clone https://github.com/facebook/watchman.git -b v4.9.0 --depth 1 && \
   make && \
   make install
 
-COPY package.json yarn.lock ./
-RUN yarn install
+# App port
+EXPOSE 9000
+# Debugger port
+EXPOSE 9229
+# Storybook port
+EXPOSE 6006
