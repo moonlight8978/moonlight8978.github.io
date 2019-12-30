@@ -18,4 +18,5 @@ module.exports = {
     '^.+\\.module\\.(css|scss)$': 'identity-obj-proxy',
   },
   moduleFileExtensions: ['js', 'json', 'jsx'],
+  setupFilesAfterEnv: ['./jest.setup.js'],
 }

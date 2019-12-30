@@ -47,6 +47,7 @@ rules:
         - '**/*.spec.*'
         - '**/*.stories.*'
         - '**/*.config.js'
+        - jest.setup.js
   react/destructuring-assignment: 'off'
   react/jsx-filename-extension:
     - error
