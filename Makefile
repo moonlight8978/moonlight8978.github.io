@@ -1,7 +1,7 @@
-.PHONY: flow up down build install
+.PHONY: flow up down build install test test-debug lint loc log
 
 flow:
-	docker-compose exec flow yarn flow
+	docker-compose exec web yarn flow
 
 up:
 	docker-compose up -d
@@ -20,3 +20,12 @@ test:
 
 test-debug:
 	docker-compose exec web yarn test:unit:debug $(filter-out $@,$(MAKECMDGOALS))
+
+lint:
+	docker-compose exec web yarn lint
+
+loc:
+	docker-compose exec web yarn loc
+
+log:
+	docker-compose logs -f web

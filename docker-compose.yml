@@ -2,21 +2,22 @@ version: '3.7'
 services:
   web:
     build: .
-    command:
-      - bash
-      - -c
-      - 'if [ ! -d "/app/node_modules" ]; then yarn install; fi && yarn start'
+    command: yarn dev
     ports:
       - 9000:9000
       - 9229:9229
+      - 6006:6006
     volumes:
       - .:/app
-
-  flow:
-    build: .
-    command: yarn flow server
-    volumes:
-      - .:/app
-      - /app/node_modules
-    depends_on:
-      - web
+  # flow:
+  #   build: .
+  #   command: yarn flow server
+  #   volumes:
+  #     - .:/app
+  # storybook:
+  #   build: .
+  #   command: yarn storybook
+  #   volumes:
+  #     - .:/app
+  #   ports:
+  #     - 6006:6006
