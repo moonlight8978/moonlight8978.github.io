@@ -23,13 +23,11 @@ Có 2 hướng tối ưu Database chính:
 ##### Disk seek:
 
 - Thời gian HDD quay khi tìm dữ liệu, SDD không cần quay để tìm dữ liệu.
-
 - Phân tán dữ liệu để tìm trên nhiều ổ đĩa cùng lúc.
 
 ##### Disk R/W:
 
 - Khi tìm được dữ liệu thì sẽ cần đọc dữ liệu vào RAM.
-
 - Phân tán để đọc/ghi nhiều trên nhiều ổ đĩa cùng lúc.
 
 ##### CPU cycle
