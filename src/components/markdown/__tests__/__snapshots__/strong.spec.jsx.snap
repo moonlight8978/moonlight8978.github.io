@@ -4,14 +4,15 @@ exports[`render correctly 1`] = `
 <div
   class="markdownBody"
 >
-  <p
+  <div
     class="paragraph"
   >
     <strong
       class="strong"
+      data-testid="markdown-strong"
     >
       This is a bold text
     </strong>
-  </p>
+  </div>
 </div>
 `;
