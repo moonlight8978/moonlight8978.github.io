@@ -1,0 +1,11 @@
+$link-color: #0366d6;
+
+.link {
+  color: $link-color;
+  text-decoration: none;
+
+  &:hover,
+  :focus {
+    text-decoration: underline;
+  }
+}

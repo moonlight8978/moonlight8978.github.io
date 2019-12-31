@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render correctly with external URL 1`] = `
+<a
+  class="link"
+  data-testid="markdown-link"
+  href="https://google.com"
+>
+  This is a link
+</a>
+`;
+
+exports[`render correctly with local path 1`] = `
+<a
+  class="link"
+  data-testid="markdown-link"
+  href="/local-path"
+>
+  This is a link
+</a>
+`;

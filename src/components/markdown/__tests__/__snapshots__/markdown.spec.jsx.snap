@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`render correctly 1`] = `
+exports[`renders correctly 1`] = `
 <div
   class="markdownBody"
 >
@@ -9,11 +9,11 @@ exports[`render correctly 1`] = `
   >
     Introduction
   </h1>
-  <p
+  <div
     class="paragraph"
   >
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </p>
+  </div>
   <h1
     class="h1"
   >
@@ -24,36 +24,67 @@ exports[`render correctly 1`] = `
   >
     1.1 Lorem Ipsum
   </h2>
-  <p
+  <div
     class="paragraph"
   >
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </p>
+  </div>
   <h3
     class="h3"
   >
     1.1.1 Lorem Ipsum
   </h3>
-  <p
+  <div
     class="paragraph"
   >
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </p>
-  <p
+  </div>
+  <div
     class="paragraph"
   >
     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-  </p>
+
+    <figure
+      class="container"
+    >
+      <img
+        alt="Image"
+        class="image"
+        data-testid="markdown-image"
+        src="https://example.com/example.png"
+      />
+      <figcaption
+        class="caption"
+      >
+        Image
+      </figcaption>
+    </figure>
+  </div>
   <h2
     class="h2"
   >
     1.2 Lorem Ipsum
   </h2>
-  <p
+  <div
     class="paragraph"
   >
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </p>
+    Lorem ipsum dolor sit amet, 
+    <strong
+      class="strong"
+      data-testid="markdown-strong"
+    >
+      consectetur adipiscing elit
+    </strong>
+    , sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+    <a
+      class="link"
+      data-testid="markdown-link"
+      href="https://example.com"
+    >
+      Lorem ipsum dolor sit amet
+    </a>
+  </div>
   <h1
     class="h1"
   >

@@ -10,7 +10,7 @@ type Props = { src: string, alt: string }
 
 function Image({ src, alt }: Props) {
   return (
-    <div className={styles.container}>
+    <figure className={styles.container}>
       <img
         className={styles.image}
         src={src}
@@ -18,8 +18,8 @@ function Image({ src, alt }: Props) {
         data-testid="markdown-image"
       />
 
-      <div className={styles.caption}>{alt}</div>
-    </div>
+      <figcaption className={styles.caption}>{alt}</figcaption>
+    </figure>
   )
 }
 
