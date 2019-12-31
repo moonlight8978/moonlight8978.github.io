@@ -2,7 +2,6 @@
 
 exports[`render correctly with external URL 1`] = `
 <a
-  alt="https://google.com"
   class="link"
   data-testid="markdown-link"
   href="https://google.com"
@@ -13,7 +12,6 @@ exports[`render correctly with external URL 1`] = `
 
 exports[`render correctly with local path 1`] = `
 <a
-  alt="/local-path"
   class="link"
   data-testid="markdown-link"
   href="/local-path"

@@ -16,24 +16,14 @@ type Props = {
 function Link({ href, children }: Props) {
   if (isExternalUrl(href)) {
     return (
-      <a
-        href={href}
-        alt={href}
-        data-testid="markdown-link"
-        className={styles.link}
-      >
+      <a href={href} data-testid="markdown-link" className={styles.link}>
         {children}
       </a>
     )
   }
 
   return (
-    <RouterLink
-      to={href}
-      alt={href}
-      data-testid="markdown-link"
-      className={styles.link}
-    >
+    <RouterLink to={href} data-testid="markdown-link" className={styles.link}>
       {children}
     </RouterLink>
   )
