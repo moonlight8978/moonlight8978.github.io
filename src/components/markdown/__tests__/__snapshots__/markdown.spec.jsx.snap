@@ -78,6 +78,7 @@ exports[`renders correctly 1`] = `
     , sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
     <a
+      alt="https://example.com"
       class="link"
       data-testid="markdown-link"
       href="https://example.com"
