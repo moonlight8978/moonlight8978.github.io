@@ -1,4 +1,5 @@
 import React from 'react'
+import { MemoryRouter } from 'react-router-dom'
 
 import Markdown from '../src/components/markdown'
 
@@ -28,3 +29,14 @@ const imageContent =
   '![Galaxy](https://images.unsplash.com/photo-1538370965046-79c0d6907d47?ixlib=rb-1.2.1&w=1000&q=80)'
 export const image = () => <Markdown content={imageContent} />
 image.story = { name: 'Image' }
+
+const linkContent = `[Google](https://google.com.vn)
+
+
+[To another screen](/screen)`
+export const link = () => (
+  <MemoryRouter>
+    <Markdown content={linkContent} />
+  </MemoryRouter>
+)
+link.story = { name: 'Link' }

@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render correctly 1`] = `
+<div
+  class="markdownBody"
+>
+  <p
+    class="paragraph"
+  >
+    <strong
+      class="strong"
+    >
+      This is a bold text
+    </strong>
+  </p>
+</div>
+`;

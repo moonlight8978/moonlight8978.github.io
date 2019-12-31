@@ -43,6 +43,22 @@ exports[`render correctly 1`] = `
     class="paragraph"
   >
     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+    <div
+      class="container"
+    >
+      <img
+        alt="Image"
+        class="image"
+        data-testid="markdown-image"
+        src="https://example.com/example.png"
+      />
+      <div
+        class="caption"
+      >
+        Image
+      </div>
+    </div>
   </p>
   <h2
     class="h2"
@@ -53,6 +69,14 @@ exports[`render correctly 1`] = `
     class="paragraph"
   >
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+    <a
+      class="link"
+      data-testid="markdown-link"
+      href="https://example.com"
+    >
+      Lorem ipsum dolor sit amet
+    </a>
   </p>
   <h1
     class="h1"
