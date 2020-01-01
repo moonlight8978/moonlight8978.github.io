@@ -1,0 +1,9 @@
+$blockquote-border-color: #dfe2e5;
+$blockquote-color: #6a737d;
+
+.blockquote {
+  border-left: 0.25em solid $blockquote-border-color;
+  margin: 0;
+  color: $blockquote-color;
+  padding-left: 1rem;
+}

@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders react node 1`] = `
+<code
+  class="code"
+>
+  [1, 2].map(number =&gt; number * 2)
+</code>
+`;
+
+exports[`renders string 1`] = `
+<code
+  class="code"
+>
+  [1, 2].map(number =&gt; number * 2)
+</code>
+`;

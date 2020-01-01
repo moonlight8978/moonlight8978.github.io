@@ -8,6 +8,8 @@ import Heading from './heading'
 import Image from './image'
 import Link from './link'
 import Strong from './strong'
+import Blockquote from './blockquote'
+import InlineCode from './inline-code'
 import styles from './markdown.module.scss'
 
 type Props = {
@@ -20,6 +22,8 @@ const renderers = {
   image: Image,
   link: Link,
   strong: Strong,
+  blockquote: Blockquote,
+  inlineCode: InlineCode,
 }
 
 export default function Markdown({ content }: Props) {
