@@ -4,8 +4,6 @@ Có 2 hướng tối ưu Database chính:
 
 ### 1. Tối ưu tầng DB
 
-[Master](https://google.com.vn)
-
 ##### Cấu trúc DB:
 
 - Đọc nhiều => ít table, nhiều column

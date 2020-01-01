@@ -44,3 +44,12 @@ link.story = { name: 'Link' }
 const strongContent = `**This is a bold text**`
 export const strong = () => renderPage(strongContent)
 strong.story = { name: 'Strong' }
+
+const blockquoteContent = `> Blockquote  \nexpand to multiple lines`
+export const blockquote = () => renderPage(blockquoteContent)
+blockquote.story = { name: 'Blockquote' }
+
+const inlineCodeContent =
+  '`map` function: `[1, 2].map(number => number * number)`'
+export const inlineCode = () => renderPage(inlineCodeContent)
+inlineCode.story = { name: 'Inline Code' }

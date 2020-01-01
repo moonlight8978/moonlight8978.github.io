@@ -12,17 +12,17 @@ exports[`renders correctly 1`] = `
   <div
     class="paragraph"
   >
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    This is an introduction section.
   </div>
   <h1
     class="h1"
   >
-    1 Lorem Ipsum
+    1 First section
   </h1>
   <h2
     class="h2"
   >
-    1.1 Lorem Ipsum
+    1.1 First sub heading
   </h2>
   <div
     class="paragraph"
@@ -32,17 +32,18 @@ exports[`renders correctly 1`] = `
   <h3
     class="h3"
   >
-    1.1.1 Lorem Ipsum
+    1.1.1 First inner heading
   </h3>
   <div
     class="paragraph"
   >
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </div>
-  <div
-    class="paragraph"
-  >
-    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    The 
+    <code
+      class="code"
+    >
+      map
+    </code>
+     function is so declarative.
 
     <figure
       class="container"
@@ -63,32 +64,42 @@ exports[`renders correctly 1`] = `
   <h2
     class="h2"
   >
-    1.2 Lorem Ipsum
+    1.2 Second sub heading
   </h2>
   <div
     class="paragraph"
   >
-    Lorem ipsum dolor sit amet, 
+    This is a long paragraph, contains 
     <strong
       class="strong"
       data-testid="markdown-strong"
     >
-      consectetur adipiscing elit
+      bold text
     </strong>
-    , sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    , links, and many more.
 
     <a
       class="link"
       data-testid="markdown-link"
       href="https://example.com"
     >
-      Lorem ipsum dolor sit amet
+      See more here
     </a>
   </div>
   <h1
     class="h1"
   >
-    2 Lorem Ipsum
+    2 Second section
   </h1>
+  <blockquote
+    class="blockquote"
+    data-testid="markdown-blockquote"
+  >
+    <div
+      class="paragraph"
+    >
+      This is a blockquote
+    </div>
+  </blockquote>
 </div>
 `;

@@ -20,7 +20,7 @@ function makePost(metadata, Component) {
       client
         .get(resourcePath)
         .then(response => {
-          setContent(response.data)
+          setContent(response.data.replace(/\\n/g, '\n'))
           setToc(getMdTableOfContents(response.data))
         })
         .catch(error => console.log(error))
