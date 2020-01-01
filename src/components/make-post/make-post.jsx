@@ -1,6 +1,5 @@
 import yaml from 'js-yaml'
 import React, { useState, useEffect } from 'react'
-import hljs from 'highlight.js'
 
 import client from '../../api/client'
 import getMdTableOfContents from '../../utils/get-md-table-of-contents'
@@ -25,12 +24,6 @@ function makePost(metadata, Component) {
         })
         .catch(error => console.log(error))
     }, [])
-
-    useEffect(() => {
-      if (content) {
-        hljs.initHighlighting()
-      }
-    }, [content])
 
     return (
       <div>

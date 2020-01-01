@@ -1,0 +1,15 @@
+$code-bg-color: #f2f2f2;
+
+.container {
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier,
+    monospace;
+  background: $code-bg-color;
+  padding: 1rem;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.code {
+  background: transparent;
+  padding: 0;
+}
