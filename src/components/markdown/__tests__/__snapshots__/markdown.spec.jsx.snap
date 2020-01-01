@@ -101,5 +101,19 @@ exports[`renders correctly 1`] = `
       This is a blockquote
     </div>
   </blockquote>
+  <h1
+    class="h1"
+  >
+    3 Code sample
+  </h1>
+  <pre
+    class="container"
+  >
+    <code
+      class="language-javascript code"
+    >
+      import React from 'react'
+    </code>
+  </pre>
 </div>
 `;

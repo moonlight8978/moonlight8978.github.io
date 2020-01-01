@@ -3,6 +3,8 @@ import { render } from '@testing-library/react'
 
 import Markdown from '../markdown'
 
+jest.mock('highlight.js/lib/highlight')
+
 const content = `# Introduction
 
 This is an introduction section.
@@ -22,6 +24,11 @@ This is a long paragraph, contains **bold text**, links, and many more.
 
 # 2 Second section
 > This is a blockquote
+
+# 3 Code sample
+\`\`\`javascript
+import React from 'react'
+\`\`\`
 `
 
 test('renders correctly', () => {
@@ -47,12 +54,16 @@ test('renders correctly', () => {
   expect(strong).toBeInTheDocument()
   expect(strong.tagName).toBe('STRONG')
 
-  const code = getByText('map')
-  expect(code).toBeInTheDocument()
-  expect(code.tagName).toBe('CODE')
+  const inlineCode = getByText('map')
+  expect(inlineCode).toBeInTheDocument()
+  expect(inlineCode.tagName).toBe('CODE')
 
   const blockquote = getByTestId('markdown-blockquote')
   expect(blockquote.textContent).toBe('This is a blockquote')
+
+  const code = getByText(`import React from 'react'`)
+  expect(code).toBeInTheDocument()
+  expect(code.tagName).toBe('CODE')
 
   expect(container.firstChild).toMatchSnapshot()
 })
