@@ -64,6 +64,7 @@ test('renders correctly', () => {
   const code = getByText(`import React from 'react'`)
   expect(code).toBeInTheDocument()
   expect(code.tagName).toBe('CODE')
+  expect(code.classList).toContain('language-javascript')
 
   expect(container.firstChild).toMatchSnapshot()
 })
