@@ -12,6 +12,7 @@ import Blockquote from './blockquote'
 import InlineCode from './inline-code'
 import Code from './code'
 import List from './list'
+import Table, { TableRow, TableCell } from './table'
 import styles from './markdown.module.scss'
 
 type Props = {
@@ -28,6 +29,9 @@ const renderers = {
   inlineCode: InlineCode,
   code: Code,
   list: List,
+  table: Table,
+  tableCell: TableCell,
+  tableRow: TableRow,
 }
 
 export default function Markdown({ content }: Props) {
