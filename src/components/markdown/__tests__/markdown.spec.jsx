@@ -29,6 +29,13 @@ This is a long paragraph, contains **bold text**, links, and many more.
 \`\`\`javascript
 import React from 'react'
 \`\`\`
+
+# List demo
+* Try hard
+* Try harder
+
+1. Prepare
+2. Go
 `
 
 test('renders correctly', () => {
@@ -65,6 +72,10 @@ test('renders correctly', () => {
   expect(code).toBeInTheDocument()
   expect(code.tagName).toBe('CODE')
   expect(code.classList).toContain('language-javascript')
+
+  expect(getByText('Try hard')).toBeInTheDocument()
+
+  expect(getByText('Prepare')).toBeInTheDocument()
 
   expect(container.firstChild).toMatchSnapshot()
 })

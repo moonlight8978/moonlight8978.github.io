@@ -115,5 +115,30 @@ exports[`renders correctly 1`] = `
       import React from 'react'
     </code>
   </pre>
+  <h1
+    class="h1"
+  >
+    List demo
+  </h1>
+  <ul
+    class="list"
+  >
+    <li>
+      Try hard
+    </li>
+    <li>
+      Try harder
+    </li>
+  </ul>
+  <ol
+    class="list"
+  >
+    <li>
+      Prepare
+    </li>
+    <li>
+      Go
+    </li>
+  </ol>
 </div>
 `;

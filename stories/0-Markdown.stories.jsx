@@ -68,3 +68,27 @@ export default function Button() {
 \`\`\``
 export const code = () => renderPage(codeContent)
 code.story = { name: 'Code' }
+
+const unorderedListContent = `- Item 1
+  - Item 1.1
+  - Item 1.2
+    - Item 1.2.1
+    - Item 1.2.2
+      - Item 1.2.1.1
+      - Item 1.2.1.2
+- Item 2
+  - Item 2.1`
+export const unordererdList = () => renderPage(unorderedListContent)
+unordererdList.story = { name: 'Unordered List' }
+
+const orderedListContent = `1. Item 1
+  1. Item 1.1
+  2. Item 1.2
+    1. Item 1.2.1
+        1. Item 1.2.1.1
+        2. Item 1.2.1.2
+    2. Item 1.2.2
+2. Item 2
+  1. Item 2.1`
+export const ordererdList = () => renderPage(orderedListContent)
+ordererdList.story = { name: 'Ordered List' }
