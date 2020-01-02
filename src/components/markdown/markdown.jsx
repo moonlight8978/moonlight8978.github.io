@@ -11,6 +11,7 @@ import Strong from './strong'
 import Blockquote from './blockquote'
 import InlineCode from './inline-code'
 import Code from './code'
+import List from './list'
 import styles from './markdown.module.scss'
 
 type Props = {
@@ -26,6 +27,7 @@ const renderers = {
   blockquote: Blockquote,
   inlineCode: InlineCode,
   code: Code,
+  list: List,
 }
 
 export default function Markdown({ content }: Props) {
