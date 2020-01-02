@@ -1,0 +1,42 @@
+$navbar-border-color: rgba(0, 0, 0, 0.1);
+$nav-item-color: #6c757d;
+$nav-item-active-color: #1592e6;
+
+.navbar {
+  border-top: 1px solid $navbar-border-color;
+  height: 64px;
+  display: flex;
+  color: $nav-item-color;
+}
+
+.navItem {
+  height: 100%;
+  border: 0;
+  border-top: 2px solid transparent;
+  transition: all 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &.navItemActive,
+  &:hover {
+    color: $nav-item-active-color;
+    border-top-color: $nav-item-active-color;
+  }
+}
+
+.icon {
+  font-size: 0.9rem;
+}
+
+.label {
+  margin-top: 0.15rem;
+  font-size: 0.8rem;
+}

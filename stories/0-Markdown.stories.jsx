@@ -1,10 +1,11 @@
 import React from 'react'
 import { MemoryRouter } from 'react-router-dom'
+
 import 'highlight.js/styles/github.css'
 import 'purecss/build/pure-min.css'
 
-import Markdown from '../src/components/markdown'
 import '../src/index.scss'
+import Markdown from '../src/components/markdown'
 
 export default {
   title: 'Markdown',
