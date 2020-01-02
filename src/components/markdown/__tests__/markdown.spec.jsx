@@ -36,6 +36,12 @@ import React from 'react'
 
 1. Prepare
 2. Go
+
+# 4 Table
+| Name | Age | Address |
+| ---- | :-: | ------: |
+| A    | 12  | xyz     |
+| B    | 21  | abc     |
 `
 
 test('renders correctly', () => {
@@ -72,10 +78,6 @@ test('renders correctly', () => {
   expect(code).toBeInTheDocument()
   expect(code.tagName).toBe('CODE')
   expect(code.classList).toContain('language-javascript')
-
-  expect(getByText('Try hard')).toBeInTheDocument()
-
-  expect(getByText('Prepare')).toBeInTheDocument()
 
   expect(container.firstChild).toMatchSnapshot()
 })
