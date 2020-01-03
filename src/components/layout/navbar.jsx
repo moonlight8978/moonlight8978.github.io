@@ -25,15 +25,18 @@ type NavItemDefinition = {
   isDisabled?: (url?: string) => boolean,
 }
 
+export type NavItemDefinitions = Array<NavItemDefinition>
+
 type Props = {
-  items: Array<NavItemDefinition>,
+  items: NavItemDefinitions,
   location: { pathname: string },
   history: History,
+  className?: string,
 }
 
 const BASE_COLUMNS = 24
 
-function Navbar({ items, location, history }: Props) {
+function Navbar({ items, location, history, className }: Props) {
   const [selectedKey, setSelectedKey] = useState(null)
 
   if (BASE_COLUMNS % items.length !== 0) {
@@ -49,7 +52,7 @@ function Navbar({ items, location, history }: Props) {
   const activeKey = selectedKey || (activeItem && activeItem.key)
 
   return (
-    <nav className={styles.navbar}>
+    <nav className={classnames(styles.navbar, className)}>
       {items.map(
         ({
           icon,
@@ -91,6 +94,10 @@ function Navbar({ items, location, history }: Props) {
       )}
     </nav>
   )
+}
+
+Navbar.defaultProps = {
+  className: undefined,
 }
 
 export default withRouter(Navbar)

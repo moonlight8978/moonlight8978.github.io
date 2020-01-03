@@ -39,6 +39,19 @@ test('renders active item when nav items has matched item on first render', () =
   expect(getByText('House')).toBeInTheDocument()
 })
 
+test('fallback to label text if activeLabel not passed', () => {
+  const items = [
+    {
+      icon: 'home',
+      label: 'Home',
+      key: 'home',
+      isActive: () => true,
+    },
+  ]
+  const { getByText } = renderNavbar(items)
+  expect(getByText('Home')).toBeInTheDocument()
+})
+
 test('renders first item when nav items has multiple matched items on first render', () => {
   const items = [
     {
