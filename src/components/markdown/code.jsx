@@ -34,7 +34,7 @@ function Code({ value, language: rawLanguage }: Props) {
 
   useEffect(() => {
     hljs.highlightBlock(codeBlock.current)
-  }, [value])
+  }, [value, language])
 
   return (
     <pre className={styles.container}>

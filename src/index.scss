@@ -1,3 +1,5 @@
+$global-text-color: #212529;
+
 * {
   box-sizing: border-box;
 }
@@ -5,6 +7,13 @@
 html {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
+  overflow: hidden;
+  color: $global-text-color;
+}
+
+body,
+#app {
+  overflow: auto;
 }
 
 html,
