@@ -67,6 +67,7 @@ function Navbar({ items, location, history, className }: Props) {
           const displayIcon = isActive ? activeIcon || icon : icon
           const displayLabel = isActive ? activeLabel || label : label
 
+          // TODO: Extract into NavItem component
           return (
             <button
               type="button"
