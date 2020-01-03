@@ -6,6 +6,8 @@ import ReactDOM from 'react-dom'
 import 'purecss/build/pure-min.css'
 import 'highlight.js/styles/github.css'
 
+import './initializers/font-awesome'
+
 import './index.scss'
 import App from './app'
 
