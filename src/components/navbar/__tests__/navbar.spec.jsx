@@ -130,3 +130,28 @@ test('render disabled item', () => {
   const { getByText } = renderNavbar(items)
   expect(getByText('Home').closest('button')).toBeDisabled()
 })
+
+test('trigger callback when click', () => {
+  let count = 0
+  const items = [
+    {
+      icon: 'home',
+      label: 'Home',
+      activeLabel: 'House',
+      key: 'home',
+      onClick: () => {
+        count += 1
+      },
+    },
+    {
+      icon: 'user',
+      label: 'About',
+      activeLabel: 'About me',
+      key: 'about',
+    },
+  ]
+  const { getByText } = renderNavbar(items)
+
+  fireEvent.click(getByText('Home'))
+  expect(count).toBe(1)
+})
