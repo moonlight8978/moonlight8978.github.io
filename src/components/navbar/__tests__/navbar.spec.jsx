@@ -1,6 +1,6 @@
 import React from 'react'
 import { MemoryRouter } from 'react-router-dom'
-import { render } from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react'
 
 import Navbar from '../navbar'
 
@@ -24,14 +24,14 @@ test('renders active item when nav items has matched item on first render', () =
       label: 'Home',
       activeLabel: 'House',
       key: 'home',
-      isActive: path => path === '/home',
+      isActive: () => true,
     },
     {
       icon: 'user',
       label: 'About',
       activeLabel: 'About me',
       key: 'about',
-      isActive: path => path.match(/^xyzabc$/),
+      isActive: () => false,
     },
   ]
   const { getByText, queryByText } = renderNavbar(items)
@@ -46,14 +46,14 @@ test('renders first item when nav items has multiple matched items on first rend
       label: 'Home',
       activeLabel: 'House',
       key: 'home',
-      isActive: path => path === '/home',
+      isActive: () => true,
     },
     {
       icon: 'user',
       label: 'About',
       activeLabel: 'About me',
       key: 'about',
-      isActive: path => path === '/home',
+      isActive: () => true,
     },
   ]
   const { getByText, queryByText } = renderNavbar(items)
@@ -68,17 +68,65 @@ test('does not render active item when no item match', () => {
       label: 'Home',
       activeLabel: 'House',
       key: 'home',
-      isActive: path => path === '/',
+      isActive: () => false,
     },
     {
       icon: 'user',
       label: 'About',
       activeLabel: 'About me',
       key: 'about',
-      isActive: path => path === '/',
+      isActive: () => false,
     },
   ]
   const { getByText } = renderNavbar(items)
   expect(getByText('Home')).toBeInTheDocument()
   expect(getByText('About')).toBeInTheDocument()
+})
+
+test('changes active item when click', () => {
+  const items = [
+    {
+      icon: 'home',
+      label: 'Home',
+      activeLabel: 'House',
+      key: 'home',
+    },
+    {
+      icon: 'user',
+      label: 'About',
+      activeLabel: 'About me',
+      key: 'about',
+    },
+  ]
+  const { getByText, queryByText } = renderNavbar(items)
+
+  fireEvent.click(getByText('Home'))
+  expect(getByText('House')).toBeInTheDocument()
+
+  fireEvent.click(getByText('About'))
+  expect(getByText('About me')).toBeInTheDocument()
+  expect(queryByText('House')).not.toBeInTheDocument()
+
+  fireEvent.click(getByText('About me'))
+  expect(getByText('About')).toBeInTheDocument()
+})
+
+test('render disabled item', () => {
+  const items = [
+    {
+      icon: 'home',
+      label: 'Home',
+      activeLabel: 'House',
+      key: 'home',
+      isDisabled: () => true,
+    },
+    {
+      icon: 'user',
+      label: 'About',
+      activeLabel: 'About me',
+      key: 'about',
+    },
+  ]
+  const { getByText } = renderNavbar(items)
+  expect(getByText('Home').closest('button')).toBeDisabled()
 })

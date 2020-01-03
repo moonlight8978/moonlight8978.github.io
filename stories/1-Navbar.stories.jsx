@@ -26,7 +26,6 @@ export const init = () => (
             icon: 'user',
             label: 'About me',
             key: 'about',
-            isActive: () => false,
           },
           {
             icon: 'bars',
@@ -34,7 +33,6 @@ export const init = () => (
             label: 'Menu',
             activeLabel: 'Close',
             key: 'menu',
-            isActive: () => false,
           },
         ]}
       />

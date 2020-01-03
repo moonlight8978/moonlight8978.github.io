@@ -26,6 +26,9 @@ rules:
     - allow:
         - __REDUX_DEVTOOLS_EXTENSION__
         - __REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+  no-unused-expressions:
+    - error
+    - allowShortCircuit: true
   no-unused-vars:
     - error
     - args: none

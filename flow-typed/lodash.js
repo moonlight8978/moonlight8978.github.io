@@ -5,5 +5,6 @@ declare module 'lodash' {
 
   declare module.exports: {
     zip<T, U>(arr1: Array<T>, arr2: Array<U>): Array<Zip<T, U>>,
+    noop: (...args: any) => void,
   }
 }
