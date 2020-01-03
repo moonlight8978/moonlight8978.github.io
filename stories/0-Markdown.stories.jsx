@@ -93,3 +93,10 @@ const orderedListContent = `1. Item 1
   1. Item 2.1`
 export const ordererdList = () => renderPage(orderedListContent)
 ordererdList.story = { name: 'Ordered List' }
+
+const tableContent = `| Left | Center | Right |
+| ---------- | :----------: | ----------: |
+| this is    | this is      | this is     |
+| left align | center align | right align |`
+export const table = () => renderPage(tableContent)
+table.story = { name: 'Table' }

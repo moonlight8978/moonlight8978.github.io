@@ -140,5 +140,84 @@ exports[`renders correctly 1`] = `
       Go
     </li>
   </ol>
+  <h1
+    class="h1"
+  >
+    4 Table
+  </h1>
+  <table
+    class="table"
+  >
+    <thead>
+      <tr
+        class="row"
+      >
+        <th
+          align="left"
+          class="cell header"
+        >
+          Name
+        </th>
+        <th
+          align="center"
+          class="cell header"
+        >
+          Age
+        </th>
+        <th
+          align="right"
+          class="cell header"
+        >
+          Address
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        class="row"
+      >
+        <td
+          align="left"
+          class="cell"
+        >
+          A
+        </td>
+        <td
+          align="center"
+          class="cell"
+        >
+          12
+        </td>
+        <td
+          align="right"
+          class="cell"
+        >
+          xyz
+        </td>
+      </tr>
+      <tr
+        class="row"
+      >
+        <td
+          align="left"
+          class="cell"
+        >
+          B
+        </td>
+        <td
+          align="center"
+          class="cell"
+        >
+          21
+        </td>
+        <td
+          align="right"
+          class="cell"
+        >
+          abc
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 `;
