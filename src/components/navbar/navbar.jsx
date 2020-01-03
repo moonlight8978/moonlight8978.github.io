@@ -11,7 +11,7 @@ type History = {
   push: (path: string) => void,
 }
 
-type NavItem = {
+type NavItemDefinition = {
   icon: string,
   activeIcon?: string,
   label: string,
@@ -26,7 +26,7 @@ type NavItem = {
 }
 
 type Props = {
-  items: Array<NavItem>,
+  items: Array<NavItemDefinition>,
   location: { pathname: string },
   history: History,
 }

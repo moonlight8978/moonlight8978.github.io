@@ -25,10 +25,17 @@ $nav-item-active-color: #1592e6;
     outline: 0;
   }
 
-  &.navItemActive,
-  &:hover {
-    color: $nav-item-active-color;
-    border-top-color: $nav-item-active-color;
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:not(:disabled) {
+    &.navItemActive,
+    &:hover {
+      color: $nav-item-active-color;
+      border-top-color: $nav-item-active-color;
+    }
   }
 }
 

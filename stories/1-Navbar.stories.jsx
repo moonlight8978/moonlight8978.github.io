@@ -40,3 +40,37 @@ export const init = () => (
   </MemoryRouter>
 )
 init.story = { name: 'Default ' }
+
+export const disabled = () => (
+  <MemoryRouter initialEntries={['/home']}>
+    <div style={{ marginTop: '672px' }}>
+      <Navbar
+        items={[
+          {
+            icon: 'home',
+            label: 'Home',
+            key: 'home',
+            isActive: path => path.match(/home/),
+            onClick: (_event, history) => history.push('/home'),
+          },
+          {
+            icon: 'user',
+            label: 'About me',
+            key: 'about',
+            isActive: path => path.match(/about/),
+            onClick: (_event, history) => history.push('/about'),
+          },
+          {
+            icon: 'bars',
+            activeIcon: 'times',
+            label: 'Menu',
+            activeLabel: 'Close',
+            key: 'menu',
+            isDisabled: path => path.match(/home/),
+          },
+        ]}
+      />
+    </div>
+  </MemoryRouter>
+)
+init.disabled = { name: 'Disabled ' }
