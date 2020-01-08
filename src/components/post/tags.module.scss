@@ -3,7 +3,8 @@ $tag-color: #fff;
 
 .tags {
   display: flex;
-  margin: 0 -4px;
+  margin: 8px -4px 4px;
+  flex-wrap: wrap;
 }
 
 .tag {

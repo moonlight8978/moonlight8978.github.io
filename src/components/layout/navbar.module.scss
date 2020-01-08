@@ -14,7 +14,7 @@ $app-bg-color: #fff;
   height: 100%;
   border: 0;
   border-top: 2px solid transparent;
-  transition: all 0.15s ease;
+  transition: all 0.1s ease;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,6 +22,7 @@ $app-bg-color: #fff;
   padding: 0;
   margin: 0;
   background-color: $app-bg-color;
+  touch-action: manipulation;
 
   &:focus {
     outline: 0;
