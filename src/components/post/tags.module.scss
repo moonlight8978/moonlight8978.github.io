@@ -1,0 +1,18 @@
+$tag-bg-color: #999999;
+$tag-color: #fff;
+
+.tags {
+  display: flex;
+  margin: 8px -4px 4px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  padding: 5px 12px;
+  background-color: $tag-bg-color;
+  color: $tag-color;
+  font-size: 0.85rem;
+  margin: 0 4px;
+  font-weight: 300;
+  letter-spacing: 0.03rem;
+}

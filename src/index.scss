@@ -1,3 +1,5 @@
+$global-text-color: #212529;
+
 * {
   box-sizing: border-box;
 }
@@ -5,6 +7,15 @@
 html {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
+  overflow: hidden;
+  color: $global-text-color;
+  line-height: 1.5;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body,
+#app {
+  overflow: auto;
 }
 
 html,

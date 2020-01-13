@@ -1,9 +1,9 @@
 import yaml from 'js-yaml'
 import React, { useState, useEffect } from 'react'
 
-import client from '../../api/client'
-import getMdTableOfContents from '../../utils/get-md-table-of-contents'
-import Markdown from '../markdown'
+import client from '../../src/api/client'
+import getMdTableOfContents from '../../src/utils/get-md-table-of-contents'
+import Markdown from '../../src/components/markdown'
 
 const parseYaml = yaml.safeLoad
 

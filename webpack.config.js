@@ -15,11 +15,14 @@ const makeHtmlOptions = options => {
     inject: false,
     template: htmlWebpackTemplate,
     filename: `${identity}.html`,
-    meta: {
-      viewport: 'width=device-width, initial-scale=1.0, shrink-to-fit=no',
-    },
+    meta: [
+      {
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1.0',
+      },
+    ],
     links: [
-      'https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i&display=swap&subset=vietnamese',
+      'https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i&display=swap&subset=vietnamese',
     ],
     lang: 'vi-VN',
     appMountId: 'app',
@@ -42,6 +45,7 @@ module.exports = webpackEnv => {
 
   return {
     mode: isEnvProduction ? 'production' : isEnvDevelopment && 'development',
+
     entry: {
       index: './src/index.js',
     },
@@ -66,6 +70,7 @@ module.exports = webpackEnv => {
     output: {
       path: path.resolve(__dirname, 'build'),
       filename: outputName(isEnvProduction, 'js'),
+      publicPath: '/',
     },
     module: {
       rules: [
@@ -135,6 +140,7 @@ module.exports = webpackEnv => {
       hot: true,
       host: '0.0.0.0',
       port: 9000,
+      historyApiFallback: true,
     },
   }
 }
