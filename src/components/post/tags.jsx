@@ -13,6 +13,10 @@ function Tag({ value }: TagProps) {
 type Props = { values: Array<string> }
 
 function Tags({ values: tags }: Props) {
+  if (tags.length === 0) {
+    return null
+  }
+
   return (
     <div className={styles.tags}>
       {tags.map(tag => (

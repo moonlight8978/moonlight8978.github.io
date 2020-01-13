@@ -1,12 +1,26 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { MemoryRouter } from 'react-router-dom'
+import { render, fireEvent } from '@testing-library/react'
 
 import App from '../app'
-import client from '../api/client'
 
 jest.mock('../api/client')
 
-it('render without crash', async () => {
-  const { getByText } = await client.mock('**Welcome**', () => render(<App />))
-  expect(getByText('Welcome')).toBeInTheDocument()
+it('navigates correctly', () => {
+  const { getByText, queryAllByText } = render(<App />, {
+    wrapper: MemoryRouter,
+  })
+
+  expect(getByText('Sample')).toBeInTheDocument()
+  expect(getByText('Menu').closest('button')).toBeDisabled()
+
+  fireEvent.click(getByText('Blog'))
+  expect(
+    queryAllByText('Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+  ).toHaveLength(10)
+  expect(getByText('Menu').closest('button')).toBeDisabled()
+
+  fireEvent.click(getByText('Author'))
+  expect(getByText('Sample')).toBeInTheDocument()
+  expect(getByText('Menu').closest('button')).toBeDisabled()
 })

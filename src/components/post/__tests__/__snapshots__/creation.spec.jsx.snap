@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`match snapshot 1`] = `
+<span
+  class="creation"
+>
+  <span>
+    January 13, 2020
+  </span>
+  <span>
+     by _Moon_
+  </span>
+</span>
+`;
+
+exports[`renders author correctly 1`] = `
+<span
+  class="creation"
+>
+  <span>
+    January 01, 1970
+  </span>
+  <span>
+     by _Moon_
+  </span>
+</span>
+`;
+
+exports[`renders formatted modified time 1`] = `
+<span
+  class="creation"
+>
+  <span>
+    January 13, 2020
+  </span>
+  <span>
+     by Sample
+  </span>
+</span>
+`;
+
+exports[`renders formatted modified time with padding 1`] = `
+<span
+  class="creation"
+>
+  <span>
+    January 02, 2020
+  </span>
+  <span>
+     by Sample
+  </span>
+</span>
+`;

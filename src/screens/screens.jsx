@@ -21,7 +21,7 @@ type ScreensObj = {
 
 const service: ScreensObj = {
   screens: [],
-  registerScreen: function registerScreen(component, { exact = false, path }) {
+  registerScreen: function registerScreen(component, { exact = true, path }) {
     this.screens.push({ component, exact, path })
   },
   createComponent: function createComponent() {
