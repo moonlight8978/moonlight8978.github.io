@@ -6,46 +6,19 @@ import client from '../../api/client'
 import getMdTableOfContents from '../../utils/get-md-table-of-contents'
 import Markdown from '../../components/markdown'
 import type { PostMetadata } from '../screens'
-import Backdrop from '../../components/backdrop'
+import { defaultNavItems } from '../screens'
+import Backdrop, { useBackdrop } from '../../components/backdrop'
 import Layout from '../../components/layout'
 
 type Props = {
   metadata: PostMetadata,
 }
 
-const screenPaths = {
-  home: '/',
-  blog: '/blog',
-  post: '/blog/:name',
-  me: '/me',
-}
-
 function MarkdownPage({ metadata }: Props) {
-  const [isBackdropHidden, setIsBackdropHidden] = useState(true)
-  const toggleBackDrop = () => setIsBackdropHidden(!isBackdropHidden)
+  const [isBackdropHidden, toggleBackDrop] = useBackdrop()
 
   const navItems = [
-    {
-      icon: 'home',
-      label: 'Home',
-      key: 'home',
-      isActive: path => path === screenPaths.home,
-      onClick: (event, history) => history.push(screenPaths.home),
-    },
-    {
-      icon: 'rss',
-      label: 'Blog',
-      key: 'blog',
-      isActive: path => path === screenPaths.blog,
-      onClick: (event, history) => history.push(screenPaths.blog),
-    },
-    {
-      icon: 'user',
-      label: 'Author',
-      key: 'about',
-      isActive: path => path === screenPaths.me,
-      onClick: (event, history) => history.push(screenPaths.me),
-    },
+    ...defaultNavItems,
     {
       icon: 'bars',
       activeIcon: 'times',
