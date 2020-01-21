@@ -1,1 +1,1 @@
-export { default } from './screens'
+export { default, screenPaths } from './screens'

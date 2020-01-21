@@ -11,18 +11,15 @@ type History = {
   push: (path: string) => void,
 }
 
-type NavItemDefinition = {
+export type NavItemDefinition = {
   icon: string,
   activeIcon?: string,
   label: string,
   activeLabel?: string,
   key: string,
-  isActive?: (url?: string) => boolean,
-  onClick?: (
-    event?: SyntheticEvent<HTMLButtonElement>,
-    history?: History
-  ) => any,
-  isDisabled?: (url?: string) => boolean,
+  isActive?: (url: string) => boolean,
+  onClick?: (event: SyntheticEvent<HTMLButtonElement>, history: History) => any,
+  isDisabled?: (url: string) => boolean,
 }
 
 export type NavItemDefinitions = Array<NavItemDefinition>

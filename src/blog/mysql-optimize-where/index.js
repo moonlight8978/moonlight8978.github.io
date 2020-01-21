@@ -1,3 +1,1 @@
-import metadata from './index.yml'
-
-export default metadata
+export { default } from './index.yml'

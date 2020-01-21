@@ -6,9 +6,13 @@ import classnames from 'classnames'
 
 import styles from './backdrop.module.scss'
 
-type Props = { children: Node, className?: string }
+type Props = { children: Node, className?: string, hidden: boolean }
 
-function Backdrop({ children, className }: Props) {
+function Backdrop({ children, className, hidden }: Props) {
+  if (hidden) {
+    return null
+  }
+
   return (
     <div className={classnames(styles.backdrop, className)}>{children}</div>
   )

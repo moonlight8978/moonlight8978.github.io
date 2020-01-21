@@ -1,7 +1,6 @@
 // @flow
 
 import MarkdownIt from 'markdown-it'
-import _ from 'lodash'
 
 import getElementsBetween from './get-elements-between'
 import splitArray from './split-array'
@@ -10,7 +9,7 @@ const md = new MarkdownIt()
 
 type H1 = Array<string>
 type H2s = Array<Array<string>>
-type NestedHeading = Array<H1 | H2s>
+type NestedHeading = {| h1: H1, h2s: H2s |}
 
 export default function getMdTableOfContents(
   content: string
@@ -32,5 +31,5 @@ export default function getMdTableOfContents(
     heading => heading.tag === 'h1'
   ).map(group => group.map(heading => heading.data.map(token => token.content)))
 
-  return _.zip(h1s, h2s)
+  return h1s.map((heading1, index) => ({ h1: heading1, h2s: h2s[index] }))
 }
