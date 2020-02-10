@@ -3,7 +3,7 @@
 
 import * as Sentry from '@sentry/browser'
 
-export default function reportError(error, errorInfo) {
+export default function reportError(error: ?any, errorInfo: ?any) {
   Sentry.withScope(scope => {
     scope.setExtras(errorInfo)
     Sentry.captureException(error)

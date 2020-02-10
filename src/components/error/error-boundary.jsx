@@ -9,7 +9,7 @@ import reportError from '../../services/report-error'
 import ErrorFallback from './error-fallback'
 
 type Props = {
-  fallbackComponent?: ComponentType,
+  fallbackComponent?: ComponentType<{}>,
   children: Node,
 }
 
@@ -18,15 +18,15 @@ type State = {
 }
 
 class ErrorBoundary extends React.Component<Props, State> {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      error: null,
-    }
+  static defaultProps = {
+    fallbackComponent: ErrorFallback,
   }
 
-  componentDidCatch(error, errorInfo) {
+  state = {
+    error: null,
+  }
+
+  componentDidCatch(error: any, errorInfo: any) {
     this.setState({ error })
     console.error(error)
     reportError(error, errorInfo)
@@ -37,16 +37,15 @@ class ErrorBoundary extends React.Component<Props, State> {
     const { error } = this.state
 
     if (error) {
-      return <FallbackComponent />
+      if (FallbackComponent) {
+        return <FallbackComponent />
+      }
+
+      return null
     }
 
     return children
   }
-}
-
-ErrorBoundary.defaultProps = {
-  fallbackComponent: ErrorFallback,
-  capture: false,
 }
 
 export default ErrorBoundary
