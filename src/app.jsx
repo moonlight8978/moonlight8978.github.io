@@ -4,6 +4,7 @@ import React from 'react'
 import { Switch } from 'react-router-dom'
 
 import Layout from './components/layout'
+import ErrorBoundary from './components/error'
 import BlogScreen from './screens/blog'
 import ScreensService from './screens'
 
@@ -55,11 +56,13 @@ const navItems = [
 
 function App() {
   return (
-    <Layout navItems={navItems}>
-      <Switch>
-        <Screens />
-      </Switch>
-    </Layout>
+    <ErrorBoundary capture>
+      <Layout navItems={navItems}>
+        <Switch>
+          <Screens />
+        </Switch>
+      </Layout>
+    </ErrorBoundary>
   )
 }
 
