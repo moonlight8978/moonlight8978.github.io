@@ -4,7 +4,7 @@ import React from 'react'
 import { Switch } from 'react-router-dom'
 
 import Layout from './components/layout'
-import ErrorBoundary from './components/error'
+import ErrorBoundary, { ErrorFallback } from './components/error'
 import BlogScreen from './screens/blog'
 import ScreensService from './screens'
 
@@ -56,7 +56,7 @@ const navItems = [
 
 function App() {
   return (
-    <ErrorBoundary>
+    <ErrorBoundary fallbackComponent={ErrorFallback}>
       <Layout navItems={navItems}>
         <Switch>
           <Screens />
