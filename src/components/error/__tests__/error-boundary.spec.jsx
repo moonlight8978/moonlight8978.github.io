@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { render, fireEvent } from '@testing-library/react'
 
-import ErrorBoundary from '../error-boundary'
+import ErrorBoundary, { ErrorFallback } from '..'
 
 jest.mock('../../../services/report-error')
 
@@ -19,7 +19,7 @@ test('handle unexpected errors on render', () => {
   }
 
   const { getByText } = render(
-    <ErrorBoundary>
+    <ErrorBoundary fallbackComponent={ErrorFallback}>
       <ErrorComp />
     </ErrorBoundary>
   )
@@ -40,7 +40,7 @@ test('renders component if there is no error', () => {
   }
 
   const { getByText } = render(
-    <ErrorBoundary>
+    <ErrorBoundary fallbackComponent={ErrorFallback}>
       <NormalComp />
     </ErrorBoundary>
   )

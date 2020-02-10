@@ -6,10 +6,8 @@ import type { Node, ComponentType } from 'react'
 
 import reportError from '../../services/report-error'
 
-import ErrorFallback from './error-fallback'
-
 type Props = {
-  fallbackComponent?: ComponentType<{}>,
+  fallbackComponent: ComponentType<{}>,
   children: Node,
 }
 
@@ -18,10 +16,6 @@ type State = {
 }
 
 class ErrorBoundary extends React.Component<Props, State> {
-  static defaultProps = {
-    fallbackComponent: ErrorFallback,
-  }
-
   state = {
     error: null,
   }
@@ -37,11 +31,7 @@ class ErrorBoundary extends React.Component<Props, State> {
     const { error } = this.state
 
     if (error) {
-      if (FallbackComponent) {
-        return <FallbackComponent />
-      }
-
-      return null
+      return <FallbackComponent />
     }
 
     return children
