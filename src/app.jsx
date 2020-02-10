@@ -56,7 +56,7 @@ const navItems = [
 
 function App() {
   return (
-    <ErrorBoundary capture>
+    <ErrorBoundary>
       <Layout navItems={navItems}>
         <Switch>
           <Screens />

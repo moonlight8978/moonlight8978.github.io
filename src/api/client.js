@@ -1,3 +1,6 @@
+// istanbul ignore file
+// @flow
+
 import axios from 'axios'
 
 const client = axios.create({

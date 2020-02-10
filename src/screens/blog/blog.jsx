@@ -17,7 +17,7 @@ function BlogPostItem() {
 
       <Creation
         author="_MoonLight_"
-        updatedAt={Math.round(new Date().getTime())}
+        updatedAt={Math.round(new Date('2020-01-13').getTime())}
       />
       <Tags values={['Javascript', 'Frontend', 'React']} />
       <Paragraph>

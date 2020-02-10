@@ -3,13 +3,13 @@
 
 import React from 'react'
 import type { Node, ComponentType } from 'react'
-import * as Sentry from '@sentry/browser'
+
+import reportError from '../../services/report-error'
 
 import ErrorFallback from './error-fallback'
 
 type Props = {
   fallbackComponent?: ComponentType,
-  capture?: boolean,
   children: Node,
 }
 
@@ -29,14 +29,7 @@ class ErrorBoundary extends React.Component<Props, State> {
   componentDidCatch(error, errorInfo) {
     this.setState({ error })
     console.error(error)
-
-    const { capture } = this.props
-    if (capture) {
-      Sentry.withScope(scope => {
-        scope.setExtras(errorInfo)
-        Sentry.captureException(error)
-      })
-    }
+    reportError(error, errorInfo)
   }
 
   render() {
