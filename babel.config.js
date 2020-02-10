@@ -10,4 +10,5 @@ module.exports = {
     '@babel/preset-react',
     '@babel/preset-flow',
   ],
+  plugins: ['@babel/plugin-proposal-class-properties'],
 }
