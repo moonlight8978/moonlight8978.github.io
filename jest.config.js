@@ -12,7 +12,8 @@ module.exports = {
   testEnvironment: 'jest-environment-jsdom-fourteen',
   transform: {
     '^.+\\.(js|jsx)$': '<rootDir>/node_modules/babel-jest',
-    '^(?!.*\\.(js|jsx|css|json)$)': '<rootDir>/__mocks__/fileMock.js',
+    '^(?!.*\\.(js|jsx|css|json|yml|yaml)$)': '<rootDir>/__mocks__/fileMock.js',
+    '^.+\\.(yml|yaml)$': 'jest-raw-loader',
   },
   transformIgnorePatterns: [
     '[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$',
