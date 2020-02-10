@@ -26,6 +26,9 @@ type Props = {}
 export type PostMetadata = {
   path: string,
   title: string,
+  tags: Array<string>,
+  updatedAt: string,
+  author: string,
 }
 
 type ScreensObj = {
