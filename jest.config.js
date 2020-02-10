@@ -1,6 +1,10 @@
 module.exports = {
   roots: ['<rootDir>/src'],
-  collectCoverageFrom: ['src/**/*.{js,jsx}', '!**/{index,types}.js'],
+  collectCoverageFrom: [
+    'src/**/*.{js,jsx}',
+    '!**/{index,types}.js',
+    '!**/initializers/**/*',
+  ],
   testMatch: [
     '<rootDir>/src/**/__tests__/**/*.{js,jsx}',
     '<rootDir>/src/**/*.{spec,test}.{js,jsx}',
