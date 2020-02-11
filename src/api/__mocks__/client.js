@@ -1,22 +1,20 @@
 class Client {
-  static call(path, responseData) {
+  get(path) {
+    return this.call(path, this.data)
+  }
+
+  mock(data) {
+    this.data = data
+  }
+
+  call(path, responseData) {
+    this.data = null
     return Promise.resolve({
       status: 200,
       statusText: 'OK',
       headers: {},
       data: responseData,
     })
-  }
-
-  async mock(data, callApi) {
-    this.data = data
-    const response = await callApi()
-    this.data = null
-    return response
-  }
-
-  get(path) {
-    return this.constructor.call(path, this.data)
   }
 }
 

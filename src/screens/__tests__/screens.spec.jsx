@@ -12,8 +12,8 @@ test('renders registered screens correctly', () => {
     initialIndex: 0,
   })
 
-  const HomeScreen = () => <div>Home</div>
-  const AboutScreen = () => <div>About</div>
+  const HomeScreen = () => <div>Home screen</div>
+  const AboutScreen = () => <div>About screen</div>
 
   ScreensService.registerScreen(HomeScreen, { path: '/' })
   ScreensService.registerScreen(AboutScreen, { path: '/about' })
@@ -24,8 +24,8 @@ test('renders registered screens correctly', () => {
       <Screens />
     </Router>
   )
-  expect(getByText('Home')).toBeInTheDocument()
+  expect(getByText('Home screen')).toBeInTheDocument()
 
   history.push('/about')
-  expect(getByText('About')).toBeInTheDocument()
+  expect(getByText('About screen')).toBeInTheDocument()
 })
