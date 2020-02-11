@@ -8,7 +8,7 @@ import App from '../app'
 jest.mock('../api/client')
 
 it('navigates correctly', async () => {
-  client.mock('# Sample Post')
+  client.mock({ data: '# Sample Post' })
 
   const { getByText, queryAllByText } = render(<App />, {
     wrapper: MemoryRouter,

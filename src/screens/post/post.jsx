@@ -10,8 +10,17 @@ import Backdrop, { useBackdrop } from '../../components/backdrop'
 import Markdown from '../../components/markdown'
 import Layout from '../../components/layout'
 import { Creation, Tags, Title } from '../../components/post'
+import ErrorBoundary from '../../components/error'
 
+import TableOfContents from './table-of-contents'
 import styles from './post.module.scss'
+
+function parseTableOfContents(rawHeadings) {
+  return rawHeadings.map(({ h1, h2s }) => ({
+    heading: h1[0],
+    subs: h2s.map(h2 => h2[0]),
+  }))
+}
 
 type Props = {
   metadata: PostMetadata,
@@ -43,30 +52,20 @@ function MarkdownPage({ metadata }: Props) {
       .get(resourcePath)
       .then(response => {
         setContent(response.data.replace(/\\n/g, '\n'))
-        setToc(t => t || getMdTableOfContents(response.data))
+        setToc(
+          t => t || parseTableOfContents(getMdTableOfContents(response.data))
+        )
       })
-      .catch(error => console.log(error))
+      .catch(error => console.error(error))
   }, [resourcePath])
 
   return (
     <Layout navItems={navItems}>
-      <Backdrop hidden={isBackdropHidden}>
-        {toc && (
-          <div className={styles.tocContainer}>
-            <div className={styles.tocContent}>
-              <h3>Table of contents</h3>
-              {toc.map(({ h1, h2s }, index1) => (
-                <ul key={index1.toString()}>
-                  <b>{h1[0]}</b>
-                  {h2s.map((h2, index2) => (
-                    <li key={index2.toString()}>{h2[0]}</li>
-                  ))}
-                </ul>
-              ))}
-            </div>
-          </div>
-        )}
-      </Backdrop>
+      <ErrorBoundary>
+        <Backdrop hidden={isBackdropHidden}>
+          {toc && <TableOfContents toc={toc} />}
+        </Backdrop>
+      </ErrorBoundary>
       <div className={styles.postContainer}>
         <Title big>{title}</Title>
         <Creation author={author} updatedAt={updatedAt} />

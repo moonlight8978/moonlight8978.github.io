@@ -7,13 +7,13 @@ class Client {
     this.data = data
   }
 
-  call(path, responseData) {
+  call(path, { data, status = 200, headers = {} }) {
     this.data = null
     return Promise.resolve({
-      status: 200,
       statusText: 'OK',
-      headers: {},
-      data: responseData,
+      status,
+      headers,
+      data,
     })
   }
 }
