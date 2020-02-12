@@ -4,6 +4,7 @@ import React from 'react'
 import type { ComponentType } from 'react'
 import { Route } from 'react-router-dom'
 import yaml from 'js-yaml'
+import _ from 'lodash'
 
 import Layout from '../components/layout'
 import type { NavItemDefinition } from '../components/layout/navbar'
@@ -65,13 +66,11 @@ export const defaultNavItems: Array<NavItemDefinition> = [
 
 const ScreensService: ScreensObj = {
   screens: [],
-  registerScreen: function registerScreen(
-    component,
-    { exact = true, path, layout = true }
-  ) {
+  postsMetadata: {},
+  registerScreen(component, { exact = true, path, layout = true }) {
     this.screens.push({ component, exact, path, layout })
   },
-  createComponent: function createComponent() {
+  createComponent() {
     const { screens } = this
 
     return function Screens() {
@@ -89,8 +88,21 @@ const ScreensService: ScreensObj = {
     }
   },
   parseMetadata: metadata => parseYaml(metadata),
-  registerPost: function registerPost(rawMetadata, screenOptions) {
+  saveMetadata(metadata) {
+    this.postsMetadata[metadata.path] = metadata
+    const sorted = _.sortBy(Object.values(this.postsMetadata), meta => [
+      new Date(meta.createdAt),
+      meta.title,
+    ]).reduce((metas, meta) => {
+      metas[meta.path] = meta
+      return metas
+    }, {})
+    this.postsMetadata = sorted
+  },
+  registerPost(rawMetadata, screenOptions) {
     const metadata = this.parseMetadata(rawMetadata)
+
+    this.saveMetadata(metadata)
     this.registerScreen(() => <Post metadata={metadata} />, {
       ...screenOptions,
       path: metadata.path,
