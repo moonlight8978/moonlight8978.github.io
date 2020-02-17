@@ -5,8 +5,6 @@ import { render, fireEvent, waitForElement } from '@testing-library/react'
 import client from '../api/client'
 import App from '../app'
 
-jest.mock('../api/client')
-
 it.skip('navigates correctly', async () => {
   client.mock({ data: '# Sample Post' })
 

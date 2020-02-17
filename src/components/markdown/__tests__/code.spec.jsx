@@ -3,8 +3,6 @@ import { render } from '@testing-library/react'
 
 import Code from '../code'
 
-jest.mock('highlight.js/lib/highlight')
-
 test('renders code block corresponding to language', () => {
   const language = 'javascript'
   const code = `import React from "react"`

@@ -3,8 +3,6 @@ import { render, fireEvent } from '@testing-library/react'
 
 import ErrorBoundary, { ErrorFallback } from '..'
 
-jest.mock('../../../services/report-error')
-
 test('handle unexpected errors on render', () => {
   const ErrorComp = () => {
     const [isError, setIsError] = useState(false)

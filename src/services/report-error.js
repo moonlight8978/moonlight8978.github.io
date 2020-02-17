@@ -9,3 +9,7 @@ export default function reportError(error: ?any, errorInfo: ?any) {
     Sentry.captureException(error)
   })
 }
+
+export function logError(error: ?any) {
+  console.error(error)
+}

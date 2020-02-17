@@ -7,10 +7,9 @@ import yaml from 'js-yaml'
 import orderBy from 'lodash/orderBy'
 
 import Layout from '../components/layout'
-import type { NavItemDefinition } from '../components/layout/navbar'
-import { paths as screenPaths } from '../config'
 
 import Post from './post'
+import { defaultNavItems } from './nav'
 
 const parseYaml = yaml.safeLoad
 
@@ -18,6 +17,7 @@ type ScreenOptions = {
   path?: string,
   exact?: boolean,
   layout?: boolean,
+  props?: { [key: string]: ?any },
 }
 
 type ScreenInfo = ScreenOptions & { component: any }
@@ -29,6 +29,7 @@ export type PostMetadata = {
   title: string,
   tags: Array<string>,
   updatedAt: string,
+  createdAt: string,
   author: string,
 }
 
@@ -40,51 +41,29 @@ type ScreensObj = {
   metadatas: () => { [key: string]: PostMetadata },
 }
 
-export const defaultNavItems: Array<NavItemDefinition> = [
-  {
-    icon: 'home',
-    label: 'Home',
-    key: 'home',
-    isActive: path => path === screenPaths.home,
-    onClick: (event, history) => history.push(screenPaths.home),
-  },
-  {
-    icon: 'rss',
-    label: 'Blog',
-    key: 'blog',
-    isActive: path => path === screenPaths.blog,
-    onClick: (event, history) => history.push(screenPaths.blog),
-  },
-  {
-    icon: 'user',
-    label: 'Author',
-    key: 'about',
-    isActive: path => path === screenPaths.me,
-    onClick: (event, history) => history.push(screenPaths.me),
-  },
-]
-
 const ScreensService: ScreensObj = {
   screens: [],
   postsMetadata: {},
-  registerScreen(component, { exact = true, path, layout = true }) {
-    this.screens.push({ component, exact, path, layout })
+  registerScreen(component, { exact = true, path, layout = true, props = {} }) {
+    this.screens.push({ component, exact, path, layout, props })
   },
   createComponent() {
     const { screens } = this
 
     return function Screens() {
-      return screens.map(({ path, exact, component: Component, layout }) => (
-        <Route path={path} exact={exact} key={path}>
-          {layout ? (
-            <Layout navItems={defaultNavItems}>
-              <Component />
-            </Layout>
-          ) : (
-            <Component />
-          )}
-        </Route>
-      ))
+      return screens.map(
+        ({ path, exact, component: Component, layout, props }) => (
+          <Route path={path} exact={exact} key={path}>
+            {layout ? (
+              <Layout navItems={defaultNavItems}>
+                <Component {...props} />
+              </Layout>
+            ) : (
+              <Component {...props} />
+            )}
+          </Route>
+        )
+      )
     }
   },
   parseMetadata: metadata => parseYaml(metadata),

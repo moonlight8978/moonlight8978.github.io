@@ -6,8 +6,6 @@ import client from '../../../api/client'
 
 import PostScreen from '..'
 
-jest.mock('../../../api/client')
-
 test('renders post after fetching data', async () => {
   const content = `# Sample post
 

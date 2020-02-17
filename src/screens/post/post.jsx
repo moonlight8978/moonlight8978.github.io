@@ -5,12 +5,13 @@ import React, { useEffect, useState } from 'react'
 import client from '../../api/client'
 import getMdTableOfContents from '../../utils/get-md-table-of-contents'
 import type { PostMetadata } from '../screens'
-import { defaultNavItems } from '../screens'
+import { defaultNavItems } from '../nav'
 import Backdrop, { useBackdrop } from '../../components/backdrop'
 import Markdown from '../../components/markdown'
 import Layout from '../../components/layout'
 import { Creation, Tags, Title } from '../../components/post'
 import ErrorBoundary from '../../components/error'
+import { logError } from '../../services/report-error'
 
 import TableOfContents from './table-of-contents'
 import styles from './post.module.scss'
@@ -56,7 +57,7 @@ function MarkdownPage({ metadata }: Props) {
           t => t || parseTableOfContents(getMdTableOfContents(response.data))
         )
       })
-      .catch(error => console.error(error))
+      .catch(error => logError(error))
   }, [resourcePath])
 
   return (

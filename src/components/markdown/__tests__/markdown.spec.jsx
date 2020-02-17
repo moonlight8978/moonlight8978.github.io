@@ -3,8 +3,6 @@ import { render } from '@testing-library/react'
 
 import Markdown from '../markdown'
 
-jest.mock('highlight.js/lib/highlight')
-
 const content = `# Introduction
 
 This is an introduction section.

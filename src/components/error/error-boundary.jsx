@@ -4,7 +4,7 @@
 import React from 'react'
 import type { Node, ComponentType } from 'react'
 
-import reportError from '../../services/report-error'
+import reportError, { logError } from '../../services/report-error'
 
 type Props = {
   fallbackComponent: ComponentType<{}>,
@@ -22,7 +22,7 @@ class ErrorBoundary extends React.Component<Props, State> {
 
   componentDidCatch(error: any, errorInfo: any) {
     this.setState({ error })
-    console.error(error)
+    logError(error)
     reportError(error, errorInfo)
   }
 

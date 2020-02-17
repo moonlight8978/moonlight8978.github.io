@@ -17,10 +17,6 @@ import atomicInFrontend2 from './blog/atomic-in-frontend-2-dp'
 
 const SampleScreen = () => <div>Sample</div>
 
-ScreensService.registerScreen(SampleScreen, { path: screenPaths.home })
-ScreensService.registerScreen(BlogScreen, { path: screenPaths.blog })
-ScreensService.registerScreen(SampleScreen, { path: screenPaths.me })
-
 ScreensService.registerPost(mysqlOptimizeWhere, { layout: false })
 ScreensService.registerPost(kubernetesIntroduction, { layout: false })
 ScreensService.registerPost(reactMindset, { layout: false })
@@ -29,7 +25,16 @@ ScreensService.registerPost(railwayOrientedProgramming, { layout: false })
 ScreensService.registerPost(atomicInFrontend1, { layout: false })
 ScreensService.registerPost(atomicInFrontend2, { layout: false })
 
-console.log(ScreensService.postsMetadata)
+const posts = Object.keys(ScreensService.metadatas()).map(
+  key => ScreensService.metadatas()[key]
+)
+
+ScreensService.registerScreen(SampleScreen, { path: screenPaths.home })
+ScreensService.registerScreen(BlogScreen, {
+  path: screenPaths.blog,
+  props: { posts },
+})
+ScreensService.registerScreen(SampleScreen, { path: screenPaths.me })
 
 const Screens = ScreensService.createComponent()
 
