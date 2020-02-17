@@ -4,42 +4,45 @@ import React from 'react'
 
 import { LinkTitle, Title, Creation } from '../../components/post'
 import Tags from '../../components/post/tags'
-import Paragraph from '../../components/markdown/paragraph'
+import type { PostMetadata } from '../screens'
 
 import styles from './blog.module.scss'
 
-function BlogPostItem() {
+type BlogPostItemProps = {
+  post: PostMetadata,
+}
+
+function BlogPostItem({ post }: BlogPostItemProps) {
   return (
     <div className="post-list-item">
-      <LinkTitle to="/blog/mysql-optimize-where">
-        <Title>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Title>
+      <LinkTitle to={post.path}>
+        <Title>{post.title}</Title>
       </LinkTitle>
 
       <Creation
         author="_MoonLight_"
-        updatedAt={Math.round(new Date('2020-01-13').getTime())}
+        updatedAt={Math.round(new Date(post.createdAt).getTime())}
       />
-      <Tags values={['Javascript', 'Frontend', 'React']} />
-      <Paragraph>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in …
-      </Paragraph>
+
+      <Tags values={post.tags} />
     </div>
   )
 }
 
-function Blog() {
+type Props = {
+  getPosts: () => Array<PostMetadata>,
+}
+
+function Blog({ getPosts }: Props) {
+  const posts = getPosts()
+
   return (
     <div className={styles.postList}>
-      {Array(10)
-        .fill(0)
-        .map((element, index) => (
-          <div className={styles.postItem} key={index.toString()}>
-            <BlogPostItem />
-          </div>
-        ))}
+      {posts.map(post => (
+        <div className={styles.postItem} key={post.title}>
+          <BlogPostItem post={post} />
+        </div>
+      ))}
     </div>
   )
 }

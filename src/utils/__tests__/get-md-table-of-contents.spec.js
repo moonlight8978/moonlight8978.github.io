@@ -18,7 +18,7 @@ text
 text`
   const headings = getMdTableOfContents(data)
   expect(headings).toEqual([
-    [['[1](https://google.com.vn)'], [['1.1'], ['1.2']]],
-    [['2'], [['2.1'], ['2.2']]],
+    { h1: ['[1](https://google.com.vn)'], h2s: [['1.1'], ['1.2']] },
+    { h1: ['2'], h2s: [['2.1'], ['2.2']] },
   ])
 })

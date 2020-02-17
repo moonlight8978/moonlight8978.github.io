@@ -3,7 +3,7 @@ $tag-color: #fff;
 
 .tags {
   display: flex;
-  margin: 8px -4px 4px;
+  margin: 4px -4px 0;
   flex-wrap: wrap;
 }
 
@@ -12,7 +12,7 @@ $tag-color: #fff;
   background-color: $tag-bg-color;
   color: $tag-color;
   font-size: 0.85rem;
-  margin: 0 4px;
+  margin: 4px;
   font-weight: 300;
   letter-spacing: 0.03rem;
 }
