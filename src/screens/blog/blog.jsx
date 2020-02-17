@@ -30,10 +30,12 @@ function BlogPostItem({ post }: BlogPostItemProps) {
 }
 
 type Props = {
-  posts: Array<PostMetadata>,
+  getPosts: () => Array<PostMetadata>,
 }
 
-function Blog({ posts }: Props) {
+function Blog({ getPosts }: Props) {
+  const posts = getPosts()
+
   return (
     <div className={styles.postList}>
       {posts.map(post => (

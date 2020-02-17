@@ -25,7 +25,7 @@ test('renders post list', () => {
   ]
   const { getByText } = render(
     <MemoryRouter>
-      <BlogScreen posts={posts} />
+      <BlogScreen getPosts={() => posts} />
     </MemoryRouter>
   )
 
