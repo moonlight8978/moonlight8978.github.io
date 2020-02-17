@@ -4,7 +4,7 @@ import React from 'react'
 import type { ComponentType } from 'react'
 import { Route } from 'react-router-dom'
 import yaml from 'js-yaml'
-import _ from 'lodash'
+import orderBy from 'lodash/orderBy'
 
 import Layout from '../components/layout'
 import type { NavItemDefinition } from '../components/layout/navbar'
@@ -36,8 +36,8 @@ type ScreensObj = {
   screens: Array<ScreenInfo>,
   registerScreen: (component: any, options: ScreenOptions) => void,
   createComponent: () => ComponentType<Props>,
-  parseMetadata: (metadata: string) => PostMetadata,
   registerPost: (metadata: string, screenOptions: ScreenOptions) => void,
+  metadatas: () => { [key: string]: PostMetadata },
 }
 
 export const defaultNavItems: Array<NavItemDefinition> = [
@@ -88,25 +88,31 @@ const ScreensService: ScreensObj = {
     }
   },
   parseMetadata: metadata => parseYaml(metadata),
-  saveMetadata(metadata) {
-    this.postsMetadata[metadata.path] = metadata
-    const sorted = _.sortBy(Object.values(this.postsMetadata), meta => [
-      new Date(meta.createdAt),
-      meta.title,
-    ]).reduce((metas, meta) => {
+  sortMetadata() {
+    this.postsMetadata = orderBy(
+      Object.values(this.postsMetadata),
+      [meta => new Date(meta.createdAt), meta => meta.title],
+      ['desc', 'asc']
+    ).reduce((metas, meta) => {
+      // eslint-disable-next-line no-param-reassign
       metas[meta.path] = meta
       return metas
     }, {})
-    this.postsMetadata = sorted
   },
-  registerPost(rawMetadata, screenOptions) {
+  saveMetadata(metadata) {
+    this.postsMetadata[metadata.path] = metadata
+    this.sortMetadata()
+  },
+  registerPost(rawMetadata, screenOptions = {}) {
     const metadata = this.parseMetadata(rawMetadata)
-
     this.saveMetadata(metadata)
     this.registerScreen(() => <Post metadata={metadata} />, {
       ...screenOptions,
       path: metadata.path,
     })
+  },
+  metadatas() {
+    return this.postsMetadata
   },
 }
 

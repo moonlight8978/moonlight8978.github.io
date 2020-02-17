@@ -4,7 +4,7 @@ import { MemoryRouter } from 'react-router-dom'
 
 import BlogScreen from '../blog'
 
-test('renders post list', () => {
+test.skip('renders post list', () => {
   const { container } = render(
     <MemoryRouter>
       <BlogScreen />
