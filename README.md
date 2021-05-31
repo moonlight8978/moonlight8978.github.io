@@ -5,8 +5,8 @@
 </h1>
 
 <p align="center">
-  Simple blog using
-  <a href="https://reactjs.org/"><b>React</b></a>, written in Markdown.
+  Simple personal blog using
+  <a href="https://docusaurus.io/"><b>Docusaurus v2</b></a>, written in Markdown.
 </p>
 
 <p align="center">
@@ -25,80 +25,13 @@
 
 - [Setup](#setup)
 
-- [Build and Release](#build-and-release)
-
 - [References](#references)
 
 # Setup
 
-Use make commands to setup with Docker
-Otherwise, use yarn commands
-
-### Running app
-
-Docker
-
 ```bash
-make build
-make install
-make up
-# Access app log
-make log
-```
-
-Local npm
-
-```bash
-yarn
-yarn dev
-```
-
-Then access app http://localhost:9000
-
-Storybook is available at port 6006 http://localhost:6006
-
-Close the app by
-
-```bash
-make down
-# Or with local installed yarn
-yarn flow stop
-```
-
-### Utilities
-
-```bash
-# Reinstall yarn packages
-make install
-
-# Test the app
-make test
-yarn test:unit
-
-# Test with debugger
-make test-debug
-yarn test:unit:debug
-
-# Run flow check
-make flow
-yarn flow
-
-# Linting
-make lint
-yarn lint
-
-# Calculate Lines of code
-make loc
-yarn loc
-```
-
-# Build and Release
-
-**!! Deprecated !!** Currently use CircleCI for CICD.
-
-```bash
-yarn build
-yarn deploy
+yarn install
+yarn start
 ```
 
 # References
