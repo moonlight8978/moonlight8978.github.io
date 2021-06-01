@@ -60,7 +60,7 @@ Use Ctrl-C to stop
 
 Đây là dấu hiệu cho ta thấy, Rails đang chạy ở chế độ single process (1 process), và multi-thread (cụ thể là 5 thread)
 
-- Còn khi config deploy, có thể bạn sẽ được 1 người có kinh nghiệm hơn bảo rằng *"Bỏ comment cái dòng `workers ENV.fetch("WEB_CONCURRENCY") { 2 }` đi em êi"*
+- Còn khi config deploy, có thể bạn sẽ được 1 người có kinh nghiệm hơn bảo rằng _"Bỏ comment cái dòng `workers ENV.fetch("WEB_CONCURRENCY") { 2 }` đi em êi"_
 
 Và đây là kết quả khi ta làm như vậy
 
@@ -82,7 +82,7 @@ Và đây là kết quả khi ta làm như vậy
 
 Puma đang chạy đồng thời multi-process (2 process) và multi-thread (5 thread)
 
->Multi-process, multi-thread là cái của nợ gì vậy?
+> Multi-process, multi-thread là cái của nợ gì vậy?
 
 Chúng ta sẽ tìm hiểu về nó ngay sau đây. Tuy nhiên chúng ta sẽ focus vào cluster mode của Puma nhé.
 
@@ -90,7 +90,7 @@ Chúng ta sẽ tìm hiểu về nó ngay sau đây. Tuy nhiên chúng ta sẽ fo
 
 Trước tiên ta hãy nhớ lại định nghĩa về `process` - tiến trình, mỗi khi ta chạy 1 command nào đó (ví dụ như `ruby xxx.rb` hay bật chrome chẳng hạn), OS sẽ tạo 1 process để xử lý command của ta.
 
-Mỗi *process* có thể tạo ra nhiều *thread* để xử lý task (ví dụ mỗi tab chrome được handle bởi 1 thread). Các thread được tạo bởi 1 process sẽ share nhau 1 vùng nhớ (memory), trong shared memory này, mỗi thread sẽ có stack, register (google để biết thêm đống này là gì =)) ) riêng của mình. Tuy nhiên, việc chung đụng memory như trên sẽ dẫn đến 1 vấn đề là nhiều thread cùng chọc tới 1 resource nào đó, dẫn tới conflict về data, hay còn được biết đến với cái tên nguy hiểm hơn là **race condition**. Code của ta sẽ cần *thread-safe* (các bạn có thể google thêm :v)
+Mỗi _process_ có thể tạo ra nhiều _thread_ để xử lý task (ví dụ mỗi tab chrome được handle bởi 1 thread). Các thread được tạo bởi 1 process sẽ share nhau 1 vùng nhớ (memory), trong shared memory này, mỗi thread sẽ có stack, register (google để biết thêm đống này là gì =)) ) riêng của mình. Tuy nhiên, việc chung đụng memory như trên sẽ dẫn đến 1 vấn đề là nhiều thread cùng chọc tới 1 resource nào đó, dẫn tới conflict về data, hay còn được biết đến với cái tên nguy hiểm hơn là **race condition**. Code của ta sẽ cần _thread-safe_ (các bạn có thể google thêm :v)
 
 Đối với ứng dụng Ruby thì khi chạy ở môi trường MRI... À đấy lại nhắc tới MRI, chắc nhiều người sẽ thắc mắc liệu đó là gì. Đây là tên của 1 Ruby Runtime. Ruby 1 chuẩn spec, implement kiểu gì cũng được, miễn là đáp ứng được spec đó thì đều là Ruby. Có thể kể đến các Runtime phổ biến sau
 
@@ -226,13 +226,13 @@ Máy tính hiện nay đa số đều có khá nhiều core, và đều hỗ tr�
 
 Mặc định Puma sẽ chạy ở single mode, khi đó chỉ có 1 process, process này sẽ đảm nhận hết từ việc lưu code của app, tiếp nhận request, ... sau đó sẽ đẩy request sang cho các thread xử lý như đã mô tả ở trên.
 
-Còn đối với cluster mode, trước hết Puma sẽ tạo ra một master process. Từ process này, dựa vào giá trị của config dưới, Puma sẽ *fork* để tạo ra số process tương ứng, hay còn gọi là *worker*.
+Còn đối với cluster mode, trước hết Puma sẽ tạo ra một master process. Từ process này, dựa vào giá trị của config dưới, Puma sẽ _fork_ để tạo ra số process tương ứng, hay còn gọi là _worker_.
 
 ```ruby title=config/puma.rb
 workers ENV.fetch("WEB_CONCURRENCY") { 2 }
 ```
 
-Lại nói về fork, đây là quá trình mà 1 process tạo ra 1 process mới, gọi là *child process*. Mỗi child process đều có process id (PID) riêng biệt, và một môi trường riêng tách biệt hoàn toàn với parent process (source code, memory, stack, ...). Không như thread vẫn share code với process, nhưng có stack, register riêng. Do vậy, có thể nói forking an toàn và bảo mật hơn so với multi-thread.
+Lại nói về fork, đây là quá trình mà 1 process tạo ra 1 process mới, gọi là _child process_. Mỗi child process đều có process id (PID) riêng biệt, và một môi trường riêng tách biệt hoàn toàn với parent process (source code, memory, stack, ...). Không như thread vẫn share code với process, nhưng có stack, register riêng. Do vậy, có thể nói forking an toàn và bảo mật hơn so với multi-thread.
 
 Quay trở lại với Puma, ở cluster mode, master process chỉ đảm nhận việc tiếp nhận request, sau đó sẽ bắn sang các worker để chúng tự xử với các thread mà chúng spawn. Các worker của Puma đều có 1 bản copy source code app riêng, nên khi chạy nhiều worker, hãy chắc chắn là server của bạn có đủ RAM :v
 
@@ -296,4 +296,3 @@ Nếu có sai sót gì các bạn cứ gạch đá thoải mái à :v chi tiết
 - http://www.geekride.com/fork-forking-vs-threading-thread-linux-kernel/
 - https://www.studytonight.com/operating-system/multithreading
 - https://www.tutorialspoint.com/how-to-create-a-process-in-linux#:~:text=A%20new%20process%20can%20be,newly%20is%20called%20child%20process.
-
