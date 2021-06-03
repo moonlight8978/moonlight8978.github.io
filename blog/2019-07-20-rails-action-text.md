@@ -4,7 +4,7 @@ title: Cùng tìm hiểu về ActionText trong Rails 6
 author: Lê Sĩ Bích
 author_title: Ruby on Rails/React Developer
 author_url: https://github.com/moonlight8978
-# author_image_url:
+author_image_url: https://avatars.githubusercontent.com/u/26299310?v=4
 tags: [action-text, ruby-on-rails, web]
 ---
 

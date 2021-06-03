@@ -1,101 +1,107 @@
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
-  url: 'https://your-docusaurus-test-site.com',
-  baseUrl: '/',
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  title: "moonlight8978's Blog",
+  tagline: "Personal blog. Powered by Dinosaurs.",
+  url: "https://moonlight8978.github.io",
+  baseUrl: "/",
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "warn",
+  favicon: "https://avatars.githubusercontent.com/u/26299310?v=4",
+  organizationName: "moonlight8978",
+  projectName: "moonlight8978.github.io",
   themeConfig: {
     navbar: {
-      title: 'My Site',
+      title: "My Site",
       logo: {
-        alt: 'My Site Logo',
-        src: 'img/logo.svg',
+        alt: "moonlight8978",
+        src: "https://avatars.githubusercontent.com/u/26299310?v=4",
       },
       items: [
+        { to: "/blog", label: "Blog", position: "left" },
         {
-          type: 'doc',
-          docId: 'intro',
-          position: 'left',
-          label: 'Tutorial',
+          type: "doc",
+          docId: "intro",
+          position: "left",
+          label: "Programming notes",
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/facebook/docusaurus',
-          label: 'GitHub',
-          position: 'right',
+          to: "/books/intro",
+          position: "left",
+          label: "Book notes",
+          activeBasePath: "books",
+        },
+        {
+          href: "https://github.com/facebook/docusaurus",
+          label: "GitHub",
+          position: "right",
         },
       ],
     },
     footer: {
-      style: 'dark',
+      style: "dark",
       links: [
         {
-          title: 'Docs',
+          title: "Docs",
           items: [
             {
-              label: 'Tutorial',
-              to: '/docs/intro',
+              label: "Self notes",
+              to: "/docs/intro",
             },
           ],
         },
         {
-          title: 'Community',
+          title: "More",
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: "Blog",
+              to: "/blog",
             },
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
+              label: "GitHub",
+              href: "https://github.com/moonlight8978/moonlight8978.github.io",
             },
             {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
-            },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'Blog',
-              to: '/blog',
-            },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              label: "Stack Overflow",
+              href: "https://stackoverflow.com/users/8068639/moonlight8978",
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} moonlight8978. Built with Docusaurus.`,
     },
   },
   presets: [
     [
-      '@docusaurus/preset-classic',
+      "@docusaurus/preset-classic",
       {
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
+          sidebarPath: require.resolve("./sidebars.js"),
           editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/',
+            "https://github.com/moonlight8978/moonlight8978.github.io/edit/v2/docs/",
         },
         blog: {
           showReadingTime: true,
-          // Please change this to your repo.
+          blogSidebarCount: "ALL",
+          blogSidebarTitle: "All posts",
           editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/blog/',
+            "https://github.com/moonlight8978/moonlight8978.github.io/edit/v2/blog/",
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve("./src/css/custom.css"),
         },
+      },
+    ],
+  ],
+  plugins: [
+    [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "books",
+        path: "books",
+        routeBasePath: "books",
+        sidebarPath: require.resolve("./sidebars.js"),
+        editUrl:
+          "https://github.com/moonlight8978/moonlight8978.github.io/edit/v2/books/",
       },
     ],
   ],
