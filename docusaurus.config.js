@@ -1,20 +1,20 @@
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-  title: "My Site",
-  tagline: "Dinosaurs are cool",
+  title: "moonlight8978's Blog",
+  tagline: "Personal blog. Powered by Dinosaurs.",
   url: "https://moonlight8978.github.io",
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
-  favicon: "img/favicon.ico",
-  organizationName: "facebook", // Usually your GitHub org/user name.
-  projectName: "docusaurus", // Usually your repo name.
+  favicon: "https://avatars.githubusercontent.com/u/26299310?v=4",
+  organizationName: "moonlight8978",
+  projectName: "moonlight8978.github.io",
   themeConfig: {
     navbar: {
       title: "My Site",
       logo: {
-        alt: "My Site Logo",
-        src: "img/logo.svg",
+        alt: "moonlight8978",
+        src: "https://avatars.githubusercontent.com/u/26299310?v=4",
       },
       items: [
         { to: "/blog", label: "Blog", position: "left" },
@@ -22,7 +22,13 @@ module.exports = {
           type: "doc",
           docId: "intro",
           position: "left",
-          label: "Self notes",
+          label: "Programming notes",
+        },
+        {
+          to: "/books/intro",
+          position: "left",
+          label: "Book notes",
+          activeBasePath: "books",
         },
         {
           href: "https://github.com/facebook/docusaurus",
@@ -61,7 +67,7 @@ module.exports = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} moonlight8978. Built with Docusaurus.`,
     },
   },
   presets: [
@@ -71,7 +77,7 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
           editUrl:
-            "https://github.com/moonlight8978/moonlight8978.github.io/edit/v2/",
+            "https://github.com/moonlight8978/moonlight8978.github.io/edit/v2/docs/",
         },
         blog: {
           showReadingTime: true,
@@ -83,6 +89,19 @@ module.exports = {
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
+      },
+    ],
+  ],
+  plugins: [
+    [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "books",
+        path: "books",
+        routeBasePath: "books",
+        sidebarPath: require.resolve("./sidebars.js"),
+        editUrl:
+          "https://github.com/moonlight8978/moonlight8978.github.io/edit/v2/books/",
       },
     ],
   ],
