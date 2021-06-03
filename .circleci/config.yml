@@ -17,6 +17,7 @@ commands:
           yarn --version
       - node/install-packages:
           pkg-manager: yarn
+          include-branch-in-cache-key: false
 
   build:
     steps:
