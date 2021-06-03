@@ -1,78 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0">
     <channel>
-        <title>My Site Blog</title>
-        <link>https://your-docusaurus-test-site.com/blog</link>
-        <description>My Site Blog</description>
+        <title>moonlight8978's Blog Blog</title>
+        <link>https://moonlight8978.github.io/blog</link>
+        <description>moonlight8978's Blog Blog</description>
         <lastBuildDate>Mon, 31 May 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <item>
             <title><![CDATA[Cùng tìm hiểu về Puma (Ruby on Rails)]]></title>
-            <link>https://your-docusaurus-test-site.com/blog/cung-tim-hieu-ve-puma-ruby-on-rails</link>
+            <link>https://moonlight8978.github.io/blog/cung-tim-hieu-ve-puma-ruby-on-rails</link>
             <guid>cung-tim-hieu-ve-puma-ruby-on-rails</guid>
             <pubDate>Mon, 31 May 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[1. Mở đầu]]></description>
         </item>
         <item>
             <title><![CDATA[Cưỡi React Native xem Appium (Phần 1 - Cùng tìm hiểu cách hoạt động của Appium)]]></title>
-            <link>https://your-docusaurus-test-site.com/blog/cuoi-react-native-xem-appium-phan-1-cung-tim-hieu-cach-hoat-dong-cua-appium</link>
+            <link>https://moonlight8978.github.io/blog/cuoi-react-native-xem-appium-phan-1-cung-tim-hieu-cach-hoat-dong-cua-appium</link>
             <guid>cuoi-react-native-xem-appium-phan-1-cung-tim-hieu-cach-hoat-dong-cua-appium</guid>
             <pubDate>Mon, 04 Jan 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[Do dòng đời đưa đẩy và khách thì tiền ít nhưng lại thích hít hàng thơm (toàn đòi 80~100 coverage -\_-) nên mình cũng đã kinh qua react-native-testing-library một thời gian kha khá, và cũng nghịch thử Detox, nhưng chưa thằng nào làm mình hài lòng:]]></description>
         </item>
         <item>
             <title><![CDATA[Giới thiệu về Kubernetes]]></title>
-            <link>https://your-docusaurus-test-site.com/blog/gioi-thieu-ve-kubernetes</link>
+            <link>https://moonlight8978.github.io/blog/gioi-thieu-ve-kubernetes</link>
             <guid>gioi-thieu-ve-kubernetes</guid>
             <pubDate>Thu, 21 Nov 2019 00:00:00 GMT</pubDate>
             <description><![CDATA[Ngày nay, container đã là 1 thứ gì đó quá phổ biến, những nền tảng cloud của Amazon, Google, hay Microsoft, v.v... đều đã hỗ trợ deploy container. Và ở local, hay những server test, mọi người cũng đang dần chuẩn sang container vì sự tiện lợi của chúng.]]></description>
         </item>
         <item>
             <title><![CDATA[Tối ưu mệnh đề WHERE (MySQL)]]></title>
-            <link>https://your-docusaurus-test-site.com/blog/toi-uu-menh-de-where-mysql</link>
+            <link>https://moonlight8978.github.io/blog/toi-uu-menh-de-where-mysql</link>
             <guid>toi-uu-menh-de-where-mysql</guid>
             <pubDate>Thu, 14 Nov 2019 00:00:00 GMT</pubDate>
             <description><![CDATA[Có 2 hướng tối ưu Database chính:]]></description>
         </item>
         <item>
             <title><![CDATA[Cùng tìm hiểu về ActionText trong Rails 6]]></title>
-            <link>https://your-docusaurus-test-site.com/blog/cung-tim-hieu-ve-actiontext-trong-rails-6</link>
+            <link>https://moonlight8978.github.io/blog/cung-tim-hieu-ve-actiontext-trong-rails-6</link>
             <guid>cung-tim-hieu-ve-actiontext-trong-rails-6</guid>
             <pubDate>Sat, 20 Jul 2019 00:00:00 GMT</pubDate>
             <description><![CDATA[Rails 6 đã bước vào giai đoạn beta với phiên bản v6.0.0.rc1. RC là viết tắt của Release Candidate, đây là phiên bản mà có xác suất trở thành final release rất cao. Ta có thể áp dụng nó vào dự án ngay kể từ bây giờ mà không cần lo sợ có những breaking change.]]></description>
         </item>
         <item>
             <title><![CDATA[Cùng tìm hiểu về Railway Oriented Programming]]></title>
-            <link>https://your-docusaurus-test-site.com/blog/cung-tim-hieu-ve-railway-oriented-programming</link>
+            <link>https://moonlight8978.github.io/blog/cung-tim-hieu-ve-railway-oriented-programming</link>
             <guid>cung-tim-hieu-ve-railway-oriented-programming</guid>
             <pubDate>Sat, 16 Mar 2019 00:00:00 GMT</pubDate>
             <description><![CDATA[Khi mới bắt đầu code, có thể chúng ta rất ngại handle những exception mà ngay cả 1 hàm đơn giản nhất cũng có thể tung ra. Tuy nhiên, thực tế khi xây dựng hệ thống, ta phải đặc biệt chú ý đến những exception, không thì ứng dụng của ta có thể thăng bất cứ lúc nào :v]]></description>
         </item>
         <item>
             <title><![CDATA[Một vài mindset khi làm việc với React]]></title>
-            <link>https://your-docusaurus-test-site.com/blog/mot-vai-mindset-khi-lam-viec-voi-react</link>
+            <link>https://moonlight8978.github.io/blog/mot-vai-mindset-khi-lam-viec-voi-react</link>
             <guid>mot-vai-mindset-khi-lam-viec-voi-react</guid>
             <pubDate>Sat, 16 Feb 2019 00:00:00 GMT</pubDate>
             <description><![CDATA[Ngày nay, công nghệ ngày càng phát triển, và thế giới Web cũng vậy. Đa số web hiện đại đều đã nói lời tạm biệt với những dòng Ruby, PHP, hay Java được nhúng trong HTML/JS. Phần giao diện người dùng được chính browser phía client xử lý, thay vì server ôm hết như xưa. Các thư viện/framework như React, Angular, Vue, ... đều đã trở nên quá quen thuộc.]]></description>
         </item>
         <item>
             <title><![CDATA[Cùng tìm hiểu về nguyên tử của thế giới FrontEnd (Phần 2 - Density-independent Pixel)]]></title>
-            <link>https://your-docusaurus-test-site.com/blog/cung-tim-hieu-ve-nguyen-tu-cua-the-gioi-front-end-phan-2-density-independent-pixel</link>
+            <link>https://moonlight8978.github.io/blog/cung-tim-hieu-ve-nguyen-tu-cua-the-gioi-front-end-phan-2-density-independent-pixel</link>
             <guid>cung-tim-hieu-ve-nguyen-tu-cua-the-gioi-front-end-phan-2-density-independent-pixel</guid>
             <pubDate>Sun, 25 Nov 2018 00:00:00 GMT</pubDate>
             <description><![CDATA[Ở kì trước, ta đã cùng nhau tìm hiểu về Pixel của CSS, đó là 1 đơn vị độc lập, không bị phụ thuộc vào độ phân giải hay các thông số khác của màn hình. Đối với một loại màn hình (xét theo khoảng cách từ mắt tới màn hình), nó luôn là 1 hằng số không đổi. Điều đó đã giúp cho lập trình viên Web dễ thở hơn rất nhiều.]]></description>
         </item>
         <item>
             <title><![CDATA[Cùng tìm hiểu về nguyên tử của thế giới FrontEnd (Phần 1 - Pixel)]]></title>
-            <link>https://your-docusaurus-test-site.com/blog/cung-tim-hieu-ve-nguyen-tu-cua-the-gioi-front-end-phan-1-pixel</link>
+            <link>https://moonlight8978.github.io/blog/cung-tim-hieu-ve-nguyen-tu-cua-the-gioi-front-end-phan-1-pixel</link>
             <guid>cung-tim-hieu-ve-nguyen-tu-cua-the-gioi-front-end-phan-1-pixel</guid>
             <pubDate>Sat, 27 Oct 2018 00:00:00 GMT</pubDate>
             <description><![CDATA[Nếu là một nhà phát triển ứng dụng Web hay Android, thì chắc hẳn bạn đã dùng các đơn vị độ dài như px, dp để tạo style cho các phần tử trên giao diện.]]></description>
         </item>
         <item>
             <title><![CDATA[TDD/BDD - Nói dễ hơn làm]]></title>
-            <link>https://your-docusaurus-test-site.com/blog/tdd-bdd-noi-de-hon-lam</link>
+            <link>https://moonlight8978.github.io/blog/tdd-bdd-noi-de-hon-lam</link>
             <guid>tdd-bdd-noi-de-hon-lam</guid>
             <pubDate>Sat, 22 Sep 2018 00:00:00 GMT</pubDate>
             <description><![CDATA[Một vài lưu ý trước khi bắt đầu.]]></description>
