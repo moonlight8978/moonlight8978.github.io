@@ -8,7 +8,7 @@
     "start": "docusaurus start",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
-    "deploy": "gh-pages --dist build --branch v2",
+    "deploy": "gh-pages --dist build --branch v2 --dotfiles",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
