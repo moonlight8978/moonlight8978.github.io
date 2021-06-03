@@ -9,8 +9,8 @@ curl_command="curl --silent --output release.json --write-out '%{http_code}' \
   --data '{
     \"tag_name\": \"$RELEASE_PREFIX-$TIMESTAMP\",
     \"target_commitish\": \"$BRANCH\",
-    \"name\": \"Version $VERSION\",
-    \"body\": \"- Commit ID: $COMMIT_ID\r\n- Released time: $TIMESTAMP\",
+    \"name\": \"$RELEASE_PREFIX-$TIMESTAMP\",
+    \"body\": \"- Version: $VERSION\r\n- Commit ID: $COMMIT_ID\r\n- Released time: $TIMESTAMP\",
     \"draft\": false,
     \"prerelease\": false
   }' \
