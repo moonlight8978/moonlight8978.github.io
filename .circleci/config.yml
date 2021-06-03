@@ -1,0 +1,22 @@
+orbs:
+  node: circleci/node@4.5.0
+
+version: 2.1
+
+jobs:
+  build-and-release:
+    docker:
+      - image: cimg/node:14.17
+
+    steps:
+      - checkout
+      - run: |
+          node --version
+          yarn --version
+      - node/install:
+          pkg-manager: yarn
+
+workflows:
+  production:
+    jobs:
+      - build-and-release
