@@ -1,0 +1,1 @@
+(self.webpackChunkmoonlight_8978_github_io=self.webpackChunkmoonlight_8978_github_io||[]).push([[7060],{6854:function(a){"use strict";a.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"appium","name":"appium","count":1,"permalink":"/blog/tags/appium"}')}}]);

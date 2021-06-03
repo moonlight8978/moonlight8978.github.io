@@ -1,0 +1,1 @@
+(self.webpackChunkmoonlight_8978_github_io=self.webpackChunkmoonlight_8978_github_io||[]).push([[797],{6704:function(t){"use strict";t.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"bdd","name":"bdd","count":1,"permalink":"/blog/tags/bdd"}')}}]);

@@ -1,0 +1,1 @@
+(self.webpackChunkmoonlight_8978_github_io=self.webpackChunkmoonlight_8978_github_io||[]).push([[5077],{9186:function(t){"use strict";t.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"multi-threading","name":"multi-threading","count":1,"permalink":"/blog/tags/multi-threading"}')}}]);

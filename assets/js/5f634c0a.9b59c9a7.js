@@ -1,0 +1,1 @@
+(self.webpackChunkmoonlight_8978_github_io=self.webpackChunkmoonlight_8978_github_io||[]).push([[4646],{1455:function(a){"use strict";a.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"puma","name":"puma","count":1,"permalink":"/blog/tags/puma"}')}}]);

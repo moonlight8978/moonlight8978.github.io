@@ -1,0 +1,1 @@
+(self.webpackChunkmoonlight_8978_github_io=self.webpackChunkmoonlight_8978_github_io||[]).push([[622],{3212:function(t){"use strict";t.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"ruby","name":"ruby","count":1,"permalink":"/blog/tags/ruby"}')}}]);

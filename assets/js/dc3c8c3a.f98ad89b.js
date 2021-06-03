@@ -1,0 +1,1 @@
+(self.webpackChunkmoonlight_8978_github_io=self.webpackChunkmoonlight_8978_github_io||[]).push([[3825],{5586:function(o){"use strict";o.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"android","name":"android","count":1,"permalink":"/blog/tags/android"}')}}]);

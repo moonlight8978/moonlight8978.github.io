@@ -1,0 +1,1 @@
+(self.webpackChunkmoonlight_8978_github_io=self.webpackChunkmoonlight_8978_github_io||[]).push([[8166],{1623:function(a){"use strict";a.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"railway-oriented-programming","name":"railway-oriented-programming","count":1,"permalink":"/blog/tags/railway-oriented-programming"}')}}]);

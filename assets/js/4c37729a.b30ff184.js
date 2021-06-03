@@ -1,0 +1,1 @@
+(self.webpackChunkmoonlight_8978_github_io=self.webpackChunkmoonlight_8978_github_io||[]).push([[3223],{3550:function(o){"use strict";o.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"devops","name":"devops","count":1,"permalink":"/blog/tags/devops"}')}}]);
