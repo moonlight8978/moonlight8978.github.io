@@ -23,11 +23,20 @@ commands:
       - run: yarn build
 
 jobs:
-  build-and-release:
+  release:
     executor: workspace
     steps:
       - prepare
-      - build
+      - run: |
+          TIMESTAMP=$(date '+%Y%m%d%H%M%S')
+          VERSION=$(cat package.json |
+            grep version |
+            head -1 |
+            awk -F: '{ print $2 }' |
+            sed 's/[", ]//g')
+          BRANCH=$(git rev-parse --abbrev-ref HEAD)
+          COMMIT_ID=$(git rev-parse HEAD)
+          ./.circleci/create-release-tag.sh $TIMESTAMP $VERSION $BRANCH $COMMIT_ID
 
   build:
     executor: workspace
@@ -35,13 +44,28 @@ jobs:
       - prepare
       - build
 
+  deploy:
+    executor: workspace
+    steps:
+      - prepare
+      - build
+      - run: cp -r .circleci build
+      - run: yarn deploy
+
 workflows:
   production:
     jobs:
-      - build-and-release:
+      - deploy:
+          filters:
+            tags:
+              only: /v2-.*/
+
+  pre-production:
+    jobs:
+      - release:
           filters:
             branches:
-              only: master
+              only: add-circle-ci
 
   development:
     jobs:
