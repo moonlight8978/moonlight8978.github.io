@@ -3,20 +3,53 @@ orbs:
 
 version: 2.1
 
-jobs:
-  build-and-release:
+executors:
+  workspace:
     docker:
       - image: cimg/node:14.17
 
+commands:
+  prepare:
     steps:
       - checkout
       - run: |
           node --version
           yarn --version
-      - node/install:
+      - node/install-packages:
           pkg-manager: yarn
+
+  build:
+    steps:
+      - run: yarn build
+
+jobs:
+  build-and-release:
+    executor: workspace
+    steps:
+      - prepare
+      - build
+
+  build:
+    executor: workspace
+    steps:
+      - prepare
+      - build
 
 workflows:
   production:
     jobs:
-      - build-and-release
+      - build-and-release:
+          filters:
+            branches:
+              only: master
+
+  development:
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore:
+                - develop
+                - master
+                - /release-.*/
+                - /v\d+/
