@@ -59,7 +59,7 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - b5:fc:a6:cb:f2:3e:71:02:47:97:71:3a:75:00:4c:4c
+            - 4f:24:11:9c:38:c1:87:33:77:e4:9a:6d:73:ed:9d:c8
       - prepare
       - build
       - run: cp -r .circleci build
@@ -72,6 +72,8 @@ workflows:
           filters:
             tags:
               only: /v2-.*/
+            branches:
+              only: master
 
   pre-production:
     jobs:
