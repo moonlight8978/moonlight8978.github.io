@@ -60,6 +60,11 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - 4f:24:11:9c:38:c1:87:33:77:e4:9a:6d:73:ed:9d:c8
+      - run:
+          name: add ssh info
+          command: |
+            git config --global user.email "moonlight8978@gmail.com"
+            git config --global user.name "_MoonLight_"
       - prepare
       - build
       - run: cp -r .circleci build
