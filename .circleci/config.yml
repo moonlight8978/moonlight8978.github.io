@@ -24,7 +24,7 @@ commands:
 
   tag:
     parameters:
-      name:
+      prefix:
         type: string
     steps:
       - run:
@@ -38,7 +38,7 @@ commands:
               sed 's/[", ]//g')
             BRANCH=$(git rev-parse --abbrev-ref HEAD)
             COMMIT_ID=$(git rev-parse HEAD)
-            ./.circleci/create-release-tag.sh $TIMESTAMP $VERSION $BRANCH $COMMIT_ID << parameters.name >>
+            ./.circleci/create-release-tag.sh $TIMESTAMP $VERSION $BRANCH $COMMIT_ID << parameters.prefix >>
 
 jobs:
   release:
@@ -46,7 +46,7 @@ jobs:
     steps:
       - prepare
       - tag:
-          name: v2
+          prefix: v2
 
   build:
     executor: workspace
