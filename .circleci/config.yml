@@ -57,6 +57,9 @@ jobs:
   deploy:
     executor: workspace
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - b5:fc:a6:cb:f2:3e:71:02:47:97:71:3a:75:00:4c:4c
       - prepare
       - build
       - run: cp -r .circleci build
