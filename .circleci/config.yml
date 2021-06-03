@@ -1,0 +1,98 @@
+orbs:
+  node: circleci/node@4.5.0
+
+version: 2.1
+
+executors:
+  workspace:
+    docker:
+      - image: cimg/node:14.17
+
+commands:
+  prepare:
+    steps:
+      - checkout
+      - run: |
+          node --version
+          yarn --version
+      - node/install-packages:
+          pkg-manager: yarn
+
+  build:
+    steps:
+      - run: yarn build
+
+  tag:
+    parameters:
+      prefix:
+        type: string
+    steps:
+      - run:
+          name: create release tag
+          command: |
+            TIMESTAMP=$(date '+%Y%m%d%H%M%S')
+            VERSION=$(cat package.json |
+              grep version |
+              head -1 |
+              awk -F: '{ print $2 }' |
+              sed 's/[", ]//g')
+            BRANCH=$(git rev-parse --abbrev-ref HEAD)
+            COMMIT_ID=$(git rev-parse HEAD)
+            ./.circleci/create-release-tag.sh $TIMESTAMP $VERSION $BRANCH $COMMIT_ID << parameters.prefix >>
+
+jobs:
+  release:
+    executor: workspace
+    steps:
+      - prepare
+      - tag:
+          prefix: v2
+
+  build:
+    executor: workspace
+    steps:
+      - prepare
+      - build
+
+  deploy:
+    executor: workspace
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - 4f:24:11:9c:38:c1:87:33:77:e4:9a:6d:73:ed:9d:c8
+      - run:
+          name: add ssh info
+          command: |
+            git config --global user.email "moonlight8978@gmail.com"
+            git config --global user.name "_MoonLight_"
+      - prepare
+      - build
+      - run: cp -r .circleci build
+      - run: yarn deploy
+
+workflows:
+  production:
+    jobs:
+      - deploy:
+          filters:
+            tags:
+              only: /v2-.*/
+            branches:
+              only: reserved
+
+  pre-production:
+    jobs:
+      - release:
+          filters:
+            branches:
+              only: develop
+
+  development:
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore:
+                - develop
+                - /release-.*/
+                - /v\d+/
