@@ -22,21 +22,31 @@ commands:
     steps:
       - run: yarn build
 
+  tag:
+    parameters:
+      prefix:
+        type: string
+    steps:
+      - run:
+          name: create release tag
+          command: |
+            TIMESTAMP=$(date '+%Y%m%d%H%M%S')
+            VERSION=$(cat package.json |
+              grep version |
+              head -1 |
+              awk -F: '{ print $2 }' |
+              sed 's/[", ]//g')
+            BRANCH=$(git rev-parse --abbrev-ref HEAD)
+            COMMIT_ID=$(git rev-parse HEAD)
+            ./.circleci/create-release-tag.sh $TIMESTAMP $VERSION $BRANCH $COMMIT_ID << parameters.prefix >>
+
 jobs:
   release:
     executor: workspace
     steps:
       - prepare
-      - run: |
-          TIMESTAMP=$(date '+%Y%m%d%H%M%S')
-          VERSION=$(cat package.json |
-            grep version |
-            head -1 |
-            awk -F: '{ print $2 }' |
-            sed 's/[", ]//g')
-          BRANCH=$(git rev-parse --abbrev-ref HEAD)
-          COMMIT_ID=$(git rev-parse HEAD)
-          ./.circleci/create-release-tag.sh $TIMESTAMP $VERSION $BRANCH $COMMIT_ID
+      - tag:
+          name: v2
 
   build:
     executor: workspace

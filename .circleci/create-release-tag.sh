@@ -2,11 +2,12 @@ TIMESTAMP=$1
 VERSION=$2
 BRANCH=$3
 COMMIT_ID=$4
-echo "$TIMESTAMP $VERSION $BRANCH $COMMIT_ID"
+RELEASE_PREFIX=$5
+echo "$TIMESTAMP $VERSION $BRANCH $COMMIT_ID $RELEASE_PREFIX"
 
 curl_command="curl --silent --output release.json --write-out '%{http_code}' \
   --data '{
-    \"tag_name\": \"production-$TIMESTAMP\",
+    \"tag_name\": \"$RELEASE_PREFIX-$TIMESTAMP\",
     \"target_commitish\": \"$BRANCH\",
     \"name\": \"Version $VERSION\",
     \"body\": \"- Commit ID: $COMMIT_ID\r\n- Released time: $TIMESTAMP\",
