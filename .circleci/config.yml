@@ -78,14 +78,14 @@ workflows:
             tags:
               only: /v2-.*/
             branches:
-              only: master
+              only: reserved
 
   pre-production:
     jobs:
       - release:
           filters:
             branches:
-              only: add-circle-ci
+              only: develop
 
   development:
     jobs:
@@ -94,6 +94,5 @@ workflows:
             branches:
               ignore:
                 - develop
-                - master
                 - /release-.*/
                 - /v\d+/
