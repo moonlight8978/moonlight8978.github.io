@@ -1,9 +1,76 @@
-# Stream large response in Rails
+# Enumerator and Large Response Streaming
+
+> Last updated: 2021-06-04
+
+## Enumerator
+
+### Plain Old Ruby Objects (POROs)
+
+- Create an enumerator with block will returns an `Enumerator` instance with an `Enumerator::Generator` instance as data source.
+
+  - `Enumerator::Generator` can be paused after `yielder` get called (generate data lazily)
+
+  ```ruby
+  enumerator = Enumerator.new do |yielder|
+  	5.times do |i|
+      puts "i = #{i}"
+      yielder << i
+  	end
+  end
+  => #<Enumerator: #<Enumerator::Generator:0x00007fe6b18839d0>:each>
+
+  enumerator.each do |e|
+    puts "e = #{e}"
+  end
+  # => i = 0
+  #    e = 0
+  #    i = 1
+  #    e = 1
+  #    i = 2
+  #    e = 2
+  #    i = 3
+  #    e = 3
+  #    i = 4
+  #    e = 4
+  ```
+
+  - `Enumerator` datasource is respond to Enumerable method?
+
+  ```ruby
+  [1, 2].map    => #<Enumerator: [1, 2]:map>
+  [1, 2].select => #<Enumerator: [1, 2]:select>
+  ```
+
+- Custom Enumerator
+
+  ```ruby
+  class SampleIterator
+    def brrr(&block)
+      puts "1, 2"
+      yield(1)
+      return 5
+    end
+  end
+  
+  enumerator = SampleIterator.new.enum_for(:brrr)
+  # => #<Enumerator: #<SampleIterator:0x00007f2866d45bd0>:brrr>
+  
+  b = enumerator.each do |e|
+    puts "e = #{e}"
+  end
+  
+  puts "b = #{b}"
+  
+  # => 1, 2
+  #    e = 1
+  #    b = 5
+  ```
+## Stream large response in Rails
 
 - Streaming: https://api.rubyonrails.org/classes/ActionController/Streaming.html
 - Live: https://api.rubyonrails.org/classes/ActionController/Live.html
 
-#### Streaming
+### Streaming
 
 - Usage
 
@@ -77,7 +144,7 @@
 - Use case
   - Render large data table
 
-#### ActionController::Live
+### ActionController::Live
 
 - Usage
 
@@ -123,7 +190,7 @@
   X-MiniProfiler-Original-Cache-Control: no-cache
   X-MiniProfiler-Ids: 9dfl9qzc7op6ckrts566,su3q84fa2xlystr0tz7s,2eqh0hmva589dxr9zzy4,7wbhxgbcz4oel99bm67x,vtiyjx7ucywbv85q8jss
   Set-Cookie: __profilin=p%3Dt; path=/; HttpOnly; SameSite=Lax
-
+  
   1,title,content
   1,title,content
   1,title,content
@@ -133,35 +200,39 @@
 
   - The body is concatenated overtime
 
-#### ActionController::Metal enumerable response_body
+### ActionController::Metal#response_body=
+
+* `ActionController::Metal#response_body=` accept a `Enumerator` as parameter. So it will lazily generate the needed data, then stream to user client.
 
 - Usage
 
   ```ruby
-  disposition = ActionDispatch::Http::ContentDisposition.format(disposition: "attachment", filename: "chunked.csv")
-
-  response.headers["Content-Disposition"] = disposition
-  response.headers["Content-Type"] = "text/csv"
-  # Tell Rack to stream the content
-  response.headers.delete("Content-Length")
-  # Don't cache anything from this generated endpoint
-  response.headers["Cache-Control"] = "no-cache"
-  # this is a hack to preven middleware from buffering
-  response.headers["Last-Modified"] = Time.current.httpdate
-  # Don't buffer when going through proxy servers
-  response.headers["X-Accel-Buffering"] = "no"
-
-  self.response_body = Enumerator.new do |io|
-    100.times do
-      io << CSV.generate_line(["1", "title", "content"])
-      sleep 0.05
+  respond_to do |format|
+    format.csv do
+      disposition = ActionDispatch::Http::ContentDisposition.format(disposition: "attachment", filename: "chunked.csv")
+  
+      response.headers["Content-Disposition"] = disposition
+      response.headers["Content-Type"] = "text/csv"
+      # Tell Rack to stream the content
+      response.headers.delete("Content-Length")
+      # Don't cache anything from this generated endpoint
+      response.headers["Cache-Control"] = "no-cache"
+      # this is a hack to preven middleware from buffering
+      response.headers["Last-Modified"] = Time.current.httpdate
+      # Don't buffer when going through proxy servers
+      response.headers["X-Accel-Buffering"] = "no"
+  
+      self.response_body = Enumerator.new do |yielder|
+        100.times do
+          yielder << CSV.generate_line(["1", "title", "content"])
+          sleep 0.05
+        end
+      end
     end
   end
   ```
 
-- Note:
-
-  - Does not require anything special
+- Does not require anything special
 
 - Request
 
@@ -187,7 +258,7 @@
   X-MiniProfiler-Original-Cache-Control: no-cache
   X-MiniProfiler-Ids: 4909w92x1300zeq1kjfw,su3q84fa2xlystr0tz7s,2eqh0hmva589dxr9zzy4,7wbhxgbcz4oel99bm67x,vtiyjx7ucywbv85q8jss,9dfl9qzc7op6ckrts566
   Set-Cookie: __profilin=p%3Dt; path=/; HttpOnly; SameSite=Lax
-
+  
   1,title,content
   1,title,content
   1,title,content
@@ -233,3 +304,42 @@
   ```ruby
   response.headers["X-Accel-Buffering"] = "no"
   ```
+
+#### Other format
+
+* JSON
+
+```ruby
+self.response_body = Enumerator.new do |yielder|
+  yielder << "["
+  100.times do |index|
+    yielder << "," unless index == 0
+    yielder << { title: "title", content: "content" }.to_json
+    sleep 0.05
+  end
+  yielder << "]"
+end
+```
+
+* ZIP
+  * Use [`zip_tricks`](https://github.com/WeTransfer/zip_tricks)
+
+```ruby
+include ZipTricks::RailsStreaming
+
+zip_tricks_stream do |zip|
+  zip.write_deflated_file("users.csv") do |sink|
+    CSV(sink) do |csv_write|
+      csv_write << User.column_names
+      User.all.find_each do |user|
+        csv_write << user.attributes.values
+      end
+    end
+  end
+  
+  zip.write_deflated_file("posts.csv") do |sink|
+    # ...
+  end
+end
+```
+
