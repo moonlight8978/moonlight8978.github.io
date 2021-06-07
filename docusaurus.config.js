@@ -103,6 +103,7 @@ module.exports = {
         sidebarPath: require.resolve("./sidebars.js"),
         editUrl:
           "https://github.com/moonlight8978/moonlight8978.github.io/edit/v2/books/",
+        showLastUpdateTime: true,
       },
     ],
   ],
