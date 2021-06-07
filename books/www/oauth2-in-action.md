@@ -1,4 +1,4 @@
-# OAuth2
+# OAuth2 in Action
 
 ## What OAuth2 do?
 
@@ -14,7 +14,7 @@
 
 ## Flow
 
-![](/img/oauth2/flow.webp)
+![](/img/oauth2-in-action/flow.png)
 
 ## Components
 
