@@ -11,7 +11,7 @@ module.exports = {
   projectName: "moonlight8978.github.io",
   themeConfig: {
     navbar: {
-      title: "My Site",
+      title: "_MoonLight_",
       logo: {
         alt: "moonlight8978",
         src: "https://avatars.githubusercontent.com/u/26299310?v=4",
