@@ -161,8 +161,48 @@ code: N/A
 
 ## User data
 
-- Is a script that run when lauching an instance
+- A script that run when lauching an instance (only first launch, restarting will not trigger the execution by default)
+
+  - Can be configured to be executed on restart: [link](https://aws.amazon.com/premiumsupport/knowledge-center/execute-user-data-ec2/) (the example use mime-multi part file)
+
+  ```txt
+  Content-Type: multipart/mixed; boundary="//"
+  MIME-Version: 1.0
+
+  --//
+  Content-Type: text/cloud-config; charset="us-ascii"
+  MIME-Version: 1.0
+  Content-Transfer-Encoding: 7bit
+  Content-Disposition: attachment; filename="cloud-config.txt"
+
+  #cloud-config
+  cloud_final_modules:
+  - [scripts-user, always]
+
+  --//
+  Content-Type: text/x-shellscript; charset="us-ascii"
+  MIME-Version: 1.0
+  Content-Transfer-Encoding: 7bit
+  Content-Disposition: attachment; filename="userdata.txt"
+
+  #!/bin/bash
+  /bin/echo "Hello World" >> /tmp/testfile.txt
+  --//
+  ```
+
 - User data is executed as `root` by default
+
+- Debug (on Amazon AMI Linux 2)
+
+```log
+Jun 10 09:38:21 cloud-init[3233]: util.py[WARNING]: Failed running /var/lib/cloud/instance/scripts/part-001 [1]
+Jun 10 09:38:21 cloud-init[3233]: cc_scripts_user.py[WARNING]: Failed to run module scripts-user (scripts in /var/lib/cloud/instance/scripts)
+Jun 10 09:38:21 cloud-init[3233]: util.py[WARNING]: Running module scripts-user (<module 'cloudinit.config.cc_scripts_user' from '/usr/lib/python2.7/site-packages/cloudinit/config/cc_scripts_user.pyc'>) failed
+```
+
+```log
+Cloud-init v. 19.3-43.amzn2 finished at Thu, 10 Jun 2021 09:43:39 +0000. Datasource DataSourceEc2.  Up 11.33 seconds
+```
 
 ## Metadata
 
