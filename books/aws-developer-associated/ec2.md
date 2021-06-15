@@ -1,11 +1,11 @@
 ---
-title: AWS EC2
+title: AWS Elastic Compute Cloud (EC2)
 code: N/A
 ---
 
 ## Overview
 
-- Elastic Compute Cloud
+- Elastic Compute Cloud → ECC → EC2
 - Things can be configured:
   - CPU, RAM (All instances use ECC RAM), Network (Public IP, Network speed)
   - Storage (SSD)
@@ -209,3 +209,92 @@ Cloud-init v. 19.3-43.amzn2 finished at Thu, 10 Jun 2021 09:43:39 +0000. Datasou
 ```bash
 curl http://169.254.169.254/latest/meta-data
 ```
+
+## Purchase options
+
+- Standard (On-Demand)
+  - Short workload
+- Reserved:
+  - Reserved Instances: Long workload (1 year or 3 years)
+  - Convertible Reserved Instances: Long workload with flexible instances (instance type is changable)
+  - Scheduled Reserved Instances: scheduled
+- Spot instances
+  - Short workload
+  - Can lose instances (less reliable)
+- Dedicated Hosts:
+  - Book entire server/placement. Full control
+- Dedicated Instances:
+
+- EBS Volume is a network drive (attach through network, not physical drive) which can be attached to instances while they run
+
+  - Has latency
+  - Can be detached and attached to another instance
+
+## Elastic Block Store (EBS)
+
+### EBS
+
+- Allow data persistence (after instance termination)
+- EBS are bound to availability zone
+- Capacity: size in GBs, IOPS (I/O per second)
+- When launch an instance, root volume is deleted on termination by default (can be unchecked), other volumes are not
+- Has limited performance
+
+#### Snapshot
+
+- A backup of EBS at a point of time
+- Recommend to detach EBS before snapshot (not necessary)
+- Can be copied across AZ and region
+
+#### AMI
+
+- Amazon Machine Images
+- Pre-package softwares for faster boot, monitoring, ...
+
+#### Types
+
+- gp2/gp3 (SSD): General Purpose
+  - Cost effective, low latency
+  - 1GB - 1TB
+  - Limited performance:
+    - Small gp2 can burst to 3000 IOPS
+    - Size and IOPS are linked, max is 16000 IOPS
+  - gp3: Newer generation, IOPS and throughput can be increased independently
+- io1/io2 (SSD): Low-latency, high-throughput workloads
+  - io2:
+    - Recommended. Same price as io1 but higher durability and IOPS
+    - Sub-milisecond latency
+  - Support EBS multi-attach
+- st1 (HDD): Throughput optimized. Frequently accessed
+- sc1 (HHD): Cold HDD. Less frequently accessed
+
+Only SSD-type EBS can be used as boot volume
+
+### EC2 Instance Store
+
+- High performance hardware disk
+- Connect directly to the server (physical connection)
+- Lose the storage when stop (ephemeral storage). Risk of data lost when hardware fails
+- Usecase: Buffer, cache, temporary content, ...
+
+### Multi-attach
+
+- Attach the same EBS volume to multiple EC2 instances in the same AZ
+- Only works on io1/io2 family volume
+- Each instance has full read/write permission on the volume
+- Filesystem must be cluster-aware (not XFS, EX4, ...)
+
+## Elastic File System (EFS)
+
+- Network file system that can be mounted on many EC2 instances
+- Works on multi AZ
+- Grow to petabyte-scale automatically
+- Expensive (3x gp2)
+- NFSv4.1 protocol
+- Use security group to control access to EFS
+- Compatible with Linux based AMI
+- Encryption at reset using KMS
+- Performance:
+  - General Purpose: Latency-sensitive
+  - Max I/O: higher latency, throughput, highly parallel
+  - Bursting mode
