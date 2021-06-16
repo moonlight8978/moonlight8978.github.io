@@ -194,6 +194,10 @@ code: N/A
 
 - Debug (on Amazon AMI Linux 2)
 
+```bash
+tail -f /var/log/cloud-init-output.log
+```
+
 ```log
 Jun 10 09:38:21 cloud-init[3233]: util.py[WARNING]: Failed running /var/lib/cloud/instance/scripts/part-001 [1]
 Jun 10 09:38:21 cloud-init[3233]: cc_scripts_user.py[WARNING]: Failed to run module scripts-user (scripts in /var/lib/cloud/instance/scripts)
@@ -239,6 +243,7 @@ curl http://169.254.169.254/latest/meta-data
 - Capacity: size in GBs, IOPS (I/O per second)
 - When launch an instance, root volume is deleted on termination by default (can be unchecked), other volumes are not
 - Has limited performance
+- Pay for provision
 
 #### Snapshot
 
@@ -287,12 +292,21 @@ Only SSD-type EBS can be used as boot volume
 ## Elastic File System (EFS)
 
 - Network file system that can be mounted on many EC2 instances
+
+:::caution
+Compatible with Linux based AMI only
+:::
+
 - Works on multi AZ
 - Grow to petabyte-scale automatically
-- Expensive (3x gp2)
+- Expensive (3x gp2). Pay for actual usage
+
+:::tip
+EFS-IA (Infrequently Accessed) for cost savings
+:::
+
 - NFSv4.1 protocol
 - Use security group to control access to EFS
-- Compatible with Linux based AMI
 - Encryption at reset using KMS
 - Performance:
   - General Purpose: Latency-sensitive
