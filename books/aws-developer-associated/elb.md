@@ -53,14 +53,28 @@ code: N/A
   - Availability zones
   - Routing: `@ref` [Target group](#Target group)
 
+- Route tables support:
+
+  - URL (path)
+  - Hostname (`HOST` header)
+  - Query params
+
+- Map dynamic port (ECS)
+
 ![](https://images.viblo.asia/6b35f0c0-3ce6-46c1-9d9d-b3fd4ffe8fd8.jpg)
 
 - Rules: guide ALB to route traffic to correct resources
+
   - Ordering - Matcher - Processor
     - Matcher: by header, by path, ...
     - Processor:
       - Forwarding: to some target groups
       - Redirect: redirect to another url
+
+- Headers:
+  - `X-Forwarded-For`: real request IP
+  - `X-Forwarded-Port`
+  - `X-Forwarded-Proto`: protocol talks to load balancer
 
 #### Network Load Balancer
 
