@@ -1,0 +1,1 @@
+(self.webpackChunkmoonlight_8978_github_io=self.webpackChunkmoonlight_8978_github_io||[]).push([[4901],{736:function(e){"use strict";e.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"websocket","name":"websocket","count":2,"permalink":"/blog/tags/websocket"}')}}]);

@@ -4,9 +4,23 @@
         <title>moonlight8978's Blog Blog</title>
         <link>https://moonlight8978.github.io/blog</link>
         <description>moonlight8978's Blog Blog</description>
-        <lastBuildDate>Mon, 31 May 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 17 Jun 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[Tìm hiểu về Active Record Encryption]]></title>
+            <link>https://moonlight8978.github.io/blog/tim-hieu-ve-active-record-encryption</link>
+            <guid>tim-hieu-ve-active-record-encryption</guid>
+            <pubDate>Thu, 17 Jun 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Overview]]></description>
+        </item>
+        <item>
+            <title><![CDATA[WebSocket hoạt động như thế nào?]]></title>
+            <link>https://moonlight8978.github.io/blog/websocket-hoat-dong-nhu-the-nao</link>
+            <guid>websocket-hoat-dong-nhu-the-nao</guid>
+            <pubDate>Wed, 16 Jun 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[WebSocket là gì]]></description>
+        </item>
         <item>
             <title><![CDATA[Cùng tìm hiểu về Puma (Ruby on Rails)]]></title>
             <link>https://moonlight8978.github.io/blog/cung-tim-hieu-ve-puma-ruby-on-rails</link>
