@@ -3,15 +3,16 @@ title: Elastic Load Balancer
 code: N/A
 ---
 
-#### Overview
+## Overview
 
 - Can be physical hardware or virtual software that accepts incoming traffic, and then distribute the traffic to multiple targets
 - 3 type of ELB
   - Application Load Balancer (HTTP/HTTPS)
   - Network Load Balancer (TCP/UDP)
   - Classic Load Balancer (Legacy)
+- Can be scaled but not instantaneous → Contact AWS for a _warm-up_
 
-#### Rules of Traffic
+## Rules of Traffic
 
 - Listeners
 
@@ -28,70 +29,101 @@ code: N/A
 
   - Target group includes:
     - Machines which can be matched using
-      * Instance (AWS-provisioned machines)
-      * IP address (on-premise machines)
-      * Lambda function
+      - Instance (AWS-provisioned machines)
+      - IP address (on-premise machines)
+      - Lambda function
     - Port on each machine (use for traffic forwarding and healthcheck)
     - Health check rule (can use path without ALB rule path prefix): perform on each instance
-      * ALB rules: `/devices*` forward to target group
-      * Target group healthcheck: `/`
+      - ALB rules: `/devices*` forward to target group
+      - Target group healthcheck: `/`
   - Healthcheck fails will not affect instance state, ELB will not route the traffic to that instance
 
 - For CLB, traffic is sent to Listeners, then it forwards the traffic to any registered EC2 instances. No rules is applied
 
-#### Application Load Balancer
+## Application Load Balancer
 
-* To load balance HTTP/HTTPS traffic (Layer 7 load balancer)
+- To load balance HTTP/HTTPS traffic (Layer 7 load balancer)
 
-* Create ALB:
+- Create ALB:
 
-  * Type: internal / or public (internet facing)
+  - Type: internal / or public (internet facing)
 
-  * Listener: Ports/Protocol which ALB listens to
-    * Can listen to multiple ports
-  * Availability zones
-  * Routing: `@ref` [Target group](#Target group)
+  - Listener: Ports/Protocol which ALB listens to
+    - Can listen to multiple ports
+  - Availability zones
+  - Routing: `@ref` [Target group](#Target group)
+
+- Route tables support:
+
+  - URL (path)
+  - Hostname (`HOST` header)
+  - Query params
+
+- Map dynamic port (ECS)
 
 ![](https://images.viblo.asia/6b35f0c0-3ce6-46c1-9d9d-b3fd4ffe8fd8.jpg)
 
-* Rules: guide ALB to route traffic to correct resources
-  * Ordering - Matcher - Processor
-    * Matcher: by header, by path, ...
-    * Processor:
-      * Forwarding: to some target groups
-      * Redirect: redirect to another url
+- Rules: guide ALB to route traffic to correct resources
 
-#### Network Load Balancer
+  - Ordering - Matcher - Processor
+    - Matcher: by header, by path, ...
+    - Processor:
+      - Forwarding: to some target groups
+      - Redirect: redirect to another url
+
+- Headers:
+  - `X-Forwarded-For`: real request IP
+  - `X-Forwarded-Port`
+  - `X-Forwarded-Proto`: protocol talks to load balancer
+
+## Network Load Balancer
 
 - Handle TCP/UDP traffic (Layer 4 LB)
 - Cross-zone Load Balancing
 - Suitable for Multiplayer Game, or when network performance is critical
 
-#### Classic Load Balancer
+## Classic Load Balancer
 
-* Can balance HTTP/HTTPS (Layer 7) or TCP traffic (Layer 4) (not at the same time)
-* Cross-zone Load Balancing
-* 504 response is returned if the underlying application is not responding
-* Deprecated
+- Can balance HTTP/HTTPS (Layer 7) or TCP traffic (Layer 4) (not at the same time)
+- Cross-zone Load Balancing
+- 504 response is returned if the underlying application is not responding
+- Deprecated
 
-#### Sticky sessions
+## Sticky sessions
 
-* Use cookie (Layer 7)
+- Use cookie (Layer 7)
 
-* Advanced load balancing method that allows us to bind a user's session to a specific EC2 instance
-* Ensure all requests from that session are sent to the same instance
-* Typically utilized with a CLB
-* Can be enabled for ALB, but can only be set on a Target Group instead of individual EC2 instances
+- Advanced load balancing method that allows us to bind a user's session to a specific EC2 instance
+- Ensure all requests from that session are sent to the same instance
+- Typically utilized with a CLB
+- Can be enabled for ALB, but can only be set on a Target Group instead of individual EC2 instances
 
-* Useful when specific information is only stored locally on a single instance (stateful app)
+- Useful when specific information is only stored locally on a single instance (stateful app)
 
-#### X-Forwarded-For (XFF) header
+## X-Forwarded-For (XFF) header
 
 - Represent user IPv4 address
 
-#### Cross-Zone Load Balancing
+## Cross-Zone Load Balancing
 
 - Normally, the load balancer route traffic to the targets in the same AZ
 - At least 2 subnet (only 1 subnet per AZ) => 2 AZ must be choosen to increase the availability of the LB
 - When Cross-Zone Load Balancing is enabled (on CLB or NLB), the traffic will be distrubuted evenly across all AZ
-- 
+
+## Server Name Indication (SNI)
+
+- Solve the problem of loading multiple certificates onto single webserver
+- SNI is a protocol, requires the client to indicate the hostname of the target server in the initial SSL handshake. The server will find the correct certificate or return the default one.
+- Only supported by ALB and NLB
+
+## Connection draining
+
+- Naming:
+
+  - CLB: connection draining
+  - ALB/NLB: deregistration delay
+
+- Is the time to complete the in-flight to the target before being deregistered
+
+  - Default 300s
+  - ALB will stop sending request to the instances which in draining mode

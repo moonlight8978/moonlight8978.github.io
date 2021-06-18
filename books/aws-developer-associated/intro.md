@@ -4,6 +4,12 @@ sidebar_position: 1
 
 # Intro
 
+## Course
+
+- https://www.udemy.com/course/aws-certified-developer-associate-dva-c01/
+
+- https://www.youtube.com/watch?v=RrKRN9zRBWs
+
 ## Break down
 
 | Domain                       | Rate | Questions |
@@ -14,18 +20,18 @@ sidebar_position: 1
 | Refactoring                  | 10%  | 6.5       |
 | Monitoring & troubleshooting | 12%  | 7.8       |
 
-#### Summary
+## Summary
 
 - https://github.com/gitvani/aws-mindmap
 - http://mistwire.com/2016/05/aws-certified-solutions-architect-associate-study-notes/
 
-#### Encryption
+## Encryption
 
 - https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html
 - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.html
 - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html
 
-#### EC2
+## EC2
 
 - EC2 Instance Types https://aws.amazon.com/ec2/instance-types/
 - Instance Store vs EBS https://aws.amazon.com/premiumsupport/knowledge-center/instance-store-vs-ebs/

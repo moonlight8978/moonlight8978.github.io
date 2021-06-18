@@ -3,12 +3,23 @@ title: IAM
 code: N/A
 ---
 
-#### Core
+## Core
 
-* User can be group into Group, which will have same permissions, make adding or removing permission easier
-* Roles can have many policies attached. Various AWS resources alllow roles to be attached directly to them
+- User can be group into Group (not required)
 
-#### Policy
+  Groups only contain users, not other groups
+
+  User can belong to multiple groups
+
+  All users in a group share the same permissions, make adding or removing permission easier (except inline policies)
+
+- Permission is granted by using policies (JSON document)
+
+  Least privilege principle
+
+- Roles can have many policies attached. Various AWS resources alllow roles to be attached directly to them
+
+## Policy
 
 - Types
   - Managed Policies: Managed by AWS, not editable
@@ -16,73 +27,74 @@ code: N/A
   - Inline Policies: Policies which directly attached to user
 - Structure
   - Statement: Array of policies
-    - Sid: Label
+    - Sid: Identifier of statement
     - Effect: Allow/Deny
-    - Principal: account, user, role, or federated user to allow or deny access
+    - Principal: account, user, role, or federated user to which the policy applied to
     - Action: list of actions to deny/allow
-    - Resource: The resource to which the actions applies
-    - Condition: Circumstances under which the policy grants permission
+    - Resource: list of resources to which the actions applied to
+    - Condition: Condition for this policy is in effect
 
-#### User
+## User
 
-* Password policy: to set minimum requirements to user password
-* Programmatic access key
-* Multi-factor authentication (MFA)
-  * Cannot be forced to enabled
-  * Admin can create policy requiring MFA to access resources
+- Password policy: to set minimum requirements to user password
+- Programmatic access key
+- Multi-factor authentication (MFA)
 
-* Temporary Security Credentials
+  - Cannot be forced to enabled
+  - Admin can create policy requiring MFA to access resources
 
-  * Like programmatic access keys, except they are temporary
-  * Useful in scenarios that involve: identity federation, delegation, cross-account access, IAM roles
-  * Can last from minutes to hours
+- Temporary Security Credentials
 
-  * Not stored with the user, are generated dynamically and provided to the user when requested
-  * Basis for roles and identity federation 
+  - Like programmatic access keys, except they are temporary
+  - Useful in scenarios that involve: identity federation, delegation, cross-account access, IAM roles
+  - Can last from minutes to hours
 
-### Role
+  - Not stored with the user, are generated dynamically and provided to the user when requested
+  - Basis for roles and identity federation
 
-* Based on Temporary Security Credentials
-* Types:
-  * AWS Service Role: a role that a service assumes to perform actions in AWS account
-  * AWS service role for EC2 instance
-    * Special type of service role for that an application running on EC2 instance
-  * AWS service-linked role
-    * A unique type of service role that is linked directly to an AWS service.
-    * Are predefined, and includes all the permissions that the service requires
-* Delegation: See **Cross-account roles** below
+## Role
 
-#### Identity Federation
+- Based on Temporary Security Credentials
+- Types:
+  - AWS Service Role: a role that a service assumes to perform actions in AWS account
+  - AWS service role for EC2 instance
+    - Special type of service role for that an application running on EC2 instance
+  - AWS service-linked role
+    - A unique type of service role that is linked directly to an AWS service.
+    - Are predefined, and includes all the permissions that the service requires
+- Delegation: See [Cross-account roles](#cross-account-roles) below
 
-* Linking multiple identity management systems
-* Support:
-  * Enterprise: SAML, Custom Federation broker
-  * Web identity federation: Amazon, Facebook, Google, OpenID Connect 2.0
+## Identity Federation
 
-#### Security Token Service (STS)
+- Linking multiple identity management systems
+- Support:
+  - Enterprise: SAML, Custom Federation broker
+  - Web identity federation: Amazon, Facebook, Google, OpenID Connect 2.0
 
-* STS is a web service that enables us to request temporary, limited-privilege credentials for IAM users or federated users
+## Security Token Service (STS)
 
-* Global service
+- STS is a web service that enables us to request temporary, limited-privilege credentials for IAM users or federated users
 
-* All requests go to a single endpoint at https://sts.amazonaws.com
+- Global service
 
-  * Response include: AccessKeyID, SecretAccessKey, SessionToken, Expiration
-  * Some API actions to obtain STS:
-    * AssumeRole
-    * AssumeRoleWithSAML
-    * AssumeRoleWithWebIdentity
-    * ...
+- All requests go to a single endpoint at https://sts.amazonaws.com
 
-* AssumeRoleWithWebIdentity
+  - Response include: AccessKeyID, SecretAccessKey, SessionToken, Expiration
+  - Some API actions to obtain STS:
+    - AssumeRole
+    - AssumeRoleWithSAML
+    - AssumeRoleWithWebIdentity
+    - ...
 
-  ![](https://images.viblo.asia/55adfd7f-f755-42fd-a17f-27f13dd82378.png)
+- AssumeRoleWithWebIdentity
 
-#### Cross-account roles
+  ![](/img/aws-developer-associated/iam-sts.webp)
 
-* Grant users from another 
+## Cross-account roles
 
-* Policy
+- Grant users from another
+
+- Policy
 
   ```json
   {
@@ -94,8 +106,12 @@ code: N/A
   }
   ```
 
-#### Practical notes
+## Audit
+
+- IAM Credentials Report: List all users, and their status
+- IAM Access Advisor: Show service permissions granted to a user and when those services were last accessed
+
+## Practical notes
 
 - Use groups to assign permissions to IAM users
 - Use IAM role instead of private keys
-
