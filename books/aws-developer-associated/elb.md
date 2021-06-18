@@ -3,7 +3,7 @@ title: Elastic Load Balancer
 code: N/A
 ---
 
-#### Overview
+## Overview
 
 - Can be physical hardware or virtual software that accepts incoming traffic, and then distribute the traffic to multiple targets
 - 3 type of ELB
@@ -12,7 +12,7 @@ code: N/A
   - Classic Load Balancer (Legacy)
 - Can be scaled but not instantaneous → Contact AWS for a _warm-up_
 
-#### Rules of Traffic
+## Rules of Traffic
 
 - Listeners
 
@@ -40,7 +40,7 @@ code: N/A
 
 - For CLB, traffic is sent to Listeners, then it forwards the traffic to any registered EC2 instances. No rules is applied
 
-#### Application Load Balancer
+## Application Load Balancer
 
 - To load balance HTTP/HTTPS traffic (Layer 7 load balancer)
 
@@ -76,20 +76,20 @@ code: N/A
   - `X-Forwarded-Port`
   - `X-Forwarded-Proto`: protocol talks to load balancer
 
-#### Network Load Balancer
+## Network Load Balancer
 
 - Handle TCP/UDP traffic (Layer 4 LB)
 - Cross-zone Load Balancing
 - Suitable for Multiplayer Game, or when network performance is critical
 
-#### Classic Load Balancer
+## Classic Load Balancer
 
 - Can balance HTTP/HTTPS (Layer 7) or TCP traffic (Layer 4) (not at the same time)
 - Cross-zone Load Balancing
 - 504 response is returned if the underlying application is not responding
 - Deprecated
 
-#### Sticky sessions
+## Sticky sessions
 
 - Use cookie (Layer 7)
 
@@ -100,13 +100,30 @@ code: N/A
 
 - Useful when specific information is only stored locally on a single instance (stateful app)
 
-#### X-Forwarded-For (XFF) header
+## X-Forwarded-For (XFF) header
 
 - Represent user IPv4 address
 
-#### Cross-Zone Load Balancing
+## Cross-Zone Load Balancing
 
 - Normally, the load balancer route traffic to the targets in the same AZ
 - At least 2 subnet (only 1 subnet per AZ) => 2 AZ must be choosen to increase the availability of the LB
 - When Cross-Zone Load Balancing is enabled (on CLB or NLB), the traffic will be distrubuted evenly across all AZ
--
+
+## Server Name Indication (SNI)
+
+- Solve the problem of loading multiple certificates onto single webserver
+- SNI is a protocol, requires the client to indicate the hostname of the target server in the initial SSL handshake. The server will find the correct certificate or return the default one.
+- Only supported by ALB and NLB
+
+## Connection draining
+
+- Naming:
+
+  - CLB: connection draining
+  - ALB/NLB: deregistration delay
+
+- Is the time to complete the in-flight to the target before being deregistered
+
+  - Default 300s
+  - ALB will stop sending request to the instances which in draining mode
