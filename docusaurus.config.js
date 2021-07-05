@@ -1,3 +1,6 @@
+const math = require("remark-math");
+const katex = require("rehype-katex");
+
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: "moonlight8978's Blog",
@@ -79,6 +82,8 @@ module.exports = {
           editUrl:
             "https://github.com/moonlight8978/moonlight8978.github.io/edit/v2/docs/",
           showLastUpdateTime: true,
+          remarkPlugins: [math],
+          rehypePlugins: [katex],
         },
         blog: {
           showReadingTime: true,
@@ -86,6 +91,8 @@ module.exports = {
           blogSidebarTitle: "All posts",
           editUrl:
             "https://github.com/moonlight8978/moonlight8978.github.io/edit/v2/blog/",
+          remarkPlugins: [math],
+          rehypePlugins: [katex],
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -104,7 +111,17 @@ module.exports = {
         editUrl:
           "https://github.com/moonlight8978/moonlight8978.github.io/edit/v2/books/",
         showLastUpdateTime: true,
+        remarkPlugins: [math],
+        rehypePlugins: [katex],
       },
     ],
+  ],
+  stylesheets: [
+    {
+      href: "https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css",
+      integrity:
+        "sha384-Um5gpz1odJg5Z4HAmzPtgZKdTBHZdw8S29IecapCSB31ligYPhHQZMIlWLYQGVoc",
+      crossorigin: "anonymous",
+    },
   ],
 };
