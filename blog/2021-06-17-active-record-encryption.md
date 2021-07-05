@@ -236,7 +236,7 @@ Tại đây, ta có thể kết luận key mã hoá mà Rails dùng có:
 
 - `passphrase`: `primary_key`
 - `salt`: `key_derivation_salt`
-- `iterations`: 2^16
+- `iterations`: $2^{16}$
 - `key_len`: độ dài key 32 bytes
 - `digest`: hash algorithm SHA-1
 
