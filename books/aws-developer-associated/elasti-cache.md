@@ -51,3 +51,52 @@ Caching:
   TODO: Usecase memcached, and redis
 
 - Redis cluster mode can be enabled to achieve high availability
+
+## Caching
+
+### Cache strategies
+
+- Lazy Loading
+
+  ```ruby
+  def find_user(id)
+    record = redis.get(id)
+    return record if record
+
+    record = db.query("select * from users where id = #{id}")
+    redis.set(id, record)
+    record
+  end
+  ```
+
+  - Read penalty
+  - Cache invalidate
+
+- Write through
+
+  - When app write to database, it write to the cache too
+  - Cache missing until data is write
+  - Write penalty, user expect write requests are slower than read requests
+  - A lot of data will never be read
+
+- Combine both strategies
+
+### Cache eviction
+
+- Delete cache explicitly
+- Full memory, or not recently used (Least Recently Used - LRU)
+- Time to live - TTL
+
+## Cluster mode
+
+- Cluster mode disabled
+
+  - Primary + up to 5 replicas
+  - One shard, every node has all the data
+  - Replicas: read only
+
+- Cluster mode enabled
+  - Data is partition across shards
+  - Each shard has a primary, up to 5 replicas
+  - Multi AZ supported
+  - Up to 500 nodes per cluster
