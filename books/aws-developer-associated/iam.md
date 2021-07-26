@@ -88,7 +88,7 @@ code: N/A
 
 - AssumeRoleWithWebIdentity
 
-  ![](/img/aws-developer-associated/iam-sts.webp)
+  ![](/img/aws-dva/iam-sts.webp)
 
 ## Cross-account roles
 
