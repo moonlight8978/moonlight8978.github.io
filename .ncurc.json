@@ -1,0 +1,4 @@
+{
+  "upgrade": true,
+  "reject": ["remark-math", "rehype-katex", "hast-util-is-element"]
+}
