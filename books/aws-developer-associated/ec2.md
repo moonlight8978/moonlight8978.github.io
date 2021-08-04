@@ -214,6 +214,8 @@ Cloud-init v. 19.3-43.amzn2 finished at Thu, 10 Jun 2021 09:43:39 +0000. Datasou
 curl http://169.254.169.254/latest/meta-data
 ```
 
+* Do not require IAM Role
+
 ## Purchase options
 
 - Standard (On-Demand)

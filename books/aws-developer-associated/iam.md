@@ -63,6 +63,9 @@ code: N/A
     - A unique type of service role that is linked directly to an AWS service.
     - Are predefined, and includes all the permissions that the service requires
 - Delegation: See [Cross-account roles](#cross-account-roles) below
+- STS user with short-lived credentials 
+  - `aws:arn:sts::xxx/assumed-role/RoleName/i-xxx`
+- EC2 instance query the metadata to get credentials info
 
 ## Identity Federation
 
