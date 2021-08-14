@@ -51,6 +51,12 @@ Code optimization is much more important than other language
 
 - Sometimes ineffecient code are better (i.e. recreate an array everytime, instead of store it) because it does not cost extra money.
 
+:::tip
+`require` will refund the user the gas costs, but `assert` does not.
+:::
+
+- Events can be use as cheaper storage. But events cannot be read from the contract itself. Only the app frontend can read them.
+
 ## Randomization
 
 - The user can choose to not public the transaction, and run it indefinitely until they won the randomization, and publish that transaction to their own node and solve the next block
@@ -58,3 +64,37 @@ Code optimization is much more important than other language
   - There are many other nodes, so the chance of solving next block is extremely low. But if the reward were high enough, it's worth to give a try
 
 - Unless the randomization involes a lot of money, it is safe to use (using `keccak256`)
+
+## Tokens
+
+- ERC20, ERC721, ... tokens
+
+- Tokens on Ethereum share the same interface.
+
+  - `transferFrom(address _from, address _to, uint256 _tokenId)`, `balanceOf(address _owner)`
+  - Can be intracted with in the same ways
+
+- Basically is a contract that keeps track of who owns how much of that token
+
+## Web3.js
+
+- Web3 client will communicate with a blockchain Node
+
+  - Host own Node
+  - Use a provider
+    - Infura (sets of Ethereum nodes)
+    - Metamask (use Infura underhood)
+
+- Cryptographic keys to sign the transaction (asymmetric encryption)
+
+## Testing
+
+- Ganache (local Ethereum network) + Truffle (Mocha)
+  - Ganache gives 10 accounts and 100 ETH each account.
+- contract call is asynchronous
+  - `result`: `.logs[i].args.propertyName`, `.hash`, `.receipt`
+- Time travelling: `evm_increaseTime`, `evm_mine`
+
+:::note
+Need to practice these functions
+:::
