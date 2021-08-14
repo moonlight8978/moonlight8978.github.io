@@ -98,3 +98,17 @@ Code optimization is much more important than other language
 :::note
 Need to practice these functions
 :::
+
+## External API calls
+
+- ie: Call Binance API to get current ETH price
+
+- Cannot perform directly from the contract
+
+- Flow:
+  1. Contract function has been called
+  2. Emit the RequestApi event
+  3. A server which listen for Contract events (ie: NodeJS) receive the event
+  4. NodeJS server request the API
+  5. NodeJS server call contract function which will handle the API response
+  6. The contract handle the response
