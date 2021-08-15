@@ -106,9 +106,28 @@ Need to practice these functions
 - Cannot perform directly from the contract
 
 - Flow:
+
   1. Contract function has been called
   2. Emit the RequestApi event
   3. A server which listen for Contract events (ie: NodeJS) receive the event
   4. NodeJS server request the API
   5. NodeJS server call contract function which will handle the API response
   6. The contract handle the response
+
+- Use BN.js to handle number
+  - Solidity support floating-point numbers.
+
+:::tip The state are changes continuously, how all Blockchain nodes can read the same result?
+Because the Contract itself, and the data is in the blockchain.
+
+As long as the new contract (contains the new state that set by the oracle) has not been mined (writed to the blockchain), all the node will read the current state which are writed to the blockchain.
+:::
+
+- Use multiple oracles, with a thresold that describe how many success oracles is enough to execute the function.
+  - avg the result, but vulnerable to attack if an oracle is trying to alter the result
+  - be careful with overflow (use SafeMath)
+
+:::tip
+Use quartiles and interquartile ranges
+https://www.mathsisfun.com/data/quartiles.html
+:::
