@@ -131,3 +131,30 @@ As long as the new contract (contains the new state that set by the oracle) has 
 Use quartiles and interquartile ranges
 https://www.mathsisfun.com/data/quartiles.html
 :::
+
+## Binance Chain
+
+- BNB tokens, fee are paid in BNB
+- Issue BEP-2 token cost 500 BNB tokens
+- Binance chain does not support smart contracts
+- Burning is a way to irrevocably destroy tokens.
+  - It send the tokens to address 0x0 (kinda of blackhole)
+  - Burn, Freeze, Unfreeze are native functions
+
+## zkSync
+
+- Gas costs for transaction is expensive. zkSync can reduce the cost
+
+- zk-SNARKs (Zero-knowledge succinct non-interactive arguments of knowledge)
+
+  - With zk-SNARKs Bob learns that Alice has more than 0.5ETH in her account, but Bob cannot extract any other knowledge from the proof that Alice present
+
+- Rely on a smart contract deployed to the Ethereum network, most computation are performed off-chain
+
+- SNARKs verifcation is significantly cheaper than storing in EVM
+
+- Ethereum wallet -> create zkSync wallet -> deposite from Ethereum to zkSync -> register zkSync wallet address
+
+:::note
+Learn about zkSync
+:::
