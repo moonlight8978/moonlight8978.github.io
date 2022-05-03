@@ -4,6 +4,7 @@
 
 - APM: Application Performance Monitoring
 - RSS: resident set size, is data that belongs to a process: stacks, heaps, etc.
+- Tracing spans, tags, etc. https://opentracing.io/docs/overview/spans/#what-is-a-span
 
 ## Docker monitoring problem
 
