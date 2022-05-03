@@ -23,3 +23,11 @@
   - Containers are short-lived
   - Recenter the monitoring around layers and tags
   - Monitor all layers of your stack together. The key is that you must be able to see what’s happening across the layers simultaneously, and determine how problems in one part of the stack ripple to the rest of the stack.
+
+## Key metrics
+
+- https://www.datadoghq.com/blog/amazon-ecs-metrics/
+
+## Tips
+
+- Test throughput, performance of firelens and fluent bit https://aws.amazon.com/blogs/containers/under-the-hood-firelens-for-amazon-ecs-tasks/
