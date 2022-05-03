@@ -32,3 +32,6 @@
 ## Tips
 
 - Test throughput, performance of firelens and fluent bit https://aws.amazon.com/blogs/containers/under-the-hood-firelens-for-amazon-ecs-tasks/
+- Special tags:
+  - https://docs.datadoghq.com/tracing/guide/metrics_namespace/
+  - https://docs.datadoghq.com/tracing/error_tracking/#how-datadog-error-tracking-works
