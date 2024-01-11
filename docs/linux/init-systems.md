@@ -39,6 +39,11 @@ sidebar_position: 1
 
 - **System Daemon** starts the system services in parallel, speeds up the initialization process
 
+- GUI:
+  - [Cockpit](https://cockpit-project.org/)
+    - Login as root: Remove `root` from `/etc/cockpit/disallowed-users`. [Issue](https://github.com/cockpit-project/cockpit/issues/18427#issuecomment-1448831430)
+    - Available at 9090 port
+
 ## WSL meets systemd
 
 - WSL must be 0.67.6 or newer
