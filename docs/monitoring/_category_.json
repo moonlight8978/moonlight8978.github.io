@@ -1,6 +1,6 @@
 {
-  "label": "Snippets",
-  "position": 50000,
+  "label": "Monitoring",
+  "position": 3000,
   "link": {
     "type": "generated-index"
   }
