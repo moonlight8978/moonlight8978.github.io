@@ -5,20 +5,20 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 
 const config: Config = {
-  title: "My Site",
-  tagline: "Dinosaurs are cool",
-  favicon: "img/favicon.ico",
+  title: "Welcome to my personal blog | _MoonLight_",
+  tagline: "_MoonLight_ Personal Blog",
+  favicon: "favicon.ico",
 
   // Set the production url of your site here
-  url: "https://your-docusaurus-site.example.com",
+  url: "https://moonlight8978.github.io",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: "facebook", // Usually your GitHub org/user name.
-  projectName: "docusaurus", // Usually your repo name.
+  organizationName: "moonlight8978",
+  projectName: "moonlight8978.github.io",
 
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
@@ -78,10 +78,10 @@ const config: Config = {
     // Replace with your project's social card
     image: "img/docusaurus-social-card.jpg",
     navbar: {
-      title: "My Site",
+      title: "Home",
       logo: {
-        alt: "My Site Logo",
-        src: "img/logo.svg",
+        alt: "Goma smashing his keyboard",
+        src: "peach-goma-pc-night-keyboard-smashing-sd.gif",
       },
       items: [
         {
