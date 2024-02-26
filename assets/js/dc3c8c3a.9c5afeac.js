@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmoonlight_8978_github_io=self.webpackChunkmoonlight_8978_github_io||[]).push([[3825],{4274:a=>{a.exports=JSON.parse('{"label":"android","permalink":"/blog/tags/android","allTagsPath":"/blog/tags","count":1,"unlisted":false}')}}]);

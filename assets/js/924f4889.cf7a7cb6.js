@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmoonlight_8978_github_io=self.webpackChunkmoonlight_8978_github_io||[]).push([[622],{6924:l=>{l.exports=JSON.parse('{"label":"ruby","permalink":"/blog/tags/ruby","allTagsPath":"/blog/tags","count":1,"unlisted":false}')}}]);

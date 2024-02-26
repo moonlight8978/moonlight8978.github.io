@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmoonlight_8978_github_io=self.webpackChunkmoonlight_8978_github_io||[]).push([[3234],{4666:t=>{t.exports=JSON.parse('{"label":"optimization","permalink":"/blog/tags/optimization","allTagsPath":"/blog/tags","count":1,"unlisted":false}')}}]);

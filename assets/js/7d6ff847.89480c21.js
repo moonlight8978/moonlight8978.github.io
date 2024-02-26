@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmoonlight_8978_github_io=self.webpackChunkmoonlight_8978_github_io||[]).push([[8203],{700:s=>{s.exports=JSON.parse('{"label":"multi-processing","permalink":"/blog/tags/multi-processing","allTagsPath":"/blog/tags","count":1,"unlisted":false}')}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmoonlight_8978_github_io=self.webpackChunkmoonlight_8978_github_io||[]).push([[6869],{4406:l=>{l.exports=JSON.parse('{"label":"ruby-on-rails","permalink":"/blog/tags/ruby-on-rails","allTagsPath":"/blog/tags","count":3,"unlisted":false}')}}]);
