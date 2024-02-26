@@ -84,13 +84,13 @@ const config: Config = {
         src: "peach-goma-pc-night-keyboard-smashing-sd.gif",
       },
       items: [
+        { to: "/blog", label: "Blog", position: "left" },
         {
           type: "docSidebar",
           sidebarId: "tutorialSidebar",
           position: "left",
-          label: "Tutorial",
+          label: "Notes",
         },
-        { to: "/blog", label: "Blog", position: "left" },
         {
           href: "https://github.com/facebook/docusaurus",
           label: "GitHub",
