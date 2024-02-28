@@ -40,7 +40,7 @@ sidebar_position: 100000
 
 - Network drives -> latency
 
-- Accidential deletion to Snapshots or AMI can be prevented by using Recycle Bin (1d ~ 1y)
+- Accidental deletion to Snapshots or AMI can be prevented by using Recycle Bin (1d ~ 1y)
 
 - [Device Name](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/device_naming.html)
 
@@ -56,4 +56,8 @@ sidebar_position: 100000
   
   - Network Filesystem
   - Expensive
-  - Auto-scaled, can be attach to multiple instances
+  - Auto-scaled, can be attached to multiple instances
+
+## ELB
+
+- SNI (Server Name Indication): loading multiple SSL certificates onto one web server
