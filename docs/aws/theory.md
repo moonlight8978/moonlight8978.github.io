@@ -1,5 +1,5 @@
 ---
-sidebar_position: 100000
+sidebar_position: 1000
 ---
 
 # AWS Theory Note
@@ -27,16 +27,16 @@ sidebar_position: 100000
 
 ## EBS
 
-|                    | Type                           | Ephemeral | Multi-Attach                             | Performance              |
-| ------------------ | ------------------------------ |:---------:|:----------------------------------------:| ------------------------ |
+|                    | Type                           | Ephemeral |               Multi-Attach               | Performance              |
+| ------------------ | ------------------------------ | :-------: | :--------------------------------------: | ------------------------ |
 | `gp2`              | Network block storage <br/>SSD |           |                                          | General Purpose          |
 | `gp3`              | ^                              |           |                                          | GP                       |
-| `io1`              | ^                              |           | Same AZ                                  | High                     |
-| `io2`              | ^                              |           | Same AZ                                  | High                     |
+| `io1`              | ^                              |           |                 Same AZ                  | High                     |
+| `io2`              | ^                              |           |                 Same AZ                  | High                     |
 | `st1`              | Network block storage<br/>HDD  |           |                                          | GP                       |
 | `sc1`              | ^                              |           |                                          | Infrequently Accessed    |
 | EFS                | Network file storage           |           | Regional<br/>One Zone<br/>Security Group | Very high<br/>Autoscaled |
-| EC2 Instance Store | Physical Drive                 | ✅         |                                          | Very high                |
+| EC2 Instance Store | Physical Drive                 |    ✅     |                                          | Very high                |
 
 - Network drives -> latency
 
@@ -45,7 +45,7 @@ sidebar_position: 100000
 - [Device Name](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/device_naming.html)
 
 - EC2 Instance Store
-  
+
   - Physical drives attach to the instance
   - Ephemeral
   - Very high IOPS
@@ -53,7 +53,7 @@ sidebar_position: 100000
 - Only SSD-type volume can be root volume
 
 - EFS (Linux only)
-  
+
   - Network Filesystem
   - Expensive
   - Auto-scaled, can be attached to multiple instances
