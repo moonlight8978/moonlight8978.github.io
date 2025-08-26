@@ -26,6 +26,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Configure github actions bot
+        uses: moonlight8978/actions/git-config-actions-bot@latest
+
       - name: Deploy website
         env:
           DEPLOY_MESSAGE: ${{ github.event.head_commit.message }}
