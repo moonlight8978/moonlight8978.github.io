@@ -22,8 +22,7 @@
     },
     "deploy": {
       "dependsOn": [
-        "^build",
-        "^deploy"
+        "build"
       ]
     }
   }
