@@ -12,7 +12,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy": "gh-pages --dist dist --branch gh-pages --message '$DEPLOY_MESSAGE' --cname '$CNAME'"
+    "deploy": "gh-pages --dist dist --branch gh-pages --message \"$DEPLOY_MESSAGE\" --cname \"$CNAME\""
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.4",
