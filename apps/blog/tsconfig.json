@@ -6,7 +6,8 @@
     "strictNullChecks": true,
     "paths": {
       "~/site.config": ["./src/site.config.js"],
-      "~/*": ["./node_modules/@moonlight8978/multiterm-astro/src/*"]
+      "~/*": ["./node_modules/@moonlight8978/multiterm-astro/src/*"],
+      "@/*": ["./src/*"]
     }
   }
 }
