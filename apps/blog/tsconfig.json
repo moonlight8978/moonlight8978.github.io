@@ -3,6 +3,11 @@
   "include": [".astro/types.d.ts", "**/*"],
   "exclude": ["dist"],
   "compilerOptions": {
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "paths": {
+      "~/site.config": ["./src/site.config.js"],
+      "~/*": ["./node_modules/@moonlight8978/multiterm-astro/src/*"],
+      "@/*": ["./src/*"]
+    }
   }
 }
