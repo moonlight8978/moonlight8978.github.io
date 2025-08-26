@@ -1,7 +1,19 @@
 ---
 import "@/styles/vite.css";
 import Layout from "@moonlight8978/multiterm-astro/layouts/Layout.astro";
+import HomeBanner from "@moonlight8978/multiterm-astro/components/HomeBanner.astro";
+import { render } from "astro:content";
+import { getCollection } from "astro:content";
+
+const [home] = await getCollection("home");
+const { Content: Home } = await render(home);
 ---
 
 <Layout>
+  <HomeBanner
+    avatarImage={home.data.avatarImage}
+    githubCalendar={home.data.githubCalendar}
+  >
+    <Home />
+  </HomeBanner>
 </Layout>
