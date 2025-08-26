@@ -1,0 +1,38 @@
+name: Publish blog
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Clone latest source code
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+
+      - name: Setup NodeJS
+        uses: actions/setup-node@v4
+        with:
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Configure github actions bot
+        uses: moonlight8978/actions/git-config-actions-bot@latest
+
+      - name: Deploy website
+        env:
+          DEPLOY_MESSAGE: ${{ github.event.head_commit.message }}
+          CNAME: blog.bichls.dev
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          pnpm run deploy

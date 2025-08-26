@@ -2,11 +2,17 @@
   "name": "@moonlight8978/blog",
   "type": "module",
   "version": "0.0.1",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/moonlight8978/moonlight8978.github.io"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "deploy": "gh-pages --dist dist --branch gh-pages --message \"$DEPLOY_MESSAGE\" --cname \"$CNAME\""
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.4",
@@ -14,5 +20,8 @@
     "@astrojs/sitemap": "^3.5.1",
     "astro": "^5.13.3",
     "sharp": "^0.34.2"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   }
 }
