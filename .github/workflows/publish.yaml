@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - feat/migrate-to-actions
 
 jobs:
   publish:
@@ -25,14 +26,15 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Configure github actions bot
-        uses: moonlight8978/actions/git-config-actions-bot@latest
+      - name: Build the website
+        run: pnpm run build
 
       - name: Deploy website
-        env:
-          DEPLOY_MESSAGE: ${{ github.event.head_commit.message }}
-          CNAME: blog.bichls.dev
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          pnpm run deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./apps/blog/dist
+          commit_message: ${{ github.event.head_commit.message }}
+          cname: blog.bichls.dev
+          user_name: "github-actions[bot]"
+          user_email: "41898282+github-actions[bot]@users.noreply.github.com"
