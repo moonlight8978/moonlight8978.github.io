@@ -8,11 +8,10 @@
   },
   "type": "module",
   "scripts": {
-    "astro": "astro",
-    "build": "astro build",
-    "deploy": "gh-pages --dist dist --branch gh-pages --message \"$DEPLOY_MESSAGE\" --cname \"$CNAME\"",
     "dev": "astro dev",
-    "preview": "astro preview"
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.4",
