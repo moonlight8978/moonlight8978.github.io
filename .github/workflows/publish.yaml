@@ -1,0 +1,33 @@
+name: Publish blog
+
+on:
+  push:
+    branches:
+      - main
+      - feat/deploy-page
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Clone latest source code
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+
+      - name: Setup NodeJS
+        uses: actions/setup-node@v4
+        with:
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Deploy website
+        env:
+          DEPLOY_MESSAGE: ${{ github.event.head_commit.message }}
+          CNAME: blog.bichls.dev
+        run: pnpm run deploy
