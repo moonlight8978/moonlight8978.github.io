@@ -1,0 +1,4 @@
+@import "tailwindcss";
+@import "@moonlight8978/multiterm-astro/styles/global.css";
+
+@source "../../node_modules/@moonlight8978/multiterm-astro";
