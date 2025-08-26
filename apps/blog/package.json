@@ -11,8 +11,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "deploy": "gh-pages --dist dist --branch gh-pages --message \"$DEPLOY_MESSAGE\" --cname \"$CNAME\""
+    "astro": "astro"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.4",
@@ -20,8 +19,5 @@
     "@astrojs/sitemap": "^3.5.1",
     "astro": "^5.13.3",
     "sharp": "^0.34.2"
-  },
-  "devDependencies": {
-    "gh-pages": "^6.3.0"
   }
 }
