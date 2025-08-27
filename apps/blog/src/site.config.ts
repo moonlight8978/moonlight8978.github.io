@@ -49,7 +49,7 @@ const config: SiteConfig = {
     },
     {
       name: "Articles",
-      url: "/blog",
+      url: "/posts",
     },
     {
       name: "GitHub",

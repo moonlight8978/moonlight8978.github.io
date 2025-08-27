@@ -1,8 +1,8 @@
 ---
-title: "Go's Interfaces and Polymorphism"
-published: 2025-07-12
+title: Python's Context Managers and the with Statement
+published: 2024-07-12
 draft: false
-description: 'Explore how Go uses interfaces to achieve polymorphism.'
+description: Learn how to use context managers and the with statement in Python for resource management.
 tags: ['go']
 ---
 
