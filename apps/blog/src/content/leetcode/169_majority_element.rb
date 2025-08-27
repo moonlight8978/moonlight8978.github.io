@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'minitest/autorun'
 
 # @param {Integer[]} nums
@@ -29,15 +31,13 @@ def moore_majority_element(nums)
   count = 0
 
   nums.each do |num|
-    if count == 0
+    if count.zero?
       candidate = num
       count = 1
+    elsif candidate == num
+      count += 1
     else
-      if candidate == num
-        count += 1
-      else
-        count -= 1
-      end
+      count -= 1
     end
   end
 
@@ -55,12 +55,12 @@ end
 
 class Test169 < Minitest::Test
   def test_1
-    assert_equal majority_element([3,2,3]), 3
-    assert_equal moore_majority_element([3,2,3]), 3
+    assert_equal majority_element([3, 2, 3]), 3
+    assert_equal moore_majority_element([3, 2, 3]), 3
   end
 
   def test_2
-    assert_equal majority_element([2,2,1,1,1,2,2]), 2
-    assert_equal moore_majority_element([2,2,1,1,1,2,2]), 2
+    assert_equal majority_element([2, 2, 1, 1, 1, 2, 2]), 2
+    assert_equal moore_majority_element([2, 2, 1, 1, 1, 2, 2]), 2
   end
 end
