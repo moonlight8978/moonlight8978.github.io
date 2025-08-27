@@ -1,0 +1,55 @@
+---
+import type { GetStaticPathsResult } from "astro";
+import Layout from "@/layouts/Layout.astro";
+import {
+  getLeetCodeProblems,
+  getLeetCodeSolution,
+  getLeetCodeProblemUrl,
+} from "@/components/leetcode/utils";
+import { Code } from "astro-expressive-code/components";
+import { getEntry } from "astro:content";
+import { render } from "astro:content";
+import PageHeader from "@moonlight8978/multiterm-astro/components/PageHeader.astro";
+
+export function getStaticPaths() {
+  const problems = getLeetCodeProblems();
+  return problems.map(
+    ({ slug, filePath, filename, fileBasename, id, title }) => ({
+      params: { slug },
+      props: { filePath: filePath, filename, fileBasename, id, title, slug },
+    })
+  ) satisfies GetStaticPathsResult;
+}
+
+type Props = {
+  filePath: string;
+  filename: string;
+  fileBasename: string;
+  id: number;
+  title: string;
+  slug: string;
+};
+
+const { filePath, id, fileBasename, filename, title, slug } = Astro.props;
+
+const solution = await getLeetCodeSolution(filePath);
+const doc = await getEntry("leetcode", fileBasename);
+const rendered = doc ? await render(doc) : null;
+---
+
+<Layout>
+  <PageHeader title={`${id}. ${title}`} />
+
+  <a
+    class="mt-4 text-primary-500 hover:underline"
+    href={getLeetCodeProblemUrl(title)}
+    target="_blank"
+  >
+    Problem on LeetCode
+  </a>
+
+  <div class="prose">
+    {rendered && <rendered.Content />}
+    <Code code={solution} lang="ruby" title={filename} />
+  </div>
+</Layout>

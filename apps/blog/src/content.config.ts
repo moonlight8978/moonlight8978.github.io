@@ -1,5 +1,6 @@
 import { defineCollection, z } from "astro:content";
-import { glob, file } from "astro/loaders";
+import { glob } from "astro/loaders";
+import { getLeetCodeCollection } from "./components/leetcode/utils";
 
 const posts = defineCollection({
   // Load Markdown and MDX files in the `src/content/blog/` directory.
@@ -55,4 +56,12 @@ const addendum = defineCollection({
     }),
 });
 
-export const collections = { posts, home, addendum };
+const leetcode = defineCollection({
+  loader: glob({ base: "./src/content/leetcode", pattern: "**/*.{md,mdx}" }),
+  schema: () =>
+    z.object({
+      difficulty: z.enum(["Easy", "Medium", "Hard"]),
+    }),
+});
+
+export const collections = { posts, home, addendum, leetcode };

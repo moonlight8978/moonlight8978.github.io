@@ -3,21 +3,23 @@ title: "My LeetCode Journey: From Zero Competitive Programming Experience"
 published: 2025-08-27
 draft: false
 description: My journey of learning competitive programming through LeetCode.
-tags: ['competitive programming', 'interview', 'dsa', 'ruby']
+tags: ["competitive programming", "interview", "dsa", "ruby"]
 ---
 
 import { getLeetCodeProblems } from "@/components/leetcode/utils";
 
-## Introduction
+## Why I Started LeetCode
 
-I've been learning competitive programming for a few months now, and I've been using LeetCode as my primary platform. I've learned a lot from it, but it also made me suffering a lot.
+For a long time in my software engineering career, I've been working on building applications, optimizing SQL statements, configuring CI/CD pipelines, and deploying Helm charts. I often used arrays, hash maps/sets for O(1) lookup, or tree BFS/DFS at most. Opportunities to use advanced data structures and algorithms were very rare.
 
-I've been thinking about writing a blog post about my journey, but I've never done it before. So I decided to write it here.
+Now, I'm a 28-year-old software engineer, and I want to look for a new job, but every interviewer asks me about finding the best time to buy and sell stocks, and finding reverse words for a Cloud/Kubernetes-based DevOps Engineer position. Haha, I was depressed.
+
+I've been learning competitive programming for a few months now, and I've been using LeetCode as my primary platform. I've learned a lot from it, but it has also made me suffer a lot, haha.
 
 ## My Journey
 
-{getLeetCodeProblems().map((problem) => (
+{getLeetCodeProblems().map(({ title, slug, id }) => (
   <p>
-    <a href={`/leetcode/${problem}`}>{problem}</a>
+    <a href={`/leetcode/${slug}/solution`}>{id}. {title}</a>
   </p>
 ))}
