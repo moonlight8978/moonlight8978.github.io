@@ -1,0 +1,31 @@
+---
+import type { GetStaticPathsResult } from "astro";
+import Layout from "@/layouts/Layout.astro";
+import {
+  getLeetCodeProblems,
+  getLeetCodeSolution,
+} from "@/components/leetcode/utils";
+import { Code } from "astro-expressive-code/components";
+
+export function getStaticPaths() {
+  const problems = getLeetCodeProblems();
+  return problems.map((problem) => ({
+    params: { slug: problem },
+    props: { id: problem },
+  })) satisfies GetStaticPathsResult;
+}
+
+type Props = {
+  id: string;
+};
+
+const { id } = Astro.props;
+
+const solution = await getLeetCodeSolution(id);
+---
+
+<Layout>
+  <div class="prose">
+    <Code code={solution} lang="ruby" title={id} />
+  </div>
+</Layout>

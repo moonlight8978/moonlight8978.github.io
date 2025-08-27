@@ -6,7 +6,7 @@ description: My journey of learning competitive programming through LeetCode.
 tags: ['competitive programming', 'interview', 'dsa', 'ruby']
 ---
 
-import LeetCode from "@/components/LeetCode.astro";
+import { getLeetCodeProblems } from "@/components/leetcode/utils";
 
 ## Introduction
 
@@ -16,4 +16,8 @@ I've been thinking about writing a blog post about my journey, but I've never do
 
 ## My Journey
 
-<LeetCode />
+{getLeetCodeProblems().map((problem) => (
+  <p>
+    <a href={`/leetcode/${problem}`}>{problem}</a>
+  </p>
+))}

@@ -1,0 +1,7 @@
+---
+import { getLeetCodeProblems } from "./utils";
+
+const problems = getLeetCodeProblems();
+---
+
+{problems.map((problem) => <a href={`/leetcode/${problem}`}>{problem}</a>)}
