@@ -1,0 +1,14 @@
+---
+import "@/styles/global.css";
+import MultitermMarkdownLayout from "@moonlight8978/multiterm-astro/layouts/MarkdownLayout.astro";
+import type { MarkdownLayoutProps } from "astro";
+
+type Props = MarkdownLayoutProps<{
+  title: string;
+  description?: string;
+}>;
+---
+
+<MultitermMarkdownLayout {...Astro.props}>
+  <slot />
+</MultitermMarkdownLayout>
