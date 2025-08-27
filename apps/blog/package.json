@@ -18,9 +18,13 @@
     "@astrojs/mdx": "^4.3.4",
     "@astrojs/rss": "^4.0.12",
     "@astrojs/sitemap": "^3.5.1",
+    "@astropub/md": "^1.0.0",
+    "@expressive-code/plugin-line-numbers": "^0.41.3",
+    "@fontsource-variable/jetbrains-mono": "^5.2.6",
     "@moonlight8978/multiterm-astro": "^1.0.1",
     "@tailwindcss/vite": "^4.1.12",
     "astro": "^5.13.3",
+    "astro-expressive-code": "^0.41.3",
     "sharp": "^0.34.2",
     "tailwindcss": "^4.1.12"
   }
