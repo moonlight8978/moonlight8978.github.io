@@ -1,0 +1,15 @@
+---
+type Props = {
+  class: string;
+  name?: string;
+};
+
+const { class: className } = Astro.props;
+---
+
+<div class="flex flex-col items-center gap-2">
+  <i class={`text-6xl ${className}`}></i>
+  <span class="text-sm">
+    <slot />
+  </span>
+</div>

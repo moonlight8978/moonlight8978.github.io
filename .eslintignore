@@ -1,0 +1,8 @@
+# Ruby
+vendor/
+.bundle/
+
+# JS
+.turbo/
+node_modules/
+pnpm-lock.yaml

@@ -2,7 +2,7 @@
 
 # @param {Integer[]} nums
 # @return {Integer}
-def remove_duplicates(nums)
+def _80_remove_duplicates(nums)
   idx = 0
   cursor = nil
   count = 0
