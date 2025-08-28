@@ -5,5 +5,5 @@
     ":automergeMinor",
     ":automergePatch",
     "github>moonlight8978/renovate-config",
-  ],
+  ]
 }
