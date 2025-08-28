@@ -80,7 +80,7 @@ importers:
         version: 9.33.0
       '@next/eslint-plugin-next':
         specifier: ^15.5.0
-        version: 15.5.0
+        version: 15.5.2
       eslint:
         specifier: ^9.33.0
         version: 9.33.0(jiti@2.5.1)
@@ -702,8 +702,8 @@ packages:
   '@moonlight8978/multiterm-astro@1.0.1':
     resolution: {integrity: sha512-K+tbse8aFSmeV8bl2Y/U15UXKCry45q4avLwZTwG0EKm6ASg9MHwNExwNPQR0CUxY7vQ9kr/ylgOWKWqPN1I5A==, tarball: https://npm.pkg.github.com/download/@moonlight8978/multiterm-astro/1.0.1/5aefe28124b434985e4c11f82d0913cd5bf79230}
 
-  '@next/eslint-plugin-next@15.5.0':
-    resolution: {integrity: sha512-+k83U/fST66eQBjTltX2T9qUYd43ntAe+NZ5qeZVTQyTiFiHvTLtkpLKug4AnZAtuI/lwz5tl/4QDJymjVkybg==}
+  '@next/eslint-plugin-next@15.5.2':
+    resolution: {integrity: sha512-lkLrRVxcftuOsJNhWatf1P2hNVfh98k/omQHrCEPPriUypR6RcS13IvLdIrEvkm9AH2Nu2YpR5vLqBuy6twH3Q==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -4317,7 +4317,7 @@ snapshots:
       - vite
       - yaml
 
-  '@next/eslint-plugin-next@15.5.0':
+  '@next/eslint-plugin-next@15.5.2':
     dependencies:
       fast-glob: 3.3.1
 
