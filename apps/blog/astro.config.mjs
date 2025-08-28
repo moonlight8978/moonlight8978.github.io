@@ -6,6 +6,8 @@ import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 // Reading time
 import remarkReadingTime from "@moonlight8978/multiterm-astro/plugins/remark-reading-time.js";
+// Emoji
+import remarkGemoji from "@moonlight8978/multiterm-astro/plugins/remark-gemoji.js";
 // Code block
 import expressiveCode from "astro-expressive-code";
 // Latex
@@ -33,7 +35,7 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   markdown: {
-    remarkPlugins: [remarkReadingTime, remarkMath],
+    remarkPlugins: [remarkReadingTime, remarkMath, remarkGemoji],
     rehypePlugins: [rehypeKatex],
   },
 });
