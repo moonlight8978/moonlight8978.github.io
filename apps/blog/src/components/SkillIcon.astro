@@ -1,14 +1,16 @@
 ---
 type Props = {
   class: string;
-  name?: string;
+  inactive?: boolean;
 };
 
-const { class: className } = Astro.props;
+const { class: className, inactive } = Astro.props;
+
+const textColor = inactive ? "text-foreground/10" : "text-foreground";
 ---
 
 <div class="flex flex-col items-center gap-2">
-  <i class={`text-6xl ${className}`}></i>
+  <i class={`text-6xl ${className} ${textColor}`}></i>
   <span class="text-sm">
     <slot />
   </span>
