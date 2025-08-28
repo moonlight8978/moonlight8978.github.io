@@ -16,7 +16,7 @@ export function getStaticPaths() {
   return problems.map(
     ({ slug, filePath, filename, fileBasename, id, title }) => ({
       params: { slug },
-      props: { filePath: filePath, filename, fileBasename, id, title, slug },
+      props: { filePath: filePath, filename, fileBasename, id, title },
     })
   ) satisfies GetStaticPathsResult;
 }
@@ -27,10 +27,9 @@ type Props = {
   fileBasename: string;
   id: number;
   title: string;
-  slug: string;
 };
 
-const { filePath, id, fileBasename, filename, title, slug } = Astro.props;
+const { filePath, id, fileBasename, filename, title } = Astro.props;
 
 const solution = await getLeetCodeSolution(filePath);
 const doc = await getEntry("leetcode", fileBasename);
@@ -40,15 +39,11 @@ const rendered = doc ? await render(doc) : null;
 <Layout>
   <PageHeader title={`${id}. ${title}`} />
 
-  <a
-    class="mt-4 text-primary-500 hover:underline"
-    href={getLeetCodeProblemUrl(title)}
-    target="_blank"
-  >
-    Problem on LeetCode
-  </a>
+  <div class="prose mt-6">
+    <a href={getLeetCodeProblemUrl(title)} target="_blank">
+      Explore on LeetCode
+    </a>
 
-  <div class="prose">
     {rendered && <rendered.Content />}
     <Code code={solution} lang="ruby" title={filename} />
   </div>
