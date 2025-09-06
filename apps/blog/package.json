@@ -21,7 +21,7 @@
     "@astropub/md": "^1.0.0",
     "@expressive-code/plugin-line-numbers": "^0.41.3",
     "@fontsource-variable/jetbrains-mono": "^5.2.6",
-    "@moonlight8978/multiterm-astro": "^1.0.1",
+    "@moonlight8978/multiterm-astro": "^1.0.3",
     "@tailwindcss/vite": "^4.1.12",
     "astro": "^5.13.3",
     "astro-expressive-code": "^0.41.3",

@@ -28,6 +28,9 @@ export default defineConfig({
         showLineNumbers: false,
         wrap: false,
       },
+      shiki: {
+        langs: ["log"],
+      },
     }),
     mdx(),
   ],
