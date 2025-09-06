@@ -1,15 +1,18 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
-  - repo: https://github.com/pre-commit/mirrors-eslint
-    rev: v9.34.0
-    hooks:
-      - id: eslint
-        args: ["--fix"]
   - repo: https://github.com/rubocop/rubocop
     rev: v1.80.1
     hooks:
       - id: rubocop
+  - repo: local
+    hooks:
+      - id: lint
+        language: system
+        name: lint mono repo
+        types: [javascript, jsx, tsx, ts, yaml, json]
+        entry: npm
+        args: ["run", "lint"]
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v3.2.0
     hooks:
