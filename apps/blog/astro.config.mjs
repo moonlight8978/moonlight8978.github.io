@@ -18,7 +18,7 @@ import siteConfig from "./src/site.config.js";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://example.com",
+  site: "https://blog.bichls.dev",
   integrations: [
     sitemap(),
     expressiveCode({
