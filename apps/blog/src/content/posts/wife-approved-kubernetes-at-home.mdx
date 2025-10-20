@@ -1,8 +1,91 @@
 ---
-title: Wife Approved Kubernetes at Home
+title: Choosing a Kubernetes Distribution for our Home Lab
 published: 2025-08-28
 draft: false
 description: Building a wife-approved and children-approved home lab with Kubernetes
 tags: ["kubernetes", "self-hosted", "homelab", "container", "devops"]
+series: "Wife Approved Kubernetes at Home"
 ---
+
+# FBI WARNING: Before deciding to use Kubernetes, please read this first
+
+Kubernetes is very powerful but also a very complex topic.
+
+It's pretty simple to get started with Kubernetes, there's many tools to help you to bootstrap the Kubernetes cluster within a minute. However, when a problem occurs, it's very difficult to troubleshoot and fix it, especially on a local cluster, which involves a lot about networking and storage. It'll take you a lot of time to understand what's going wrong and get the idea of how to fix it.
+
+Alternatively, you can use a Docker Compose/Swarm stack instead, which is much simpler and easier to troubleshoot and fix.
+
+# Why Kubernetes?
+
+A lot of companies out there are using Kubernetes for their production environments, so it's a good idea to learn it. Make sure you are familiar with the container technology, and Linux basics first before diving into Kubernetes.
+
+The community is very active, and you can find a lot of tools to help you managing your Kubernetes cluster declaratively.
+
+A lot of complex systems are abstracted away by the Helm charts, or Kubernetes Operators, so you can find it much easier to deploy, for example, a master-slave cluster of PostgreSQL, or a HA Redis cluster than setting up the cluster manually in VMs.
+
+In this series, we'll host our cluster in a Proxmox VE cluster, which is a very popular virtualization platform for home use, it's lightweight and easy to learn/manage. With ProxmoxVE, we can demonstrate multi control planes/workers setup without having multiple physical servers.
+
+# Choosing a Kubernetes Distribution
+
+There are many Kubernetes distributions out there, each with its own features and advantages. Here are some of the most popular ones (that can be self-hosted):
+
+- [Kubernetes](https://kubernetes.io/): The official Kubernetes distribution
+- [k3s](https://k3s.io/): A lightweight Kubernetes distribution, running on a single binary.
+- [RKE2](https://docs.rke2.io/): Rancher's enterprise-ready next-generation Kubernetes distribution, focuses on security and compliance within the U.S. Federal Government sector.
+- [k0s](https://k0sproject.io/): A lightweight Kubernetes distribution, CNCF certified.
+- [Talos](https://www.talos.dev/): OS for Kubernetes
+- [MicroK8s](https://microk8s.io/): The effortless Kubernetes, suitable for single-node development and testing.
+
+Siderolabs's already had a blog about comparing k3s, k0s, Talos, upstream Kubernetes, and RKE2. You can read it [here](https://www.siderolabs.com/blog/which-kubernetes-is-the-smallest/)
+
+Let summarize the results:
+
+|            | AVG RAM<br/>(MB) | AVG CPU<br/>(%) | Disk R/W<br/>(MB) | Network<br/>(KB) | Disk Usage<br/>(GB) |
+| ---------- | ---------------- | --------------- | ----------------- | ---------------- | ------------------- |
+| Kubernetes | 796              | 1.6             | 225               | 1.6              | 6.2                 |
+| Talos      | 742              | 1.7             | 111               | 1.9              | 2.9                 |
+| k3s        | 927              | 1.3             | 445               | 1.5              | 5.7                 |
+| k0s        | 925              | 1.2             | 338               | 1.4              | 6.1                 |
+| RKE2       | 1.2GB            | 3.7             | 595               | 1.6              | 8.9                 |
+
+### Talos Linux
+
+Basically, Talos seems to be our winner. But it's a bit different to other distros
+
+- Talos itself is the OS, you don't need to install Ubuntu/Debian/CentOS, but Talos Linux instead
+
+- Immutable, no shell, no SSH, everything is configured via `talosctl` remotely, and declaratively
+
+- Upgrade Kubernetes is an easy task in Talos
+
+- Not all Linux features are supported, make sure your requirements are supported in Talos first
+  
+  In my case, I want to mount a vfat disk with `utf8` parameters. Currently, there's no way to do this in Talos (see [#10995](https://github.com/siderolabs/talos/issues/10995)), but in normal Linux system, we can easily do it with a single line in `/etc/fstab`
+  
+  ```txt
+  /dev/disk/by-path/pci-0000:01:04.0-scsi-0:0:0:3-part2 /mnt/storage exfat-fuse defaults,utf8 0 0
+  ```
+
+Make sure to take a look at the documentation first to ensure our requirements are supported.
+
+Other good candidate should be: k3s, k0s, or upstream Kubernetes
+
+### k3s
+
+In my experience, the k3s control plane often consume a lot of Disk IO (1~2GB), and make the system down, I still not discovered which was the root cause yet, control plane should be 4vCPU/4GB RAM
+
+No declarative configuration file for bootstrapping, so automation requires ansible or some custom script. [k3sup](https://github.com/alexellis/k3sup) is good, but it lacks of declarative configuration.
+
+Upgrade/Restore/Backup is pretty easy task in k3s, there are exist tools developed by Rancher
+
+- [system-upgrade-controller](https://github.com/rancher/system-upgrade-controller)
+
+- [backup-restore-operator](https://github.com/rancher/backup-restore-operator)
+
+Aside from official installation script, and k3sup, there's also Cluster API (CAPI in short) to help us provision the cluster, but it's a bit over-engineering for our homelab, because it requires another Cluster to run the CAPI components, and the control planes. We will talk about it in another blog.
+
+### k0s
+
+
+
 
