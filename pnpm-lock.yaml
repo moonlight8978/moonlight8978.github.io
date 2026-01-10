@@ -128,7 +128,7 @@ importers:
         version: link:../typescript-config
       '@types/node':
         specifier: ^24.0.0
-        version: 24.10.6
+        version: 24.10.7
       '@types/react':
         specifier: 19.2.8
         version: 19.2.8
@@ -1153,8 +1153,8 @@ packages:
   '@types/node@17.0.45':
     resolution: {integrity: sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==}
 
-  '@types/node@24.10.6':
-    resolution: {integrity: sha512-B8h60xgJMR/xmgyX9fncRzEW9gCxoJjdenUhke2v1JGOd/V66KopmWrLPXi5oUI4VuiGK+d+HlXJjDRZMj21EQ==}
+  '@types/node@24.10.7':
+    resolution: {integrity: sha512-+054pVMzVTmRQV8BhpGv3UyfZ2Llgl8rdpDTon+cUH9+na0ncBVXj3wTUKh14+Kiz18ziM3b4ikpP5/Pc0rQEQ==}
 
   '@types/node@25.0.2':
     resolution: {integrity: sha512-gWEkeiyYE4vqjON/+Obqcoeffmk0NF15WSBwSs7zwVA2bAbTaE0SJ7P0WNGoJn8uE7fiaV5a7dKYIJriEqOrmA==}
@@ -4787,7 +4787,7 @@ snapshots:
 
   '@types/node@17.0.45': {}
 
-  '@types/node@24.10.6':
+  '@types/node@24.10.7':
     dependencies:
       undici-types: 7.16.0
 
