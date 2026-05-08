@@ -3,7 +3,7 @@ title: "Learning Kubernetes Security: Kubernetes Goat Lab Journal"
 published: 2026-05-04
 draft: true
 description: 'My head-first security lesson journal'
-series: 'Kubernetes Goat'
+series: 'Kubernetes Goat Journal'
 tags: ['kubernetes', 'devsecops', 'security']
 ---
 
@@ -66,15 +66,15 @@ Impact
 **Impact:** Toàn bộ source code bị lộ, PII bị rao bán, Secrets bị khai thác để thực thi trái phép
 **Likelihood in production:** Cao, nếu team không có kinh nghiệm build docker container cẩn thận
 
-## Detection
+### Detection
 
-### Build time dection
+#### Build time dection
 
 - Dùng trivy scan image với `--scanners secret`
 - Scan commit với `gitleaks` (CI hoặc precommit rules)
 - Dùng `dive` để scan image last layer xem có chứa file nhạy cảm không
 
-### Network/HTTP layer (Detect reconnaissance)
+#### Network/HTTP layer (Detect reconnaissance)
 
 Sigma-style pseudocode
 
@@ -88,8 +88,8 @@ level: low
 ```
 
 ```yaml
-title: Detect .git exposed on the internet
 detection:
+title: Detect .git exposed on the internet
   selection:
     method: get
     path|contains: '/.git'
@@ -99,7 +99,7 @@ level: high
 
 Phân biệt giữa attempt và success, nếu `.git` bị scan mà trả về success -> rất nguy hiểm
 
-## Defense
+### Defense
 
 | Layer | Implementation |
 |-------|----------------|
@@ -108,7 +108,7 @@ Phân biệt giữa attempt và success, nếu `.git` bị scan mà trả về s
 | Build | Dùng .dockerignore để ignore các file nhạy cảm khỏi image |
 | Logging/WAF | Detect, block, alert khi attacker scan `.git` |
 
-## Lessons learned
+### Lessons learned
 
 - `COPY . .` trong Dockerfile giúp tiết kiệm công sức nhưng rủi ro lớn, nếu không cẩn thận sẽ copy cả những file nhạy cảm vào image
 - Download toàn bộ git tree chỉ mất vài giây, không hề khó
