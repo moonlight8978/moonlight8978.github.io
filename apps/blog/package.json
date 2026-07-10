@@ -19,7 +19,7 @@
     "@astrojs/rss": "^4.0.12",
     "@astrojs/sitemap": "^3.5.1",
     "@astropub/md": "^1.0.0",
-    "@expressive-code/plugin-line-numbers": "^0.41.3",
+    "@expressive-code/plugin-line-numbers": "^0.44.0",
     "@fontsource-variable/jetbrains-mono": "^5.2.6",
     "@moonlight8978/multiterm-astro": "^1.0.3",
     "@tailwindcss/vite": "^4.1.12",
